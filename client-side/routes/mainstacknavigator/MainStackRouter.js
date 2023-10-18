@@ -1,26 +1,25 @@
-import React from 'react'
-import {createStackNavigator} from "@react-navigation/stack";
-import {NavigationContainer} from "@react-navigation/native"
-import SplashScreen from "../../screens/registration/splashScreen";
+import { createStackNavigator } from '@react-navigation/stack';
+import SplashScreen from '../../screens/registration/splashScreen';
+import Detailscreen from '../../screens/detailed_item_screen/detailscreen';
+import { NavigationContainer } from '@react-navigation/native';
 
+const Stack = createStackNavigator();
 
+function MainStackRouter() {
+  return (
+    <NavigationContainer>
+    <Stack.Navigator
+    initialRouteName='Splash'
+    screenOptions={{
+        headerShown:false,
+        headerShadowVisible:false,
+    }}
+    >
+      <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen name="details_screen" component={Detailscreen} />
+    </Stack.Navigator>
+ </NavigationContainer>
+  );
+}
 
-
-
-
-//Here is where I implemented the main_stack navigation for the project
-//note that , this will be different from the tab navigation or the drawer navigation 
-
-const MainStackRouter = () => {
-    const Stack = createStackNavigator();
-    return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false, headerShadowVisible: false }}>
-          <Stack.Screen name="Splash" component={SplashScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
-  
- 
 export default MainStackRouter;

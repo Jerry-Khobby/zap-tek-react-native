@@ -1,22 +1,17 @@
+import React from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
- import MainStackRouter from './routes/mainstacknavigator/MainStackRouter';
+import {Text, View } from 'react-native'
+import twrnc from 'tailwind-react-native-classnames';
+import SplashScreen from './screens/registration/splashScreen';
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <MainStackRouter/>
-      <StatusBar style="auto" />
+    <View style={twrnc`flex-1`}>
+     <SplashScreen/>
+      <StatusBar style='light-content'/>
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
+
