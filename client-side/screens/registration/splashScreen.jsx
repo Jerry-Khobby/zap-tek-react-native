@@ -14,7 +14,7 @@ const SplashScreen = (/** the navigation props is supposed to come here  */) => 
   },[]);
   return (
     <View>
-      <Image source={require("../../assets/splashscreen.png")} style={twrnc`w-full h-full`} />
+      <Image source={require("../../assets/splashscreen.png")} style={twrnc`w-full h-full `} />
     </View>
   )
 }

@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../../screens/registration/splashScreen';
-import Detailscreen from '../../screens/detailed_item_screen/detailscreen';
+import SalutationScreen from '../../screens/registration/screen_1';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
@@ -16,7 +16,7 @@ function MainStackRouter() {
     }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="details_screen" component={Detailscreen} />
+      <Stack.Screen name="screenOne" component={SalutationScreen} />
     </Stack.Navigator>
  </NavigationContainer>
   );
