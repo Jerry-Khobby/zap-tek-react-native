@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import {View } from 'react-native'
 import twrnc from 'tailwind-react-native-classnames';
 import MainStackRouter from './routes/mainstacknavigator/MainStackRouter';
-import SignUp from './screens/registration/screen_3_signup';
+import Welcome from './screens/registration/screen_4_welcome';
 
 
 
@@ -12,7 +12,7 @@ const App = () => {
     <View style={twrnc`flex-1`}>
      {/** all the components will here  */}
    {/* <MainStackRouter/>  */}
-   <SignUp />
+ <Welcome/>
       <StatusBar style='light-content'/>
     </View>
   )

@@ -1,4 +1,4 @@
-import {Text, View,TouchableOpacity,TextInput,ScrollView} from 'react-native'
+import {Text, View,TouchableOpacity,TextInput} from 'react-native'
 import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"

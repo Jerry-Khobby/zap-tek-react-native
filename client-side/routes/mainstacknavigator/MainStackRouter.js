@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../../screens/registration/splashScreen';
 import SalutationScreen from '../../screens/registration/screen_1';
 import LoginCredentials from '../../screens/registration/screen_2_login';
+import Welcome from '../../screens/registration/screen_4_welcome';
 import SignUp from '../../screens/registration/screen_3_signup';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -21,6 +22,7 @@ function MainStackRouter() {
       <Stack.Screen name="screenOne" component={SalutationScreen} />
       <Stack.Screen name="screenTwo"  component={LoginCredentials}/>
       <Stack.Screen name="screenThree" component={SignUp}/>
+      <Stack.Screen name="screenFour" component={Welcome}/>
     </Stack.Navigator>
  </NavigationContainer>
   );
