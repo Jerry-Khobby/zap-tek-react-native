@@ -62,11 +62,6 @@ const ForgotPassword = () => {
 
 
 
-
-
-
-
-
 {/** bottom side of the page  */}
 
 <View style={twrnc`mt-36 flex items-center justify-center mx-5`}>

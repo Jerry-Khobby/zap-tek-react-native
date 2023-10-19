@@ -5,6 +5,7 @@ import LoginCredentials from '../../screens/registration/screen_2_login';
 import Welcome from '../../screens/registration/screen_4_welcome';
 import SignUp from '../../screens/registration/screen_3_signup';
 import ForgotPassword from '../../screens/registration/screen_5_forgotpassword';
+import Verification from '../../screens/registration/screen_6_verification';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
@@ -25,6 +26,7 @@ function MainStackRouter() {
       <Stack.Screen name="screenThree" component={SignUp}/>
       <Stack.Screen name="screenFour" component={Welcome}/>
       <Stack.Screen name="screenFive" component={ForgotPassword}/>
+      <Stack.Screen name="screenSix" component={Verification}/>
     </Stack.Navigator>
  </NavigationContainer>
   );
