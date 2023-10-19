@@ -30,7 +30,7 @@ const SignUp = () => {
 {/** I change the button and make it a text input field where the first field will be username , the next one will password and the last field will email add  */}
 <View style={twrnc`mt-44 mx-5`}>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
-    <Text style={twrnc`font-normal text-sm text-gray-600`}>Username</Text>
+    <Text style={twrnc`font-normal text-base text-gray-600`}>Username</Text>
     <View style={twrnc`mb-3 -mt-3`}>
     <TextInput
     style={twrnc`
@@ -44,7 +44,7 @@ const SignUp = () => {
     </View>
     </View>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
-    <Text style={twrnc`font-normal text-sm text-gray-600`}>Password</Text>
+    <Text style={twrnc`font-normal text-base text-gray-600`}>Password</Text>
     <View style={twrnc`mb-3 -mt-3`}>
     <TextInput
     style={twrnc`
@@ -58,7 +58,7 @@ const SignUp = () => {
     </View>
     </View>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
-    <Text style={twrnc`font-normal text-sm text-gray-600`}>Email Address</Text>
+    <Text style={twrnc`font-normal text-base text-gray-600`}>Email Address</Text>
     <View style={twrnc`mb-3 -mt-3`}>
     <TextInput
     style={twrnc`
