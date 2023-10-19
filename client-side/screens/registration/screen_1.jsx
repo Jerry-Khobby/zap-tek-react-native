@@ -3,7 +3,7 @@ import React from 'react';
 import twrnc from 'tailwind-react-native-classnames';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const SalutationScreen = () => {
+const SalutationScreen = ({navigation}) => {
   return (
     <LinearGradient colors={['#B0A3E5', '#7661C5', '#4B3F72']} style={twrnc`flex flex-1 items-center justify-center w-full h-full`}>
       {/* Container for the image and white background */}

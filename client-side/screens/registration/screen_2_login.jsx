@@ -4,7 +4,7 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 
-const LoginCredentials= () => {
+const LoginCredentials= ({navigation}) => {
 
 
 // please your margin top should mt-11 and your left and right must be mx-5 

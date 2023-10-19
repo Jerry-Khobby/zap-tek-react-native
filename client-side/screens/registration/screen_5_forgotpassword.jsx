@@ -4,7 +4,7 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 /* import Icon_EvilIcons from "react-native-vector-icons/EvilIcons"; */
 
-const ForgotPassword = () => {
+const ForgotPassword = ({navigation}) => {
 
     const [inputs,setInputs]=useState({});
 

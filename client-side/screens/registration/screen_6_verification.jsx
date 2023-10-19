@@ -3,7 +3,7 @@ import React,{useState,useEffect } from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 
-const Verification = () => {
+const Verification = ({navigation}) => {
     const [pins,setPins]=useState(['','','','']);
 
     // mapping through the boxes onces the a digit is being entered , it automatically moves to the next box 

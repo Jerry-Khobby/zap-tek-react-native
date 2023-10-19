@@ -4,7 +4,7 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
 
-const Welcome = () => {
+const Welcome = ({navigation}) => {
 
 
     const [isToggled,setIsToggled]=useState(false);
