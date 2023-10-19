@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,7 +10,85 @@ const Screen11 = () => {
 
   const submitReview = () => {
     navigation.navigate('Screen12');
-    
+  };
+
+  const styles = {
+    container: {
+      flex: 1,
+      padding: 16,
+      backgroundColor: 'white',
+    },
+    topBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    title: {
+      marginLeft: 100,
+      fontSize: 23,
+      fontWeight: 'bold',
+    },
+    nameInput: {
+      borderColor: 'white',
+      borderWidth: 3,
+      borderRadius: 20,
+      padding: 25,
+      marginVertical: 8,
+      backgroundColor: '#f5f6fA',
+      marginHorizontal: 25,
+    },
+    experienceInput: {
+      borderColor: 'white',
+      borderWidth: 3,
+      borderRadius: 20,
+      padding: 170,
+      marginVertical: 8,
+      backgroundColor: '#f5f6fA',
+      marginHorizontal: 25,
+    },
+    label: {
+      marginVertical: 15,
+    },
+    ratingScale: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginVertical: 8,
+    },
+    ratingBar: {
+      height: 10,
+      backgroundColor: 'gray',
+      flex: 1,
+      marginHorizontal: 50,
+      width: '100%',
+      borderRadius: 5,
+    },
+    scaleText: {
+      flex: 1,
+      textAlign: 'center',
+    },
+    submitButton: {
+      backgroundColor: '#9775FA',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 30,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
+    submitText: {
+      color: 'white',
+    },
+    iconContainer: {
+      backgroundColor: '#F5F6FA',
+      borderRadius: 50,
+      padding: 10,
+      marginRight: -15,
+      marginLeft: 20,
+    },
+    icon: {
+      fontSize: 30,
+    },
   };
 
   return (
@@ -67,85 +145,5 @@ const Screen11 = () => {
     </SafeAreaView>
   );
 };
-
-//styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: 'white',
-  },
-  topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  title: {
-    marginLeft: 100,
-    fontSize: 23,
-    fontWeight: 'bold',
-  },
-  nameInput: {
-    borderColor: 'white',
-    borderWidth: 3,
-    borderRadius: 20,
-    padding: 25,
-    marginVertical: 8,
-    backgroundColor: '#f5f6fA',
-    marginHorizontal: 25,
-  },
-  experienceInput: {
-    borderColor: 'white',
-    borderWidth: 3,
-    borderRadius: 20,
-    padding: 170,
-    marginVertical: 8,
-    backgroundColor: '#f5f6fA',
-    marginHorizontal: 25,
-  },
-  label: {
-    marginVertical: 15,
-  },
-  ratingScale: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginVertical: 8,
-  },
-  ratingBar: {
-    height: 10,
-    backgroundColor: 'gray',
-    flex: 1,
-    marginHorizontal: 50,
-    width: '100%',
-    borderRadius: 5,
-  },
-  scaleText: {
-    flex: 1,
-    textAlign: 'center',
-  },
-  submitButton: {
-    backgroundColor: '#9775FA',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 30,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  submitText: {
-    color: 'white',
-  },
-  iconContainer: {
-    backgroundColor: '#F5F6FA',
-    borderRadius: 50,
-    padding: 10,
-    marginRight: -15,
-    marginLeft: 20,
-  },
-  icon: {
-    fontSize: 30,
-  },
-});
 
 export default Screen11;
