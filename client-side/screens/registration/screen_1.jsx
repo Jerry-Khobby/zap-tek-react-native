@@ -4,6 +4,14 @@ import twrnc from 'tailwind-react-native-classnames';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const SalutationScreen = ({navigation}) => {
+
+// handle the navigation of the screen 
+
+const handleSkip=()=>{
+  navigation.navigate("screenTwo");
+}
+
+
   return (
     <LinearGradient colors={['#B0A3E5', '#7661C5', '#4B3F72']} style={twrnc`flex flex-1 items-center justify-center w-full h-full`}>
       {/* Container for the image and white background */}
@@ -34,7 +42,7 @@ const SalutationScreen = ({navigation}) => {
             </View>
             <View style={twrnc`flex flex-col mt-10`}>
               {/** this will have the skip text */}
-              <TouchableOpacity style={twrnc`bg-transparent`}>
+              <TouchableOpacity style={twrnc`bg-transparent`} onPress={handleSkip}>
                 <Text style={twrnc`text-gray-500 font-medium text-lg`}>Skip</Text>
               </TouchableOpacity>
             </View>

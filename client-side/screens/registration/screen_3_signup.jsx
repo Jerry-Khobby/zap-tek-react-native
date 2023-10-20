@@ -23,11 +23,18 @@ const SignUp = ({navigation}) => {
   }
 
 
+  //functions that will handle the navigations
+
+  const handleBackWardNavigation=()=>{
+    navigation.navigate("screenTwo");
+  }
+
+
   return (
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
       {/** this is the view for the icon  */}
 <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}>
+    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
     {/** this is the view for the icon  */}
     <Icon_Ant name="arrowleft" size={25}/>
 </TouchableOpacity>

@@ -25,6 +25,12 @@ const Welcome = ({navigation}) => {
     alert(JSON.stringify(inputs,null,2));
   }
 
+  // functions for the routings or navigations 
+
+  const handleForgotPasswordNavigation=()=>{
+    navigation.navigate("screenFive")
+  }
+
   return (
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
          {/** this is the view for the icon  */}
@@ -79,7 +85,7 @@ const Welcome = ({navigation}) => {
 </View>
 
 <View style={twrnc`mx-5 flex  items-end justify-center`}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={handleForgotPasswordNavigation}>
     <Text style={twrnc`text-red-500 font-normal text-base`}>Forgot Password?</Text>
     </TouchableOpacity>
 </View>

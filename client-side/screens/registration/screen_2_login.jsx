@@ -5,14 +5,26 @@ import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 
 const LoginCredentials= ({navigation}) => {
-
-
 // please your margin top should mt-11 and your left and right must be mx-5 
+
+// handle the going back on the screen 
+
+const handleBackWardNavigation=()=>{
+  navigation.navigate("screenOne");
+}
+
+const handleSignInNavigation=()=>{
+  navigation.navigate("screenFour");
+}
+
+const handleCreateAccountNavigation=()=>{
+  navigation.navigate("screenThree");
+}
 
   return (
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
 <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}>
+    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
     {/** this is the view for the icon  */}
     <Icon_Ant name="arrowleft" size={25}/>
 </TouchableOpacity>
@@ -48,7 +60,7 @@ const LoginCredentials= ({navigation}) => {
 <View style={twrnc`mt-44 flex items-center justify-center`}>
       <Text>
         Already have an account?{' '}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleSignInNavigation}>
           <Text style={twrnc`text-blue-500 underline`}>Sign in</Text>
         </TouchableOpacity>
       </Text>
@@ -59,7 +71,7 @@ const LoginCredentials= ({navigation}) => {
      * with a violet background and has a link text create an account 
       */}
      <View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-24 flex`}>
-        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`}>
+        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleCreateAccountNavigation}>
           <Text style={twrnc`text-white text-center font-semibold`}>Create an Account</Text>
         </TouchableOpacity>
       </View>
