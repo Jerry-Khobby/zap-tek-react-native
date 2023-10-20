@@ -1,22 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
- import MainStackRouter from './routes/mainstacknavigator/MainStackRouter';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, Text, View } from "react-native";
+import MainStackRouter from "./routes/mainstacknavigator/MainStackRouter";
+import VerificationCode from "./screens/detailed_item_screen/verificationCode";
+import NewPassword from "./screens/detailed_item_screen/newPassword";
+
+const paddingTop = Platform.OS == "android" ? "pt-10" : "pt-0";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <MainStackRouter/>
+    <SafeAreaView className={`flex-1 bg-white items-center ${paddingTop}`}>
+      {/* <VerificationCode/> */}
+      <NewPassword/>
+      <MainStackRouter />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
