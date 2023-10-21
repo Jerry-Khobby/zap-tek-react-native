@@ -1,14 +1,40 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import Icon_Ant from 'react-native-vector-icons/AntDesign';
+import Icon_Mat from 'react-native-vector-icons/MaterialCommunityIcons';
+import Homescreen from '../../screens/homescreens/homescreen';
+import DetailScreen from '../../screens/detailed_item_screen/detailscreen';
+import twrnc from 'tailwind-react-native-classnames';
+import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
+const Tab = createBottomTabNavigator();
 
-const tabnavigation = () => {
+const BottomTabNavigator = () => {
   return (
-    <View>
-      <Text>tabnavigation</Text>
-    </View>
-  )
-}
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        activeTintColor: 'blue',
+        inactiveTintColor: 'gray',
+        tabBarIcon: ({ color, size }) => {
+          if (route.name === 'Home') {
+            return <Icon_Ant name="home" size={size} color={color} />;
+          } else if (route.name === 'Stores') {
+            return <Icon_Ant name="hearto" size={size} color={color} />;
+          } else if (route.name === 'Order') {
+            return <Icon_SimpleLineIcons name="handbag" size={size} color={color} />;
+          } else if (route.name === 'Wallet') {
+            return <Icon_Ant name="wallet" size={size} color={color} />;
+          }
+        },
+      })}
+      tabBarStyle={twrnc`h-20`}
+    >
+      <Tab.Screen name="Home" component={Homescreen}  options={{headerShown:false}}/>
+      <Tab.Screen name="Stores" component={DetailScreen} options={{headerShown:false}} />
+      <Tab.Screen name="Order" component={DetailScreen}  options={{headerShown:false}}/>
+      <Tab.Screen name="Wallet" component={DetailScreen} options={{headerShown:false}} />
+    </Tab.Navigator>
+  );
+};
 
-export default tabnavigation
-
-const styles = StyleSheet.create({})
+export default BottomTabNavigator;

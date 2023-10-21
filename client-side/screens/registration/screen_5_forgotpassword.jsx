@@ -6,6 +6,11 @@ import Icon_Ant from "react-native-vector-icons/AntDesign"
 
 const ForgotPassword = ({navigation}) => {
 
+  // handle the navigation backwards 
+  const handleNavigationBackWard=()=>{
+    navigation.navigate("screenFour");
+  }
+
     const [inputs,setInputs]=useState({});
 
     
@@ -23,7 +28,7 @@ const ForgotPassword = ({navigation}) => {
     
     {/** the icon for navigation backwards  */}
     <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}>
+    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleNavigationBackWard}>
     {/** this is the view for the icon  */}
     <Icon_Ant name="arrowleft" size={25}/>
 </TouchableOpacity>
