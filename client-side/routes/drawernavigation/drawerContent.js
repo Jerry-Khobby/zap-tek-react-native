@@ -1,110 +1,78 @@
-import {TouchableOpacity, View, Image} from 'react-native';
-import {DrawerContentScrollView, DrawerItem} from "@react-navigation/drawer";
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
+import { Avatar, Title, Caption, Drawer } from 'react-native-paper';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import twrnc from 'tailwind-react-native-classnames';
-import {
-    MaterialCommunityIcons,
-    MaterialIcons,
-    FontAwesome,
-    Entypo,
-    AntDesign,
-    SimpleLineIcons,
-    Ionicons
-} from '@expo/vector-icons';
-import {Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper';
-import React from "react";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon_Ant from 'react-native-vector-icons/AntDesign'
+import Icon_Font from 'react-native-vector-icons/FontAwesome';
 
-const DrawerDetail = (props) => {
-    return(
-        <View style={twrnc`flex-1`}>
-            <DrawerContentScrollView {...props}>
-                <View style={twrnc`ml-2`}>
-                    <TouchableOpacity>
-                        <View style={twrnc`bg-gray-200 h-15 w-15 mt-6 rounded-full`}>
-                            <View style={twrnc`items-center mt-4.5`}>
-                                <MaterialCommunityIcons name="format-list-text" size={24} color="black" />
-                            </View>
-                        </View>
-                    </TouchableOpacity>
-
-                    <View style={twrnc`mt-5 flex-row`}>
-                        <View style={twrnc`h-15 w-15 rounded-full bg-gray-200`}>
-                        </View>
-
-                        <View style={twrnc`flex-row mt-2`}>
-                            <View style={twrnc`ml-1`}>
-                                <Text style={twrnc`font-bold`}>Mrh Raju</Text>
-                                <View style={twrnc`flex-row`}>
-                                    <Text>Verified Profile</Text>
-                                    <FontAwesome name="certificate" size={15} color="red" style={tw `ml-1`}/>
-                                </View>
-                            </View>
-                            <View style={twrnc`h-10 w-18 rounded-lg ml-5 bg-gray-200`}>
-                                <View style={twrnc`items-center mt-2.5`}>
-                                    <Text style={twrnc`text-gray-500`}>3 orders</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-10`}>
-                        <View style={twrnc`flex-row`}>
-                            <View>
-                                <Entypo name="light-up" size={35} color="gray" />
-                            </View>
-                            <View style={twrnc`ml-3 flex-row`}>
-                                <Text style={twrnc`text-lg mt-2`}>Dark Mode</Text>
-                                <Switch style={twrnc`mt-1 ml-17`}/>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-8`}>
-                        <View style={twrnc`flex-row`}>
-                            <AntDesign name="infocirlceo" size={24} style={tw `mt-1`} color="gray" />
-                            <Text style={twrnc`mt-1 ml-5 mb-1 text-lg`}>Account information</Text>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-8`}>
-                        <View style={twrnc`flex-row`}>
-                            <MaterialIcons name="lock-outline" size={30} color="gray" />
-                            <Text style={twrnc`mt-1 ml-5 mb-1 text-lg`}>Password</Text>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-8`}>
-                        <View style={twrnc`flex-row`}>
-                            <SimpleLineIcons name="handbag" size={24} color={"gray"}/>
-                            <Text style={twrnc`mt-1 ml-5 mb-1 text-lg`}>Order</Text>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-8`}>
-                        <View style={twrnc`flex-row`}>
-                            <MaterialCommunityIcons name="wallet-outline" size={30} color="gray" />
-                            <Text style={twrnc`mt-1 ml-5 mb-1 text-lg`}>My Cards</Text>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-8`}>
-                        <View style={twrnc`flex-row`}>
-                            <AntDesign name="hearto" size={24} color={"gray"} />
-                            <Text style={twrnc`mt-1 ml-5 mb-1 text-lg`}>Wishlist</Text>
-                        </View>
-                    </View>
-
-                    <View style={twrnc`mt-8`}>
-                        <View style={twrnc`flex-row`}>
-                            <Ionicons name="settings-outline" size={24} color="black" />
-                            <Text style={twrnc`mt-1 ml-5 mb-1 text-lg`}>Settings</Text>
-                        </View>
-                    </View>
-
-                </View>
-            </DrawerContentScrollView>
-
+const DrawerContents = (props) => {
+  return (
+    <View style={twrnc`flex-1 `}>
+      <DrawerContentScrollView {...props}>
+        <View style={twrnc`p-4`}>
+          <View style={twrnc`flex flex-row items-center mt-6`}>
+            <Avatar.Image source={require('../../assets/IMG.png')} size={70} />
+            <View style={twrnc`ml-6`}>
+              <Title style={twrnc`text-xl font-bold`}>Jerry Koblah</Title>
+              <TouchableOpacity /* onPress={() => { props.navigation.navigate('Personal') }} */>
+                <Caption style={twrnc`text-sm text-blue-500`}>Edit Profile</Caption>
+              </TouchableOpacity>
+            </View>
+          </View>
+          
+          <View style={twrnc`mt-8`}>
+            <DrawerItem
+              icon={({ color, size }) => (<Icon name="payment" color="black" size={size} />)}
+              label="Payment"
+              labelStyle={twrnc`text-xl font-bold text-black`}
+              /* onPress={() => { props.navigation.navigate('Payment') }} */
+            />
+            <DrawerItem
+              icon={({ color, size }) => (<Icon name="storefront-outline" color="black" size={size} />)}
+              label="Promotion"
+              labelStyle={twrnc`text-xl font-bold text-black`}
+              /* onPress={() => { props.navigation.navigate('Promotion') }} */
+            />
+            <DrawerItem
+              icon={({ color, size }) => (<Icon name="clockcircleo" color="black" size={size} />)}
+              label="Rides"
+              labelStyle={twrnc`text-xl font-bold text-black`}
+              /* onPress={() => { props.navigation.navigate('Rides') }} */
+            />
+            <DrawerItem
+              icon={({ color, size }) => (<Icon name="suitcase" color="black" size={size} />)}
+              label="Work Rides"
+              labelStyle={twrnc`text-xl font-bold text-black`}
+              /* onPress={() => { props.navigation.navigate('Workrides') }} */
+            />
+            <DrawerItem
+              icon={({ color, size }) => (<Icon name="comment" color="black" size={size} />)}
+              label="Support"
+              labelStyle={twrnc`text-xl font-bold text-black`}
+              /* onPress={() => { props.navigation.navigate('Support') }} */
+            />
+            <DrawerItem
+              icon={({ color, size }) => (<Icon name="exclamationcircleo" color="black" size={size} />)}
+              label="About"
+              labelStyle={twrnc`text-xl font-bold text-black`}
+              /* onPress={() => { props.navigation.navigate('About') }} */
+            />
+          </View>
         </View>
-    )
-};
+      </DrawerContentScrollView>
 
-export default DrawerDetail;
+      <View style={twrnc`mt-auto border-t border-gray-300 py-4 px-6`}>
+        <DrawerItem
+          icon={({ color, size }) => (<Icon name="exit-to-app" color="black" size={size} />)}
+          label="Sign Out"
+          labelStyle={twrnc`text-xl font-bold text-black`}
+          /* onPress={() => { }} */
+        />
+      </View>
+    </View>
+  );
+}
+
+export default DrawerContents;
