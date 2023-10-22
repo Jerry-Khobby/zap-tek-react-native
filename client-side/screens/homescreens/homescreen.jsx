@@ -41,7 +41,14 @@ const Homescreen = ({navigation}) => {
 
 
 {/** now the remaining codes */}
-
+<View style={twrnc`flex flex-col mx-5 mt-5`}>
+  <View style={twrnc``}>
+    <Text style={twrnc`text-black text-4xl `}>Hello</Text>
+  </View>
+  <View>
+    <Text style={twrnc`text-gray-400 text-xl`}>Welcome to Laza
+    </Text></View>
+</View>
 
 
 
