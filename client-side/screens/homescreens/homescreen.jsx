@@ -9,6 +9,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import {items} from '../../data/carouseldata';
 import { newArrivalData } from '../../data/carouseldata';
+import tw from 'tailwind-react-native-classnames';
 
 
 const Homescreen = ({navigation}) => {
@@ -56,6 +57,8 @@ const ArrivalList = () => {
 
   )
 }
+
+
 
 
 
@@ -142,7 +145,17 @@ const ArrivalList = () => {
 
 {/**  the next section that shows the carousel of the images  */}
 <ArrivalList/>
-{/** the next section that show  */}
+{/** @kelvin this is where , you are supposed to work 
+ * 
+ * 
+ * please create the cards items , you did in your codes, please do well to do by the dimensions in the figma design and use your phone expo to test okay 
+ * 
+ * Please communicate any issues or bugs or errors in the group so we all collaborate thank you 
+ * 
+ * And please go by the tailwind format, because I got alot of errors working which says, most of the tailwindcss classes you used are invalid 
+ * 
+  */}
+
 
 
 
