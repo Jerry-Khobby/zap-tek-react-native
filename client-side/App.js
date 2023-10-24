@@ -12,8 +12,8 @@ export default function App() {
   return (
     <SafeAreaView className={`flex-1 bg-white ${paddingTop}`}>
       {/* <VerificationCode/> */}
-      {/* <NewPassword/> */}
-      <Payment/>
+      <NewPassword/>
+      {/* <Payment/> */}
       {/* <AddNewCard/> */}
       <MainStackRouter />
       <StatusBar style="auto" />
