@@ -7,7 +7,7 @@ import {
     Image,
     StatusBar,
   } from "react-native";
-  import React from "react";
+  import React,{useState} from "react";
   import { useNavigation } from "@react-navigation/native";
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
   import { brand } from "../../data/brand";
@@ -18,6 +18,14 @@ import {
 const handleBackWardNavigation=()=>{
     navigation.navigate("Home");
 }
+
+    const [likedItems, setLikedItems] = useState({});
+  
+    const handleLikeToggle = (itemId) => {
+      setLikedItems((prevLikedItems) => {
+        return { ...prevLikedItems, [itemId]: !prevLikedItems[itemId] };
+      });
+    };
 
 
 
@@ -63,13 +71,17 @@ const handleBackWardNavigation=()=>{
                     source={item.imageSource}
                     className="h-full w-full rounded-xl"
                   />
-                  <View className="absolute top-5 right-5">
-                    <MaterialCommunityIcons
-                      name="heart-outline"
-                      size={24}
-                      color="gray"
-                    />
-                  </View>
+                  <TouchableOpacity className="absolute top-5 right-5">
+                  <MaterialCommunityIcons
+                  name={
+                    likedItems[item.id]
+                      ? "heart"
+                      : "heart-outline"
+                  }
+                  size={24}
+                  color={likedItems[item.id] ? "red" : "gray"}
+                />
+                  </TouchableOpacity>
                 </View>
                 <Text className="font-semibold text-base">{item.brandName}</Text>
                 <Text className="text-base font-semibold">{item.product}</Text>
