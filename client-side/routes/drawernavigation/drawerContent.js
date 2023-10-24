@@ -45,7 +45,7 @@ const DrawerContents = (props) => {
                                     </TouchableOpacity>
                                 </View>
                             </View>
-                            <View style={tw `h-10 w-18 rounded-md  bg-gray-200 h-11 w-20 ml-4 `}>
+                            <View style={tw `h-10 w-20 rounded-md  bg-gray-200 h-11 w-20 ml-4 `}>
                                 <View style={tw `items-center m-auto`}>
                                     <Text style={tw `text-gray-500`}>3 orders</Text>
                                 </View>
@@ -94,10 +94,12 @@ const DrawerContents = (props) => {
                     </View>
 
                     <View style={tw `mt-8`}>
+                    <TouchableOpacity onPress={() => {props.navigation.navigate('Wishlist')}}>
                         <View style={tw `flex-row`}>
                             <AntDesign name="hearto" size={20} color={"gray"} />
                             <Text style={tw ` ml-5 mb-1 text-lg`}>Wishlist</Text>
                         </View>
+                    </TouchableOpacity>
                     </View>
 
                     <View style={tw `mt-8`}>

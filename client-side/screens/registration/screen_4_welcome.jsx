@@ -31,6 +31,12 @@ const Welcome = ({navigation}) => {
     navigation.navigate("screenFive")
   }
 
+
+
+const handleForWardNavigation=()=>{
+  navigation.navigate("homescreen");
+}
+
   return (
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
          {/** this is the view for the icon  */}
@@ -115,7 +121,7 @@ const Welcome = ({navigation}) => {
 
 {/** the button below that will allow you to login  */}
 <View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-28 flex`}>
-        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleSubmit}>
+        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleForWardNavigation}>
           <Text style={twrnc`text-white text-center font-semibold`}>Login </Text>
         </TouchableOpacity>
       </View>

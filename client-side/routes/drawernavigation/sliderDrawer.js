@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 
 const DrawerMainComponent = ({navigation}) => {
   return (
-    <NavigationContainer>
+   /*  <NavigationContainer> */
       <Drawer.Navigator  drawerContent={props=><DrawerContents{...props}/>}
       screenOptions={{
         headerShown:false,
@@ -18,7 +18,7 @@ const DrawerMainComponent = ({navigation}) => {
       >
     <Drawer.Screen name="HomeComponents" component={BottomTabNavigator} />
       </Drawer.Navigator>
-    </NavigationContainer>
+   /*  </NavigationContainer> */
   );
 };
 
