@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity,ScrollView,Dimensions} from 'react-native';
+import { Text, View, Image, TouchableOpacity,ScrollView,Dimensions,ImageBackground} from 'react-native';
 import React from 'react';
 import twrnc from 'tailwind-react-native-classnames';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -20,17 +20,16 @@ const handleSkip=()=>{
 
 
   return (
-    <LinearGradient colors={['#B0A3E5', '#7661C5', '#4B3F72']} style={twrnc`flex flex-1 items-center justify-center w-full h-full`}>
-      
-      {/* Container for the image and white background */}
-      <View style={twrnc`relative`}>
-        {/* View for the image */}
-        <View>
-          <Image source={require("../../assets/salutationImage.png")} style={twrnc`mt-1`} />
-        </View>
 
+    <LinearGradient  colors={['rgba(176, 163, 229, 0.8)', 'rgba(118, 97, 197, 0.8)', 'rgba(75, 63, 114, 0.8)']} style={twrnc`flex-1`}>
+    <ImageBackground
+    source={require("../../assets/salutationImage.png")} 
+    style={twrnc`flex-1 mt-10 flex items-center justify-center`}
+    resizeMode='contain'
+    >
         {/* View with white background that slightly covers the bottom of the image */}
-        <View style={twrnc`bg-white w-96 h-56  rounded-2xl absolute bottom-14`}>
+        <View style={twrnc`flex items-center justify-end mt-96 pt-20`}>
+        <View style={twrnc`bg-white w-96 h-56 flex flex-col items-center justify-center rounded-2xl`}>
           {/* Your content inside the white background goes here */}
           <View style={twrnc`flex flex-col items-center  pt-3`}>
             <View style={twrnc`flex flex-col items-center `}>
@@ -55,8 +54,9 @@ const handleSkip=()=>{
               </TouchableOpacity>
             </View>
           </View>
+          </View>
         </View>
-      </View>
+</ImageBackground>
     </LinearGradient>
   );
 }
