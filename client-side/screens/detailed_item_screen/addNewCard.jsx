@@ -72,7 +72,7 @@ const AddNewCard = () => {
         </View>
       </View>
       <View className="w-screen h-20 items-center justify-center bg-violet-500">
-        <Text className="text-white text-lg font-medium">Confirm Code</Text>
+        <Text className="text-white text-lg font-medium">Add Card</Text>
       </View>
     </View>
   );
