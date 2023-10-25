@@ -31,6 +31,10 @@ const Welcome = ({navigation}) => {
     navigation.navigate("screenFive")
   }
 
+  const handleBackWardNavigation=()=>{
+    navigation.navigate("screenTwo");
+  }
+
 
 
 const handleForWardNavigation=()=>{
@@ -41,7 +45,7 @@ const handleForWardNavigation=()=>{
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
          {/** this is the view for the icon  */}
       <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}>
+    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
     {/** this is the view for the icon  */}
     <Icon_Ant name="arrowleft" size={25}/>
 </TouchableOpacity>
@@ -120,9 +124,9 @@ const handleForWardNavigation=()=>{
 </View>
 
 {/** the button below that will allow you to login  */}
-<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-28 flex`}>
-        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleForWardNavigation}>
-          <Text style={twrnc`text-white text-center font-semibold`}>Login </Text>
+<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-24 flex`}>
+        <TouchableOpacity style={twrnc`w-full h-full flex items-center justify-center pt-5`} onPress={handleForWardNavigation}>
+          <Text style={twrnc` flex items-center justify-center mb-auto text-white text-center font-semibold`}>Login </Text>
         </TouchableOpacity>
       </View>
     </View>

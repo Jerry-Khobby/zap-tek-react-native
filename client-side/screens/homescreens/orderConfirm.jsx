@@ -9,7 +9,7 @@ const OrderConfirmed = () => {
         className="bg-gray-100 w-12 h-12 rounded-full mx-5 mt-5 items-center justify-center"
         onPress={() => alert("Navigate Back is under construction")}
       >
-        <MaterialCommunityIcons name="arrow-left" size={30} />
+        <MaterialCommunityIcons name="arrow-left" size={24} />
       </TouchableOpacity>
       <Image
         source={require("../../assets/Order.png")}

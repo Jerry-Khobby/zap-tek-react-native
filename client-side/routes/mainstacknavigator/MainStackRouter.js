@@ -12,6 +12,7 @@ import DrawerMainComponent from '../drawernavigation/sliderDrawer';
 import AddReview from '../../screens/detailed_item_screen/screen_11_addReview';
 import { Drawer } from 'react-native-paper';
 
+
 const Stack = createStackNavigator();
 
 function MainStackRouter() {
@@ -31,7 +32,7 @@ function MainStackRouter() {
       <Stack.Screen name="screenFour" component={Welcome}/>
       <Stack.Screen name="screenFive" component={ForgotPassword}/>
       <Stack.Screen name="screenSix" component={Verification}/>
-      <Stack.Screen name="homescreen" component={DrawerMainComponent}/>
+      <Stack.Screen name="homescreen" component={AddReview}/>
     </Stack.Navigator>
  </NavigationContainer>
   );

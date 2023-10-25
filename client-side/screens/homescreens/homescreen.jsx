@@ -10,6 +10,8 @@ import Icon_Ant from "react-native-vector-icons/AntDesign";
 import {items} from '../../data/carouseldata';
 import { newArrivalData } from '../../data/carouseldata';
 import tw from 'tailwind-react-native-classnames';
+import { brand } from "../../data/brand";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 
 const Homescreen = ({navigation}) => {
@@ -60,12 +62,17 @@ const ArrivalList = () => {
 
 
 
-
+const [likedItems, setLikedItems] = useState({});
+  
+const handleLikeToggle = (itemId) => {
+  setLikedItems((prevLikedItems) => {
+    return { ...prevLikedItems, [itemId]: !prevLikedItems[itemId] };
+  });
+};
 
 
 
   return (
-    <ScrollView>
     <View style={twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`}>
       {/** the header will consist of two iccons at the top of the screen  */}
      <View style={twrnc`flex flex-row items-center justify-between`}>
@@ -155,16 +162,37 @@ const ArrivalList = () => {
  * And please go by the tailwind format, because I got alot of errors working which says, most of the tailwindcss classes you used are invalid 
  * 
   */}
-
-
-
-
-
-
-
-
+    <FlatList
+            className="flex-1"
+            data={brand}
+            numColumns={2}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <View className="flex-1 m-2 mx-3 w-1/2">
+                <View className="w-full h-72 rounded-xl bg-red-500">
+                  <Image
+                    source={item.imageSource}
+                    className="h-full w-full rounded-xl"
+                  />
+                  <TouchableOpacity className="absolute top-5 right-5">
+                  <MaterialCommunityIcons
+                  name={
+                    likedItems[item.id]
+                      ? "heart"
+                      : "heart-outline"
+                  }
+                  size={24}
+                  color={likedItems[item.id] ? "red" : "gray"}
+                />
+                  </TouchableOpacity>
+                </View>
+                <Text className="font-semibold text-base">{item.brandName}</Text>
+                <Text className="text-base font-semibold">{item.product}</Text>
+                <Text className="text-lg font-bold">{item.price}</Text>
+              </View>
+            )}
+          />
 </View>
-</ScrollView>
   )
 }
 

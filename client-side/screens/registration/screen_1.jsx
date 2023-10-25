@@ -28,10 +28,10 @@ const handleSkip=()=>{
     resizeMode='contain'
     >
         {/* View with white background that slightly covers the bottom of the image */}
-        <View style={twrnc`flex items-center justify-end mt-96 pt-20`}>
-        <View style={twrnc`bg-white w-96 h-56 flex flex-col items-center justify-center rounded-2xl`}>
+        <View style={twrnc`flex items-center flex-col justify-end  mt-96 pt-16 mx-5 mb-2 `}>
+        <View style={twrnc`bg-white  w-full  h-56 flex flex-col items-center justify-center rounded-2xl`}>
           {/* Your content inside the white background goes here */}
-          <View style={twrnc`flex flex-col items-center  pt-3`}>
+          <View style={twrnc`flex flex-col items-center  `}>
             <View style={twrnc`flex flex-col items-center `}>
               {/** this will contain the heading and the other texts */}
               <Text style={twrnc`font-semibold text-2xl text-center tracking-wide`}>Look Good, Feel Good</Text>

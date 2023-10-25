@@ -58,8 +58,8 @@ const handleCreateAccountNavigation=()=>{
 
 {/** bottom side of the page  */}
 
-<View style={twrnc` flex items-center justify-center mt-44`}>
-      <Text>
+<View style={twrnc` flex items-center justify-center`}>
+      <Text style={twrnc`mt-40`}>
         Already have an account?{' '}
         <TouchableOpacity onPress={handleSignInNavigation}>
           <Text style={twrnc`text-blue-500 underline `}>Sign in</Text>
@@ -71,8 +71,8 @@ const handleCreateAccountNavigation=()=>{
     {/** I want to create a button that will take the full width of the screen but remain at the bottom 
      * with a violet background and has a link text create an account 
       */}
-     <View style={twrnc`items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-24 flex`}>
-        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleCreateAccountNavigation}>
+     <View style={twrnc`items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-24 flex mb-0`}>
+        <TouchableOpacity style={twrnc`flex items-center justify-center pt-5`} onPress={handleCreateAccountNavigation}>
           <Text style={twrnc`text-white text-center font-semibold`}>Create an Account</Text>
         </TouchableOpacity>
       </View>

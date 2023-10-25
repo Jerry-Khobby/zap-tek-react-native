@@ -13,10 +13,10 @@ import {
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
   import { brand } from "../../data/brand";
   
-  const nike = () => {
+  const Nike = () => {
     const navigation = useNavigation();
     return (
-      <View className="flex-1 bg-white">
+      <View className="flex-1 bg-white pt-11">
         {/* Top part */}
         <View className="flex-row justify-between items-center mx-5 my-5">
           {/* Navigate back */}
@@ -26,7 +26,7 @@ import {
           >
             <MaterialCommunityIcons name="arrow-left" size={24} />
           </TouchableOpacity>
-          <View className="bg-gray-200 p-3 px-5 rounded-xl">
+          <View className="bg-gray-200 p-3 px-5 rounded-xl h-11 w-20">
             <Image source={require("../../assets/Vector.png")} />
           </View>
           <TouchableOpacity className="bg-gray-200 p-2 rounded-full">
@@ -36,12 +36,12 @@ import {
   
         <View className="flex-row justify-between mx-5 items-center">
           <View>
-            <Text className="font-semibold text-2xl">365 Items</Text>
+            <Text className="font-semibold text-xl">365 Items</Text>
             <Text className="text-gray-500 text-lg">Available in stock</Text>
           </View>
           <View className="flex-row items-center bg-gray-200 p-2 rounded-xl">
             <MaterialCommunityIcons name="text" size={24} />
-            <Text className="ml-2 text-2xl font-medium">Sort</Text>
+            <Text className="ml-2 text-xl font-semibold">Sort</Text>
           </View>
         </View>
   
@@ -75,6 +75,6 @@ import {
     );
   };
   
-  export default nike;
+  export default Nike;
   
   const styles = StyleSheet.create({});

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useNavigation } from '@react-navigation/native';
 import twrnc from 'tailwind-react-native-classnames';
 
@@ -14,52 +14,43 @@ const AddReview = () => {
   };
 
   return (
-    <SafeAreaView style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
+    <View style={twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`}>
       {/* Top View */}
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <View style={{ backgroundColor: '#F5F6FA', borderRadius: 50, padding: 10, marginRight: -15, marginLeft: 20 }}>
-          <TouchableOpacity onPress={() => { /* navigation function to go back */ }}>
-            <Icon name="arrow-left" size={24} color="black" style={{ fontSize: 30 }} />
+      <View style={twrnc`mx-5 flex items-center flex-row justify-between `}>
+        <View>
+          <TouchableOpacity onPress={() => { /* navigation function to go back */ }}   className="bg-gray-200 p-2 rounded-full">
+            <MaterialCommunityIcons name="arrow-left" size={24}/>
           </TouchableOpacity>
         </View>
-        <Text style={{ marginLeft: 100, fontSize: 23, fontWeight: 'bold' }}>Add Review</Text>
+        <View>
+        <Text style={twrnc`text-xl font-bold`}>Add Review</Text>
+        </View>
+        <View></View>
       </View>
 
       {/* Name Text Input */}
-      <Text style={{ marginVertical: 15, marginHorizontal: 30 }}>Name</Text>
+      <View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
+      <Text className="text-lg font-medium mb-2">Name</Text>
       <TextInput
-        style={{
-          borderColor: 'white',
-          borderWidth: 3,
-          borderRadius: 20,
-          padding: 25,
-          marginVertical: 8,
-          backgroundColor: '#f5f6fA',
-          marginHorizontal: 25,
-        }}
+      className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
         placeholder="Type your name"
         value={name}
         onChangeText={(text) => setName(text)}
       />
+      </View>
 
       {/* Experience Text Input */}
-      <Text style={{ marginVertical: 15, marginHorizontal: 30 }}>How was your Experience?</Text>
+      <View className="mt-5 flex items-start mx-5 flex-col justify-between">
+      <Text className="text-lg font-medium mb-2">How was your Experience?</Text>
       <TextInput
-        style={{
-          borderColor: 'white',
-          borderWidth: 3,
-          borderRadius: 20,
-          padding: 25,
-          marginVertical: 8,
-          backgroundColor: '#f5f6fA',
-          marginHorizontal: 25,
-        }}
+      className="h-56 w-full bg-gray-100 rounded-lg pl-3 font-normal text-base "
         placeholder="Describe your experience"
         multiline={true}
         numberOfLines={4}
         value={experience}
         onChangeText={(text) => setExperience(text)}
       />
+  </View>
 
       {/* Star Text and Rating Scale */}
       <Text style={{ marginVertical: 15, marginHorizontal: 30 }}>Star</Text>
@@ -85,7 +76,7 @@ const AddReview = () => {
       >
         <Text style={{ color: 'white' }}>Submit Review</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 
