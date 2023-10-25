@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from 'react-nat
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useNavigation } from '@react-navigation/native';
 import twrnc from 'tailwind-react-native-classnames';
+import Slider from '@react-native-community/slider';
 
 const AddReview = () => {
   const [name, setName] = useState('');
@@ -12,6 +13,8 @@ const AddReview = () => {
   const submitReview = () => {
     navigation.navigate('Screen12');
   };
+
+  const [rating, setRating] = useState(2.5); // Initial rating value
 
   return (
     <View style={twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`}>
@@ -53,30 +56,40 @@ const AddReview = () => {
   </View>
 
       {/* Star Text and Rating Scale */}
-      <Text style={{ marginVertical: 15, marginHorizontal: 30 }}>Star</Text>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginVertical: 8 }}>
-        <Text style={{ flex: 1, textAlign: 'center' }}>0.0</Text>
-        <View style={{ height: 10, backgroundColor: 'gray', flex: 1, marginHorizontal: 50, borderRadius: 5 }} />
-        <Text style={{ flex: 1, textAlign: 'center' }}>5.0</Text>
+      <View className="flex flex-col mt-5 w-full mx-5">
+      <Text className="font-medium text-lg">Star</Text>
+      </View>
+      <View style={twrnc`flex flex-row items-center justify-start mx-5`}>
+        <Text style={twrnc`text-sm mr-1`}>0.0</Text>
+        <View className="flex-1 w-3/4">
+        <Slider
+          minimumValue={0}
+          maximumValue={5}
+          step={0.1}
+          className=""
+          value={rating}
+          onValueChange={(value) => setRating(value)}
+        />
+        </View>
+        <Text style={twrnc`text-sm ml-1`}>5.0</Text>
       </View>
 
-      {/* Submit Button */}
-      <TouchableOpacity
-        style={{
-          backgroundColor: '#9775FA',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 30,
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-        }}
-        onPress={submitReview}
-      >
-        <Text style={{ color: 'white' }}>Submit Review</Text>
-      </TouchableOpacity>
-    </View>
+
+{/** the buttom sections where the submit review is  */}
+<View>
+  {/** I want the something at the bottom of screen , it will remain the bottom of the screen and I have a text of Submit review meaning , it is a button  I want it to remain at the bottom of the screen no matter the screen size */}
+  <View style={twrnc`flex-1 justify-center items-center top-36 absolute  w-full h-14 bg-purple-500`}>
+        <TouchableOpacity className="flex items-center justify-center"
+        >
+          <Text style={twrnc`text-white text-lg font-medium`}>Submit Review</Text>
+        </TouchableOpacity>
+      </View>
+</View>
+
+
+
+      </View>
+
   );
 };
 
