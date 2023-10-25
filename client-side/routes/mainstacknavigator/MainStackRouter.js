@@ -9,9 +9,8 @@ import Verification from '../../screens/registration/screen_6_verification';
 import Homescreen from '../../screens/homescreens/homescreen';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerMainComponent from '../drawernavigation/sliderDrawer';
-import AddReview from '../../screens/detailed_item_screen/screen_11_addReview';
-import { Drawer } from 'react-native-paper';
-
+import AddressScreen from '../../screens/detailed_item_screen/screen_13_address';
+import AddReview from "../../screens/detailed_item_screen/screen_11_addReview"
 
 const Stack = createStackNavigator();
 
@@ -32,7 +31,7 @@ function MainStackRouter() {
       <Stack.Screen name="screenFour" component={Welcome}/>
       <Stack.Screen name="screenFive" component={ForgotPassword}/>
       <Stack.Screen name="screenSix" component={Verification}/>
-      <Stack.Screen name="homescreen" component={AddReview}/>
+      <Stack.Screen name="homescreen" component={AddressScreen}/>
     </Stack.Navigator>
  </NavigationContainer>
   );
