@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Button,
+} from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -13,8 +20,24 @@ const orderConfirmed = () => {
       </TouchableOpacity>
       <Image
         source={require("../../assets/Order.png")}
-        className="mx-auto my-auto relative -top-5"
+        className="relative -top-16 mx-auto my-auto"
       />
+      <View className="relative -top-36">
+        <Text className="text-4xl font-bold text-center">Order Confirmed!</Text>
+        <Text className="mx-5 text-center text-lg text-gray-500">
+          Your order has been confirmed, we will send you confirmation email
+          shortly.
+        </Text>
+      </View>
+      <Text
+        onPress={() => alert("Currently not working")}
+        className="text-2xl text-center mx-5 mb-10 bg-gray-200 p-3 rounded-xl text-gray-400 font-semibold"
+      >
+        Go to Orders
+      </Text>
+      <Text className="bg-purple-500 text-white text-center text-xl p-2 pb-5">
+        Continue Shopping
+      </Text>
     </View>
   );
 };
