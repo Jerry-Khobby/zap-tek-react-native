@@ -1,14 +1,6 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-  Image,
-} from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import React, { useState } from "react";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
-import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
 
 const AddNewCard = () => {
   const newCard = [
@@ -45,7 +37,7 @@ const AddNewCard = () => {
                     key={index}
                     className="bg-gray-100 px-10 py-5 rounded-xl"
                   >
-                    <Image source={item}/>
+                    <Image source={item} />
                   </View>
                 )}
               </TouchableOpacity>
