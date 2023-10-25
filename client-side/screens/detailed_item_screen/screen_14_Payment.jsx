@@ -12,7 +12,7 @@ import { PaymentCarousel } from '../../data/carouseldata';
 const { width: screenWidth } = Dimensions.get('window');
 const itemWidth = screenWidth - 150;
 
-const Cart = ({navigation}) => {
+const Payment = ({navigation}) => {
   {/** state management of the current item being shown  */}
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -158,4 +158,4 @@ const Cart = ({navigation}) => {
   );
 };
 
-export default Cart;
+export default Payment;
