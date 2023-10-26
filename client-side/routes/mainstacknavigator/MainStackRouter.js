@@ -9,10 +9,9 @@ import Verification from '../../screens/registration/screen_6_verification';
 import Homescreen from '../../screens/homescreens/homescreen';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerMainComponent from '../drawernavigation/sliderDrawer';
-import AddressScreen from '../../screens/detailed_item_screen/screen_13_address';
-import AddReview from "../../screens/detailed_item_screen/screen_11_addReview"
-import AddNewCard from '../../screens/detailed_item_screen/screen_15_addNewCard';
 import OrderConfirmed from '../../screens/homescreens/orderConfirm';
+import NikeSportsWear from '../../screens/detailed_item_screen/screen_9_nikeSportwear';
+import Review_Details from '../../screens/detailed_item_screen/screen_10_reviews';
 
 
 const Stack = createStackNavigator();
@@ -34,7 +33,7 @@ function MainStackRouter() {
       <Stack.Screen name="screenFour" component={Welcome}/>
       <Stack.Screen name="screenFive" component={ForgotPassword}/>
       <Stack.Screen name="screenSix" component={Verification}/>
-      <Stack.Screen name="homescreen" component={OrderConfirmed}/> 
+      <Stack.Screen name="homescreen" component={Review_Details}/> 
     </Stack.Navigator>
  </NavigationContainer>
   );
