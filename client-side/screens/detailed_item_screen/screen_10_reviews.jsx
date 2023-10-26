@@ -14,7 +14,7 @@ const Review_Details = () => {
                 <View style={twrnc `mx-4`}>
 
                     {/*Topmost section of the Review Detail Page*/}
-                    <View style={twrnc `flex-row mt-8`}>
+                    <View style={twrnc `flex-row mt-5 items-center`}>
                         <View>
                             <TouchableOpacity style={twrnc `bg-gray-200 h-12 w-12 mt-2 rounded-full`}>
                                 <View style={twrnc `items-center mt-3`}>
@@ -23,7 +23,7 @@ const Review_Details = () => {
                             </TouchableOpacity>
                         </View>
 
-                        <Text style={twrnc `mx-24 mt-5 text-lg font-semibold`}>Reviews</Text>
+                        <Text style={twrnc `mx-24 mt-5 text-2xl font-semibold`}>Reviews</Text>
                     </View>
 
                     <View style={twrnc `mt-4 flex-row justify-between`}>
