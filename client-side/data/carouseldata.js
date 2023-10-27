@@ -73,6 +73,12 @@ export const productsData = [
         price: "$99",
       },
   ]
+  export const PaymentCarousel = [
+    { image: require('../assets/cards.png') },
+    { image: require('../assets/cards.png')},
+    { image: require('../assets/cards.png') },
+    { image: require('../assets/cards.png') },
+  ];
   
 
   
