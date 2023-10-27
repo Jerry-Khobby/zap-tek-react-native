@@ -13,11 +13,12 @@ import DrawerMainComponent from './routes/drawernavigation/sliderDrawer';
 
 
 
+
 const App = () => {
   return (
     <View style={twrnc`flex-1`}>
      {/** all the components will here  */}
-     <MainStackRouter/>
+        <MainStackRouter/>
   {/*  <DrawerMainComponent /> */}
 
 
