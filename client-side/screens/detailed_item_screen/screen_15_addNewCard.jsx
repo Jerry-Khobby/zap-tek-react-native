@@ -46,24 +46,24 @@ const AddNewCard = () => {
         </View>
         <View className="mx-3 mt-7">
           <Text className="font-medium text-xl mb-2">Card Owner</Text>
-          <TextInput className="bg-gray-100 rounded-lg font-normal text-lg p-2.5" />
+          <TextInput className="bg-gray-200  rounded-lg font-normal text-lg p-2.5" />
         </View>
         <View className="mx-3 mt-4">
           <Text className="font-medium text-xl mb-2">Card Number</Text>
-          <TextInput className="bg-gray-100 rounded-lg font-normal text-lg p-2.5" />
+          <TextInput className="bg-gray-200 rounded-lg font-normal text-lg p-2.5" />
         </View>
         <View className="mx-3 mt-4 flex-row justify-between">
           <View className="flex-1 mr-4">
             <Text className="font-medium text-xl mb-2">EXP</Text>
-            <TextInput className="bg-gray-100 rounded-lg font-normal text-lg p-2.5" />
+            <TextInput className="bg-gray-200 rounded-lg font-normal text-lg p-2.5" />
           </View>
           <View className="flex-1">
             <Text className="font-medium text-xl mb-2">CVV</Text>
-            <TextInput className="bg-gray-100 rounded-lg font-normal text-lg p-2.5" />
+            <TextInput className="bg-gray-200 rounded-lg font-normal text-lg p-2.5" />
           </View>
         </View>
       </View>
-      <View className="w-screen h-20 items-center justify-center bg-violet-500">
+      <View className="w-screen h-14 items-center justify-center bg-violet-500">
         <Text className="text-white text-lg font-medium">Add Card</Text>
       </View>
     </View>
