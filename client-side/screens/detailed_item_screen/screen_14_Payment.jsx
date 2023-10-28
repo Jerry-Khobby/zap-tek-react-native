@@ -24,6 +24,15 @@ const Payment = ({navigation}) => {
   };
 
 
+// add a new card 
+const addNewCard = () => {
+  navigation.navigate("screen15");
+}
+
+// handle home screen 
+const BackToHome=()=>{
+  navigation.navigate("HomeComponents");
+}
   {/** the items to be shown as carousel, this is an image gotten from the figma mockup  */}
   const renderItem = ({ item }) => {
     return (
@@ -73,7 +82,7 @@ const Payment = ({navigation}) => {
   </View>
 {/** the button beneath the carousel  */}
   <View className=" mt-1 mx-3">
-  <TouchableOpacity className="flex flex-row bg-purple-100 border border-purple-600 h-14 items-center justify-center rounded-md">
+  <TouchableOpacity className="flex flex-row bg-purple-100 border border-purple-600 h-14 items-center justify-center rounded-md" onPress={addNewCard}>
     <AntDesign name="plussquareo" size={16} color="white" style={twrnc`mr-2  text-purple-600 `} />
     <Text style={twrnc`text-white text-base font-medium  text-purple-600 `}>Add a new Card</Text>
     </TouchableOpacity>
@@ -149,6 +158,7 @@ const Payment = ({navigation}) => {
   {/** I want the something at the bottom of screen , it will remain the bottom of the screen and I have a text of Submit review meaning , it is a button  I want it to remain at the bottom of the screen no matter the screen size */}
   <View style={twrnc`flex-1 justify-center items-center top-2 absolute  w-full h-16 bg-purple-500`}>
         <TouchableOpacity className="flex items-center justify-center"
+        onPress={BackToHome}
         >
           <Text style={twrnc`text-white text-lg font-medium`}>Save Cards</Text>
         </TouchableOpacity>

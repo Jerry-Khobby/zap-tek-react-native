@@ -80,17 +80,21 @@ const DrawerContents = (props) => {
                     </View>
 
                     <View style={tw `mt-8`}>
+                        <TouchableOpacity onPress={() => {props.navigation.navigate('Order')}}>
                         <View style={tw `flex-row`}>
                             <SimpleLineIcons name="handbag" size={20} color={"gray"}/>
                             <Text style={tw `mt-0.5 ml-5 mb-1 text-lg`}>Order</Text>
                         </View>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={tw `mt-8`}>
+                    <TouchableOpacity onPress={() => {props.navigation.navigate('screen15')}}>
                         <View style={tw `flex-row`}>
                             <MaterialCommunityIcons name="wallet-outline" size={24} color="gray" />
                             <Text style={tw `mt-0.5 ml-5 mb-1 text-lg`}>My Cards</Text>
                         </View>
+                            </TouchableOpacity>
                     </View>
 
                     <View style={tw `mt-8`}>

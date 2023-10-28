@@ -1,27 +1,33 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { useNavigation } from '@react-navigation/native';
 import twrnc from 'tailwind-react-native-classnames';
 import Slider from '@react-native-community/slider';
 
-const AddReview = () => {
+const AddReview = ({navigation}) => {
   const [name, setName] = useState('');
   const [experience, setExperience] = useState('');
-  const navigation = useNavigation();
 
-  const submitReview = () => {
-    navigation.navigate('Screen12');
-  };
 
   const [rating, setRating] = useState(2.5); // Initial rating value
+
+  //moving to backwards 
+  const handleBackWardMovement=()=>{
+navigation.navigate("screen10");
+  }
+
+  // handle home screen 
+  const BackToHome=()=>{
+    navigation.navigate("HomeComponents");
+  }
+  
 
   return (
     <View style={twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`}>
       {/* Top View */}
       <View style={twrnc`mx-5 flex items-center flex-row justify-between `}>
         <View>
-          <TouchableOpacity onPress={() => { /* navigation function to go back */ }}   className="bg-gray-200 p-2 rounded-full">
+          <TouchableOpacity onPress={handleBackWardMovement}   className="bg-gray-200 p-2 rounded-full">
             <MaterialCommunityIcons name="arrow-left" size={24}/>
           </TouchableOpacity>
         </View>
@@ -80,6 +86,7 @@ const AddReview = () => {
   {/** I want the something at the bottom of screen , it will remain the bottom of the screen and I have a text of Submit review meaning , it is a button  I want it to remain at the bottom of the screen no matter the screen size */}
   <View style={twrnc`flex-1 justify-center items-center top-36 absolute  w-full h-14 bg-purple-500`}>
         <TouchableOpacity className="flex items-center justify-center"
+        onPress={BackToHome}
         >
           <Text style={twrnc`text-white text-lg font-medium`}>Submit Review</Text>
         </TouchableOpacity>

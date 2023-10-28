@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image,ScrollView,FlatList,TouchableOpacity} fro
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-const CartScreen = () => {
+const CartScreen = ({navigation}) => {
   const [count, setCount] = useState(1);
 
   const increment = () => {
@@ -17,15 +17,38 @@ const CartScreen = () => {
     }
   };
 
+  // navgiation backwards 
+  const handleBackWardNavigation=()=>{
+    navigation.navigate("screen9");
+  }
+
+  // moving to the delivery address screen 
+  const deliveryAddress=()=>{
+    navigation.navigate("screen13");
+  }
+
+
+  // moving to the payment option screen
+  const paymentMethod=()=>{
+    navigation.navigate("screen14");
+  }
+
+  //moving order 
+  const orderConfirmed=()=>{
+    navigation.navigate("screen16");
+  }
   return (
     <View className="flex-1 bg-white">
-      <View className="flex-row mx-5 mt-7 items-center">
-        <TouchableOpacity>
+      <View className="flex-row mx-5 mt-7 items-center flex justify-between">
+        <TouchableOpacity onPress={handleBackWardNavigation}>
         <View className="bg-gray-100 p-2 rounded-full">
           <MaterialCommunityIcons name="arrow-left" size={30} />
         </View>
         </TouchableOpacity>
+        <View>
         <Text className="mx-auto text-2xl font-semibold">Cart</Text>
+        </View>
+        <View/>
       </View>
       <ScrollView>
       <View
@@ -89,7 +112,7 @@ const CartScreen = () => {
           </View>
         </View>
       </View>
-
+<TouchableOpacity onPress={deliveryAddress}>
       <View className="flex-row justify-between mx-5 items-center my-2">
         <Text className="text-xl font-medium">Delvery Address</Text>
         <MaterialCommunityIcons name="chevron-right" size={30} />
@@ -112,7 +135,10 @@ const CartScreen = () => {
           color="lightgreen"
         />
       </View>
+     </TouchableOpacity>
 
+
+<TouchableOpacity onPress={paymentMethod}>
       <View className="flex-row justify-between mx-5 items-center my-2">
         <Text className="text-xl font-medium">Payment Method</Text>
         <MaterialCommunityIcons name="chevron-right" size={30} />
@@ -134,6 +160,7 @@ const CartScreen = () => {
           color="lightgreen"
         />
       </View>
+      </TouchableOpacity>
 
       <Text className="text-xl font-semibold mx-5">Order Info</Text>
       <View className="mx-5 flex-row justify-between items-center">
@@ -150,8 +177,8 @@ const CartScreen = () => {
       </View>
       </ScrollView>
 
-<View className="p-1 pb-3 bottom-0 w-full absolute bg-violet-500 h-11 flex items-center justify-center">
-    <TouchableOpacity>
+<View className="p-1 pb-3 bottom-0 w-full absolute bg-violet-500 h-14 flex items-center justify-center">
+    <TouchableOpacity onPress={orderConfirmed}>
       <Text className="text-center  text-white text-xl">
         Checkout
       </Text>

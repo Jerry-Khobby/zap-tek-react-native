@@ -8,6 +8,7 @@ import DetailScreen from '../../screens/detailed_item_screen/detailscreen';
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Wishlist from '../../screens/homescreens/wishlist';
+import Nike from '../../screens/homescreens/nike';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -32,7 +33,7 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen name="Home" component={Homescreen}  options={{headerShown:false}}/>
       <Tab.Screen name="Wishlist" component={Wishlist} options={{headerShown:false}} />
-      <Tab.Screen name="Order" component={DetailScreen}  options={{headerShown:false}}/>
+      <Tab.Screen name="Order" component={Nike}  options={{headerShown:false}}/>
       <Tab.Screen name="Wallet" component={DetailScreen} options={{headerShown:false}} />
     </Tab.Navigator>
   );

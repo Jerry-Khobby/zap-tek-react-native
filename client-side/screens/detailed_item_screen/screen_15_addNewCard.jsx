@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import React, { useState } from "react";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 
-const AddNewCard = () => {
+const AddNewCard = ({navigation}) => {
   const newCard = [
     require("../../assets/new1.png"),
     require("../../assets/new2.png"),
@@ -11,9 +11,20 @@ const AddNewCard = () => {
 
   const [active, setActive] = useState("");
 
+  //navigation backwards 
+
+  const backWardNavigation=()=>{
+    navigation.navigate("screen14");
+  }
+
+
+// home navigation 
+const homeNavigation=()=>{
+  navigation.navigate("HomeComponents");
+}
   return (
     <View className="flex flex-col h-screen pt-10 justify-between">
-      <TouchableOpacity className="h-11 w-11 bg-gray-200 items-center justify-center rounded-full absolute top-11 ml-3">
+      <TouchableOpacity className="h-11 w-11 bg-gray-200 items-center justify-center rounded-full absolute top-11 ml-3" onPress={backWardNavigation}>
         <Icon_Ant name="arrowleft" size={25} />
       </TouchableOpacity>
       <View>
@@ -64,7 +75,9 @@ const AddNewCard = () => {
         </View>
       </View>
       <View className="w-screen h-14 items-center justify-center bg-violet-500">
+      <TouchableOpacity onPress={homeNavigation}>
         <Text className="text-white text-lg font-medium">Add Card</Text>
+       </TouchableOpacity>
       </View>
     </View>
   );

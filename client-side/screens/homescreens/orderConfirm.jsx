@@ -9,12 +9,27 @@ import {
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-const OrderConfirmed = () => {
+const OrderConfirmed = ({navigation}) => {
+
+//continue shopping 
+// handle home screen 
+const BackToHome=()=>{
+  navigation.navigate("HomeComponents");
+}
+
+// backward navigations 
+const backWardNavigation=()=>{
+  navigation.navigate("screen12");
+}
+//Orders 
+const orderNavigation=()=>{
+  navigation.navigate("screen18");
+}
   return (
     <View className="flex-1 bg-white">
       <TouchableOpacity
         className="bg-gray-100 w-12 h-12 rounded-full mx-5 mt-11 items-center justify-center"
-        onPress={() => alert("Navigate Back is under construction")}
+        onPress={backWardNavigation}
       >
         <MaterialCommunityIcons name="arrow-left" size={24} />
       </TouchableOpacity>
@@ -29,7 +44,7 @@ const OrderConfirmed = () => {
           shortly.
         </Text>
       </View>
-      <TouchableOpacity   onPress={() => alert("Currently not working")}>
+      <TouchableOpacity   onPress={orderNavigation}>
       <Text
       
         className="text-2xl text-center mx-5 mb-10 bg-gray-200 p-3 rounded-xl text-gray-400 font-semibold"
@@ -37,7 +52,7 @@ const OrderConfirmed = () => {
         Go to Orders
       </Text>
       </TouchableOpacity>
-      <TouchableOpacity className="bg-purple-600">
+      <TouchableOpacity className="bg-purple-600" onPress={BackToHome}>
       <Text className=" text-white text-center text-xl p-2 pb-5">
         Continue Shopping
       </Text>

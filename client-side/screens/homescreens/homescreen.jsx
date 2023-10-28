@@ -23,6 +23,13 @@ const Homescreen = ({navigation}) => {
   };
 
 
+
+
+  //moving to the next screen on clicking the an image 
+const handleScreenMovement=()=>{
+  navigation.navigate("screen9");
+}
+
   // defining a function that will handle the brands of the carousels at the top 
   const ListCategories = () => {
     const minorCategoryList = ['Choose Brand', 'View All'];
@@ -186,9 +193,11 @@ const handleLikeToggle = (itemId) => {
                 />
                   </TouchableOpacity>
                 </View>
+                <TouchableOpacity onPress={handleScreenMovement}>
                 <Text className="font-semibold text-base">{item.brandName}</Text>
                 <Text className="text-base font-semibold">{item.product}</Text>
                 <Text className="text-lg font-bold">{item.price}</Text>
+                </TouchableOpacity>
               </View>
             )}
           />
