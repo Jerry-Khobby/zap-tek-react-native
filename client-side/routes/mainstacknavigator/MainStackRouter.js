@@ -12,6 +12,7 @@ import DrawerMainComponent from '../drawernavigation/sliderDrawer';
 import OrderConfirmed from '../../screens/homescreens/orderConfirm';
 import NikeSportsWear from '../../screens/detailed_item_screen/screen_9_nikeSportwear';
 import Review_Details from '../../screens/detailed_item_screen/screen_10_reviews';
+import CartScreen from '../../screens/detailed_item_screen/screen_12_cart';
 
 
 const Stack = createStackNavigator();
@@ -33,7 +34,7 @@ function MainStackRouter() {
       <Stack.Screen name="screenFour" component={Welcome}/>
       <Stack.Screen name="screenFive" component={ForgotPassword}/>
       <Stack.Screen name="screenSix" component={Verification}/>
-      <Stack.Screen name="homescreen" component={Review_Details}/> 
+      <Stack.Screen name="homescreen" component={CartScreen}/> 
     </Stack.Navigator>
  </NavigationContainer>
   );
