@@ -87,23 +87,23 @@ const handleLikeToggle = (itemId) => {
 
 
   return (
-    <View style={!isDarkMode?twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`:twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`}>
+    <View style={!isDarkMode?twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`:twrnc`flex w-full h-full flex-col  pt-11 relative bg-black`}>
       {/** the header will consist of two iccons at the top of the screen  */}
      <View style={twrnc`flex flex-row items-center justify-between`}>
         {/** the icon for navigation backwards  */}
     <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}
+    <TouchableOpacity style={!isDarkMode?twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`:twrnc`bg-gray-700 items-center justify-center  rounded-full h-11 w-11`}
     onPress={openDrawer}
     >
     {/** this is the view for the icon  */}
-    <Icon_Encrypto name="menu" size={25}/>
+    <Icon_Encrypto name="menu" size={25} color={isDarkMode ? 'white' : 'black'}/>
 </TouchableOpacity>
 </View>
        {/** the icon for navigation backwards  */}
     <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}>
+    <TouchableOpacity style={!isDarkMode? twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`:twrnc`bg-gray-700  rounded-full h-11 w-11 items-center justify-center`}>
     {/** this is the view for the icon  */}
-    <Icon_SimpleLineIcons name="handbag" size={25}/>
+    <Icon_SimpleLineIcons name="handbag" size={25} color={isDarkMode ? 'white' : 'black'}/>
 </TouchableOpacity>
 </View>
      </View>
@@ -111,11 +111,11 @@ const handleLikeToggle = (itemId) => {
 
 {/** now the remaining codes  this where the Hello and the welcoming on the screen is */}
 <View style={twrnc`flex flex-col mx-5 mt-5`}>
-  <View style={twrnc``}>
-    <Text style={twrnc`text-black text-4xl `}>Hello</Text>
+  <View>
+    <Text style={!isDarkMode?twrnc`text-black text-4xl `:twrnc`text-white text-4xl`}>Hello</Text>
   </View>
   <View>
-    <Text style={twrnc`text-gray-400 text-xl`}>Welcome to Laza
+    <Text style={!isDarkMode?twrnc`text-gray-400 text-xl`:twrnc`text-gray-500 text-xl`}>Welcome to Laza
     </Text>
   </View>
 </View>
@@ -123,13 +123,14 @@ const handleLikeToggle = (itemId) => {
 {/** this where the search and the microphone icons will be , the search functionalities will implemented here  */}
 <View style={twrnc`flex flex-row  justify-between items-center mx-5 mt-3`}>
       {/* Search Box */}
-      <View style={twrnc`flex-row items-center   bg-gray-200 rounded-xl`}>
+      <View style={!isDarkMode?twrnc`flex-row items-center   bg-gray-200 rounded-xl`:twrnc`rounded-xl flex-row items-center bg-gray-700`}>
       <View style={twrnc`flex flex-row items-center justify-around px-2 h-10 w-10/12`}>
         <Icon_Ant name="search1" size={20} style={twrnc`mr-2`} />
         <TextInput
-          style={twrnc`flex-1 h-8 text-base font-normal pb-2`}
+          style={!isDarkMode?twrnc`flex-1 h-8 text-base font-normal pb-0`:twrnc`flex-1 h-8 text-base font-normal pb-0`}
           placeholder="Search..."
           underlineColorAndroid="transparent"
+          placeholderTextColor={isDarkMode ? '#999999' : '#CCCCCC'} // Change placeholder text color based on isDarkMode state
         />
         </View>
       </View>
@@ -201,9 +202,16 @@ const handleLikeToggle = (itemId) => {
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={handleScreenMovement}>
-                <Text className="font-semibold text-base">{item.brandName}</Text>
-                <Text className="text-base font-semibold">{item.product}</Text>
-                <Text className="text-lg font-bold">{item.price}</Text>
+                <Text style={!isDarkMode ? twrnc`font-semibold text-base` : [twrnc`font-semibold text-base`, { color: '#CCCCCC' }]}>
+  {item.brandName}
+</Text>
+<Text style={!isDarkMode ? twrnc`text-base font-semibold` : [twrnc`text-base font-semibold`, { color: '#CCCCCC' }]}>
+  {item.product}
+</Text>
+<Text style={!isDarkMode ? twrnc`text-lg font-bold` : [twrnc`text-lg font-bold`, { color: '#CCCCCC' }]}>
+  {item.price}
+</Text>
+
                 </TouchableOpacity>
               </View>
             )}

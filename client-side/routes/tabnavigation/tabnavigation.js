@@ -14,8 +14,7 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   const {isDarkMode} =useDarkMode();
-  const lightTabBarStyle = twrnc`h-20 bg-white`;
-  const darkTabBarStyle = twrnc`h-20 bg-gray-900`;
+
 
   return (
     <Tab.Navigator
@@ -34,7 +33,9 @@ const BottomTabNavigator = () => {
           }
         },
       })}
-      tabBarStyle={twrnc`h-20`}
+      tabBarStyle={{
+        backgroundColor: !isDarkMode ? 'black' : 'white', // Set the background color based on dark mode state
+      }}
     >
       <Tab.Screen name="Home" component={Homescreen}  options={{headerShown:false}}/>
       <Tab.Screen name="Wishlist" component={Wishlist} options={{headerShown:false}} />

@@ -12,10 +12,14 @@ import Payment from '../../screens/detailed_item_screen/screen_14_Payment';
 import AddNewCard from '../../screens/detailed_item_screen/screen_15_addNewCard';
 import OrderConfirmed from '../../screens/homescreens/orderConfirm';
 import Nike from '../../screens/homescreens/nike';
+import { useDarkMode } from '../../context/darkmode';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerMainComponent = ({navigation}) => {
+
+  const {isDarkMode} =useDarkMode();
+
 
 
 
@@ -25,6 +29,9 @@ const DrawerMainComponent = ({navigation}) => {
       <Drawer.Navigator  drawerContent={props=><DrawerContents{...props}/>}
       screenOptions={{
         headerShown:false,
+      }}
+      drawerStyle={{
+        backgroundColor: !isDarkMode ? 'black' : 'white', // Set the background color based on dark mode state
       }}
     
       >
