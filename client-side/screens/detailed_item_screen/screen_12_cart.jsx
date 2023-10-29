@@ -42,7 +42,7 @@ const CartScreen = ({navigation}) => {
       <View className="flex-row mx-5 mt-7 items-center flex justify-between">
         <TouchableOpacity onPress={handleBackWardNavigation}>
         <View className="bg-gray-100 p-2 rounded-full">
-          <MaterialCommunityIcons name="arrow-left" size={30} />
+          <MaterialCommunityIcons name="arrow-left" size={24} />
         </View>
         </TouchableOpacity>
         <View>

@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity,Image,Dimensions,TextInput,Switch} from 'r
 import twrnc from 'tailwind-react-native-classnames';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { PaymentCarousel } from '../../data/carouseldata';
+import Carousel from 'react-native-snap-carousel';
+import  {PaymentCarousel}  from '../../data/carouseldata';
 
 
 
@@ -33,6 +33,11 @@ const addNewCard = () => {
 const BackToHome=()=>{
   navigation.navigate("HomeComponents");
 }
+
+// navigate backwards
+const backWardNavigation=()=>{
+  navigation.navigate("screen12");
+}
   {/** the items to be shown as carousel, this is an image gotten from the figma mockup  */}
   const renderItem = ({ item }) => {
     return (
@@ -52,7 +57,7 @@ const BackToHome=()=>{
       {/* Top View */}
       <View style={twrnc`mx-5 flex items-center flex-row justify-between `}>
         <View>
-          <TouchableOpacity onPress={() => { /* navigation function to go back */ }}   className="bg-gray-200 p-2 rounded-full">
+          <TouchableOpacity onPress={backWardNavigation}   className="bg-gray-200 p-2 rounded-full">
             <MaterialCommunityIcons name="arrow-left" size={24}/>
           </TouchableOpacity>
         </View>
