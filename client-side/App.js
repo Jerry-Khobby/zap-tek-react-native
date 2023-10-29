@@ -6,7 +6,7 @@ import MainStackRouter from './routes/mainstacknavigator/MainStackRouter';
 import { NavigationContainer } from '@react-navigation/native';
 /* import BottomTabNavigator from "./routes/tabnavigation/tabnavigation"; */
 import 'react-native-gesture-handler';
-import DrawerMainComponent from './routes/drawernavigation/sliderDrawer';
+import { DarkModeProvider } from './context/darkmode';
 
 
 
@@ -14,14 +14,15 @@ import DrawerMainComponent from './routes/drawernavigation/sliderDrawer';
 
 
 const App = () => {
+
   return (
     <View style={twrnc`flex-1`}>
      {/** all the components will here  */}
+     <DarkModeProvider>
      <MainStackRouter/>
   {/*  <DrawerMainComponent /> */}
-
-
-      <StatusBar style='light-content'/>
+    <StatusBar style='light-content'/>
+    </DarkModeProvider>
     </View>
   )
 }

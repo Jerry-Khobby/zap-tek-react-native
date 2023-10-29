@@ -16,12 +16,17 @@ import Nike from '../../screens/homescreens/nike';
 const Drawer = createDrawerNavigator();
 
 const DrawerMainComponent = ({navigation}) => {
+
+
+
+  
   return (
    /*  <NavigationContainer> */
       <Drawer.Navigator  drawerContent={props=><DrawerContents{...props}/>}
       screenOptions={{
         headerShown:false,
       }}
+    
       >
     <Drawer.Screen name="HomeComponents" component={BottomTabNavigator} />
     <Drawer.Screen name="screen9" component={NikeSportsWear}/>

@@ -9,9 +9,14 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Wishlist from '../../screens/homescreens/wishlist';
 import Nike from '../../screens/homescreens/nike';
+import {useDarkMode} from "../../context/darkmode"
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const {isDarkMode} =useDarkMode();
+  const lightTabBarStyle = twrnc`h-20 bg-white`;
+  const darkTabBarStyle = twrnc`h-20 bg-gray-900`;
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

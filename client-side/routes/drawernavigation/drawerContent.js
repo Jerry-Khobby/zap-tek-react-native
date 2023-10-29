@@ -12,15 +12,17 @@ import {
 } from '@expo/vector-icons';
 import { Text, Switch,Avatar,Title,Caption} from 'react-native-paper';
 import React, { useState } from "react";
+import { useDarkMode } from '../../context/darkmode';
 
 const DrawerContents = (props) => {
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
+  
+    const {isDarkMode,toggleDarkMode} = useDarkMode();
+    
+const handleClick = () => {
+        toggleDarkMode(); // This will toggle the isDarkMode state in the context
+      };
 
-    const toggleDarkMode = () => {
-      setIsDarkMode(!isDarkMode);
-      // You can perform any actions here when the dark mode is toggled
-    };
     return(
         <View style={tw `flex-1`}>
             <DrawerContentScrollView {...props}>

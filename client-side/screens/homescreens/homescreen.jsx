@@ -12,6 +12,7 @@ import { newArrivalData } from '../../data/carouseldata';
 import tw from 'tailwind-react-native-classnames';
 import { brand } from "../../data/brand";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { useDarkMode } from '../../context/darkmode';
 
 
 const Homescreen = ({navigation}) => {
@@ -21,6 +22,12 @@ const Homescreen = ({navigation}) => {
   const openDrawer=()=>{
     navigation.dispatch(DrawerActions.toggleDrawer());
   };
+
+const { isDarkMode} = useDarkMode();
+
+
+
+
 
 
 
@@ -80,7 +87,7 @@ const handleLikeToggle = (itemId) => {
 
 
   return (
-    <View style={twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`}>
+    <View style={!isDarkMode?twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`:twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`}>
       {/** the header will consist of two iccons at the top of the screen  */}
      <View style={twrnc`flex flex-row items-center justify-between`}>
         {/** the icon for navigation backwards  */}
