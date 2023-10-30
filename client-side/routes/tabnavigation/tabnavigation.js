@@ -37,6 +37,10 @@ const BottomTabNavigator = () => {
       tabBarStyle={{
         backgroundColor: !isDarkMode ? "black" : "white", // Set the background color based on dark mode state
       }}
+      tabBarOptions={{
+        activeBackgroundColor: !isDarkMode ? "white" : "black",
+        inactiveBackgroundColor: !isDarkMode ? "white" : "black",
+      }}
     >
       <Tab.Screen
         name="Home"

@@ -12,36 +12,76 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { brand } from "../../data/brand";
+import { useDarkMode } from "../../context/darkmode";
 
 const nike = () => {
   const navigation = useNavigation();
+
+  const { isDarkMode } = useDarkMode();
+
   return (
-    <View className="flex-1 bg-white">
+    <View className={`flex-1 bg-${!isDarkMode ? "white" : "black"}`}>
       {/* Top part */}
       <View className="flex-row justify-between items-center mx-5 my-5">
         {/* Navigate back */}
         <TouchableOpacity
-          className="bg-gray-200 p-2 rounded-full"
+          className={`bg-gray-${!isDarkMode ? "200" : "700"} p-2 rounded-full`}
           onPress={() => alert("Navigate Back is under construction")}
         >
-          <MaterialCommunityIcons name="arrow-left" size={30} />
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={30}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
         </TouchableOpacity>
-        <View className="bg-gray-200 p-3 px-5 rounded-xl">
-          <Image source={require("../../assets/Vector.png")} />
+        <View className={`p-3 rounded-xl`}>
+          <Image
+            source={
+              !isDarkMode
+                ? require("../../assets/Vector.png")
+                : require("../../assets/NikeDark.png")
+            }
+          />
         </View>
-        <TouchableOpacity className="bg-gray-200 p-2 rounded-full">
-          <MaterialCommunityIcons name="shopping-outline" size={30} />
+        <TouchableOpacity
+          className={`bg-gray-${!isDarkMode ? "200" : "700"} p-2 rounded-full`}
+        >
+          <MaterialCommunityIcons
+            name="shopping-outline"
+            size={30}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
         </TouchableOpacity>
       </View>
 
       <View className="flex-row justify-between mx-5 items-center">
         <View>
-          <Text className="font-semibold text-2xl">365 Items</Text>
+          <Text
+            className={`text-${
+              !isDarkMode ? "black" : "white"
+            } font-semibold text-2xl`}
+          >
+            365 Items
+          </Text>
           <Text className="text-gray-500 text-lg">Available in stock</Text>
         </View>
-        <View className="flex-row items-center bg-gray-200 p-2 rounded-xl">
-          <MaterialCommunityIcons name="text" size={30} />
-          <Text className="ml-2 text-2xl font-medium">Sort</Text>
+        <View
+          className={`flex-row items-center bg-gray-${
+            !isDarkMode ? "200" : "700"
+          } p-2 rounded-xl`}
+        >
+          <MaterialCommunityIcons
+            name="text"
+            size={30}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
+          <Text
+            className={`text-${
+              !isDarkMode ? "black" : "white"
+            } ml-2 text-2xl font-medium`}
+          >
+            Sort
+          </Text>
         </View>
       </View>
 
@@ -65,9 +105,27 @@ const nike = () => {
                 />
               </View>
             </View>
-            <Text className="font-semibold text-base">{item.brandName}</Text>
-            <Text className="text-base font-semibold">{item.product}</Text>
-            <Text className="text-lg font-bold">{item.price}</Text>
+            <Text
+              className={`text-${
+                !isDarkMode ? "black" : "white"
+              } font-semibold text-base`}
+            >
+              {item.brandName}
+            </Text>
+            <Text
+              className={`text-${
+                !isDarkMode ? "black" : "white"
+              } text-base font-semibold`}
+            >
+              {item.product}
+            </Text>
+            <Text
+              className={`text-${
+                !isDarkMode ? "black" : "white"
+              } text-lg font-bold`}
+            >
+              {item.price}
+            </Text>
           </View>
         )}
       />

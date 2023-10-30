@@ -26,7 +26,7 @@ const wishlist = () => {
           {/* Navigate back */}
           <TouchableOpacity
             className={`bg-gray-${
-              !isDarkMode ? "200" : "800"
+              !isDarkMode ? "200" : "700"
             } p-2 rounded-full`}
             onPress={() => alert("Navigate Back is under construction")}
           >
@@ -45,7 +45,7 @@ const wishlist = () => {
           </Text>
           <TouchableOpacity
             className={`bg-gray-${
-              !isDarkMode ? "200" : "800"
+              !isDarkMode ? "200" : "700"
             } p-2 rounded-full`}
           >
             <MaterialCommunityIcons
@@ -70,7 +70,7 @@ const wishlist = () => {
           </View>
           <View
             className={`flex-row items-center bg-gray-${
-              !isDarkMode ? "200" : "800"
+              !isDarkMode ? "200" : "700"
             } p-2 rounded-xl`}
           >
             <MaterialCommunityIcons
