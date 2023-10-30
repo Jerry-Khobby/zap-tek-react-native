@@ -3,22 +3,30 @@ import EvilIcons from "react-native-vector-icons/EvilIcons";
 import twrnc from "tailwind-react-native-classnames";
 import React from "react";
 import {Text, View} from "react-native";
+import { useDarkMode } from "../context/darkmode";
+
+
+
+
 
 {/*Star-like ratings ascribed to each review*/}
 export const Review_rating = () => {
+    const {isDarkMode} = useDarkMode();
     return(
+        
         <View style={twrnc `flex-row`}>
             <Ionicons name="star" size={12} color="orange" />
             <Ionicons name="star" size={12} color="orange" />
             <Ionicons name="star" size={12} color="orange" />
             <Ionicons name="star" size={12} color="orange" />
-            <EvilIcons name="star" size={14} color="black"  style={twrnc `mt-0.5`}/>
+            <EvilIcons name="star" size={14}  color={!isDarkMode ? 'black' : 'white'}style={twrnc `mt-0.5`}/>
         </View>
 )
 };
 
 {/*Iterative statements present under each review tag*/}
 export const Review_description = () => {
+    const {isDarkMode} = useDarkMode();
     return(
         <View style={twrnc `mt-4`}>
             <Text style={twrnc `text-gray-400 mt-1`}>Lorem ipsum dolor sit amet, consectetur</Text>
