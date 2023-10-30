@@ -16,9 +16,13 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import React, {useState} from "react";
 import {Review_rating} from "../../data/review_ratings";
-
+import {useDarkMode} from "../../context/darkmode";
 
 const NikeSportsWear = ({navigation}) => {
+
+// dark mode works 
+const {isDarkMode}=useDarkMode()
+
 
     const handleBackWardNavigation=()=>{
         navigation.navigate("HomeComponents");
@@ -155,10 +159,10 @@ const handleForwardReview=()=>{
                 </ImageBackground>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false} style={twrnc `flex-1`}>
+            <ScrollView showsVerticalScrollIndicator={false} style={twrnc `flex-1 flex-col`}>
 
                 {/*Displays text component directly beneath the Topmost view*/}
-                <ScrollView>
+            <ScrollView style={!isDarkMode ? twrnc`bg-white` : twrnc` bg-black`}>
                 <View style={twrnc `mx-4`}>
                     <View>
                         <View style={twrnc `flex-row justify-between mt-3`}>
@@ -166,8 +170,8 @@ const handleForwardReview=()=>{
                             <Text style={twrnc `text-gray-300 mr-2`}>Price</Text>
                         </View>
                         <View style={twrnc `flex-row justify-between mt-1`}>
-                            <Text style={twrnc `text-black text-lg font-bold`}>Nike Club Fleece</Text>
-                            <Text style={twrnc `text-black text-lg font-bold`}>$120</Text>
+                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>Nike Club Fleece</Text>
+                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>$120</Text>
                         </View>
                     </View>
 
@@ -205,7 +209,7 @@ const handleForwardReview=()=>{
                             </View>
 
                             <View style={twrnc `ml-20`}>
-                                <Text style={twrnc `font-bold ml-8`}>4.8 <Text style={twrnc `text-gray-500`}>rating</Text></Text>
+                                <Text style={!isDarkMode ? twrnc`font-bold ml-8` : twrnc`font-bold ml-8 text-white`}>4.8 <Text style={twrnc `text-gray-500`}>rating</Text></Text>
                                 <View style={twrnc `ml-9 mt-1`}>
                                     <Review_rating/>
                                 </View>
@@ -223,27 +227,27 @@ const handleForwardReview=()=>{
                         </TouchableOpacity>
                     </View>
 
-                    <View style={twrnc `mt-8`}>
-                        <Text style={twrnc `font-bold text-lg`}>Total Price</Text>
+                    <View style={twrnc `mt-8 pb-4`}>
+                    <Text style={!isDarkMode ? twrnc`font-bold text-lg` : twrnc`font-bold text-lg text-white`}>Total Price</Text>
                         <View style={twrnc `flex-row justify-between`}>
                             <Text style={twrnc `text-gray-400 mt-2`}>with VAT SD</Text>
-                            <Text style={twrnc `font-bold text-lg`} >$125</Text>
+                            <Text style={!isDarkMode ? twrnc`font-bold text-lg` : twrnc`font-bold text-lg text-white`}>$125</Text>
                         </View>
-
                     </View>
                 </View>
                 </ScrollView>
 
 
                 {/*Add to cart button*/}
-                <TouchableOpacity style={twrnc `mt-5`} onPress={CartScreenNavigation}>
-                    <View style={[twrnc `h-16 w-full bottom-0`,styles.primary]}>
-                        <View style={twrnc `items-center mt-6`}>
+                <View  style={twrnc ``}>
+                <TouchableOpacity onPress={CartScreenNavigation}>
+                    <View style={[twrnc `h-14 w-full bottom-0`,styles.primary]}>
+                        <View style={twrnc `items-center mt-4`}>
                             <Text style={twrnc `font-bold text-white `}>Add to Cart</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
-
+                </View>
             </ScrollView>
         </SafeAreaView>
     )

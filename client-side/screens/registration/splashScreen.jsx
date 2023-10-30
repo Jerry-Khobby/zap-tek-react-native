@@ -1,8 +1,20 @@
 import {View,Image} from 'react-native'
 import React,{useEffect} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
+import { useDarkMode } from '../../context/darkmode';
 
 const SplashScreen = ({navigation}) => {
+
+
+
+
+const {isDarkMode}=useDarkMode()
+
+const splashScreenImageSource = !isDarkMode
+? require('../../assets/splashscreen.png')
+: require('../../assets/darkmodesplash.png');
+
+
   useEffect(()=>{
         // Simulating a 10-second delay for the splash screen
         const timer = setTimeout(() => {
@@ -14,7 +26,7 @@ const SplashScreen = ({navigation}) => {
   },[]);
   return (
     <View>
-      <Image source={require("../../assets/splashscreen.png")} style={twrnc`w-full h-full `} />
+      <Image source={splashScreenImageSource} style={twrnc`w-full h-full `} />
     </View>
   )
 }
