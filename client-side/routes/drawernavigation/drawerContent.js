@@ -65,7 +65,7 @@ const DrawerContents = (props) => {
             <Text style={!isDarkMode ? tw`text-lg ml-2` : tw`text-lg ml-2 text-white`}>Dark Mode</Text>
         </View>
         <View>
-            <Switch value={isDarkMode} onValueChange={toggleDarkMode} />
+            <Switch value={isDarkMode} onValueChange={toggleDarkMode} trackColor={{ false: "#767577", true: "#4caf50" }}/>
         </View>
     </View>
 </View>
