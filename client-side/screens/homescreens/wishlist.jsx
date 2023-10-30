@@ -33,6 +33,14 @@ const handleBackWardNavigation=()=>{
   const {isDarkMode}=useDarkMode();
 
 
+// I will be doing the
+
+  //moving to the next screen on clicking the an image 
+  const handleScreenMovement=()=>{
+    navigation.navigate("screen9");
+  }
+
+
 
     return (
       <View className={!isDarkMode ? "flex-1 bg-white" : "flex-1 bg-black"}>
@@ -94,10 +102,11 @@ const handleBackWardNavigation=()=>{
                 />
                   </TouchableOpacity>
                 </View>
-                <Text className={`${isDarkMode ? 'text-white' : 'text-black'} font-semibold text-base`}>{item.brandName}</Text>
+                <TouchableOpacity onPress={handleScreenMovement}>
+            <Text className={`${isDarkMode ? 'text-white' : 'text-black'} font-semibold text-base`}>{item.brandName}</Text>
 <Text className={`${isDarkMode ? 'text-white' : 'text-black'} font-semibold text-base`}>{item.product}</Text>
 <Text className={`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-bold`}>{item.price}</Text>
-
+</TouchableOpacity>
               </View>
             )}
           />

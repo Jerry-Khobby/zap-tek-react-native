@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, SafeAreaView, Switch } from 'r
 import Icon from 'react-native-vector-icons/FontAwesome';
 import twrnc from 'tailwind-react-native-classnames';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { useDarkMode } from '../../context/darkmode';
 
 const AddressScreen = ({navigation}) => {
     const [name, setName] = useState('Mrh Raju');
@@ -20,27 +21,35 @@ const AddressScreen = ({navigation}) => {
         //  the functionality to save the address here
     };
 
+
+//
+const {isDarkMode} = useDarkMode();
+
     return (
-        <View style={twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`}>
+        <View style={!isDarkMode?twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`:twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-black`}>
             {/* Top View */}
-            <View style={twrnc`mx-5 flex items-center flex-row justify-between `}>
-                <View>
-                    <TouchableOpacity  className="bg-gray-200 p-2 rounded-full">
-                        <MaterialCommunityIcons name="arrow-left" size={24}/>
-                    </TouchableOpacity>
-                </View>
-                <View>
-                <Text style={twrnc`text-xl font-bold`}>Address</Text>
-                </View>
-                <View></View>
-            </View>
+            <View style={twrnc`mx-5 flex items-center flex-row justify-between`}>
+    <View>
+        <TouchableOpacity style={twrnc`bg-${isDarkMode ? 'gray-700' : 'gray-200'} p-2 rounded-full`}>
+            <MaterialCommunityIcons name="arrow-left" size={24} color={isDarkMode ? 'white' : 'black'} />
+        </TouchableOpacity>
+    </View>
+    <View>
+        <Text style={twrnc`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>Address</Text>
+    </View>
+    <View></View>
+</View>
+
 
             {/* Name Input */}
             <View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
-            <Text className="text-lg font-medium mb-2">Name</Text>
+            <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Address</Text>
             <TextInput
-                 className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
+                 style={twrnc`h-12 w-full rounded-lg pl-2 font-normal text-sm ${
+                    isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
+                }`}
                 placeholder="Mrh Raju"
+                placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
                 value={name}
                 onChangeText={(text) => setName(text)}
             />
@@ -48,25 +57,29 @@ const AddressScreen = ({navigation}) => {
 
             {/* Country and City Inputs on the Same Line */}
             <View className="flex mx-5 mt-5 flex-row items-center justify-between">
-                <View className="flex flex-col items-start justify-center">
-                    <Text className="text-lg font-medium mb-2">Country</Text>
-                    <TextInput
-                        placeholder="Your Country"
-                        className="h-14 w-44 bg-gray-100 rounded-lg pl-3 font-normal text-base  text-start"
-                        // the Onchange functions will come later 
-
-                    />
-                </View>
-                <View>
-                    <Text className="text-lg font-medium mb-2">City</Text>
-                    <TextInput
-                        placeholder="Name of your city"
-                        className="h-14 w-44 bg-gray-100 rounded-lg pl-3 font-normal text-base text-start "
-                        // the on change functions will come later when we are working on the backend
-
-                    />
-                </View>
-            </View>
+    <View className="flex flex-col items-start justify-center">
+        <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Country</Text>
+        <TextInput
+            placeholder="Your Country"
+            style={twrnc`h-14 w-44 rounded-lg pl-3 font-normal text-base  ${
+                !isDarkMode ? 'bg-gray-100 text-black ' : 'bg-gray-700 text-white'
+            }`}
+            // the Onchange functions will come later 
+            placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+        />
+    </View>
+    <View>
+        <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>City</Text>
+        <TextInput
+            placeholder="Name of your city"
+            style={twrnc`h-14 w-44 rounded-lg pl-3 font-normal text-base  ${
+                !isDarkMode ? 'bg-gray-100 text-black ' : 'bg-gray-700 text-white'
+            }`}
+            // the on change functions will come later when we are working on the backend
+            placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+        />
+    </View>
+</View>
 
 
 
@@ -78,28 +91,36 @@ const AddressScreen = ({navigation}) => {
 
             {/* Phone Number Input */}
             <View className="mt-5 flex items-start mx-5 flex-col justify-between">
-            <Text className="text-lg font-medium mb-2">Phone Number</Text>
+            <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Phone Number</Text>
             <TextInput
                 placeholder="+880 1453-987533"
-                className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
+                style={twrnc`h-12 w-full rounded-lg pl-2 font-normal text-sm ${
+                    isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
+                }`}
+                placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
             />
             </View>
 
             {/* Address Input */}
             <View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
-            <Text className="text-lg font-medium mb-2">Address</Text>
-            <TextInput
-                placeholder="Chhatak, Sunamgonj 12/8AB"
-                className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
-            />
-            </View>
+    <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Address</Text>
+    <TextInput
+        placeholder="Chhatak, Sunamgonj 12/8AB"
+        style={twrnc`h-12 w-full rounded-lg pl-2 font-normal text-sm ${
+            isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
+        }`}
+        placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+    />
+</View>
+
 
             {/* Save as Primary Address */}
             <View className="mt-5 flex items-start mx-5 flex-row justify-between">
-                <Text className="text-lg font-medium mb-2">Save as primary address</Text>
-                <Switch
-                    onValueChange={(value) => setIsPrimary(value)}
-                />
+            <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Save as primary address</Text>
+            <Switch 
+            onValueChange={(value) => setIsPrimary(value)}
+        value={isPrimary} 
+        trackColor={{ false: "#767577", true: "#4caf50" }}/>
             </View>
 {/** the buttom sections where the submit review is  */}
 <View>
