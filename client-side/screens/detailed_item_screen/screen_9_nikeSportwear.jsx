@@ -18,8 +18,21 @@ import React, {useState} from "react";
 import {Review_rating} from "../../data/review_ratings";
 
 
-const NikeSportsWear = () => {
+const NikeSportsWear = ({navigation}) => {
 
+    const handleBackWardNavigation=()=>{
+        navigation.navigate("HomeComponents");
+      }
+
+      // handle move to the cart screen 
+      const CartScreenNavigation=()=>{
+        navigation.navigate("screen12");
+      }
+
+
+const handleForwardReview=()=>{
+    navigation.navigate("screen10");
+}
     {/*A function for carded image display*/}
     const ImageCards = () =>{
         {/*Array containing list of carded images*/}
@@ -126,7 +139,7 @@ const NikeSportsWear = () => {
                     resizeMode={"contain"}
                     style={twrnc `h-80 w-full mt-4`}>
                     <View style={twrnc `flex-row justify-between`}>
-                        <TouchableOpacity style={twrnc `bg-white h-12 w-12 mt-2 mx-3 rounded-full`}>
+                        <TouchableOpacity style={twrnc `bg-white h-12 w-12 mt-2 mx-3 rounded-full`} onPress={handleBackWardNavigation}>
                             <View style={twrnc `items-center mt-3`}>
                                 <MaterialCommunityIcons name="arrow-left" size={24}/>
                             </View>
@@ -203,9 +216,11 @@ const NikeSportsWear = () => {
 
                     {/*Text description of the reviewed person*/}
                     <View style={twrnc `mt-4`}>
+                        <TouchableOpacity onPress={handleForwardReview}>
                         <Text style={twrnc `text-gray-400 mt-1`}>Lorem ipsum dolor sit amet, consectetur</Text>
                         <Text style={twrnc `text-gray-400 mt-1`}>adispiscing elit. Pellentesque malesuada eget</Text>
                         <Text style={twrnc `text-gray-400 mt-1`}>vitae amet...</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={twrnc `mt-8`}>
@@ -221,8 +236,8 @@ const NikeSportsWear = () => {
 
 
                 {/*Add to cart button*/}
-                <TouchableOpacity style={twrnc `mt-5`}>
-                    <View style={[twrnc `h-16 w-full bottom`,styles.primary]}>
+                <TouchableOpacity style={twrnc `mt-5`} onPress={CartScreenNavigation}>
+                    <View style={[twrnc `h-16 w-full bottom-0`,styles.primary]}>
                         <View style={twrnc `items-center mt-6`}>
                             <Text style={twrnc `font-bold text-white `}>Add to Cart</Text>
                         </View>

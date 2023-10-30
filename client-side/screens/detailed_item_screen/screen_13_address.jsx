@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, Switch } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
 import twrnc from 'tailwind-react-native-classnames';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-const AddressScreen = () => {
-    const navigation = useNavigation();
+const AddressScreen = ({navigation}) => {
     const [name, setName] = useState('Mrh Raju');
     const [country, setCountry] = useState('Bangladesh');
     const [city, setCity] = useState('Sylhet');
@@ -14,9 +12,9 @@ const AddressScreen = () => {
     const [address, setAddress] = useState('Chhatak, Sunamgonj 12/8AB');
     const [isPrimary, setIsPrimary] = useState(false);
 
-    const goBackToScreen12 = () => {
-        navigation.goBack();
-    };
+
+    //navigation backward 
+ 
 
     const saveAddress = () => {
         //  the functionality to save the address here

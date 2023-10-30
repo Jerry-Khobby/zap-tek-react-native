@@ -7,7 +7,16 @@ import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import {Review_description} from "../../data/review_ratings";
 
-const Review_Details = () => {
+const Review_Details = ({navigation}) => {
+
+    const handleBackWardNavigation=()=>{
+        navigation.navigate("screen9");
+    }
+
+    // moving to the add review screen 
+    const AddReviewScreen=()=>{
+        navigation.navigate("screen11");
+    }
     return(
         <SafeAreaView>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -16,7 +25,7 @@ const Review_Details = () => {
                     {/*Topmost section of the Review Detail Page*/}
                     <View style={twrnc `flex-row mt-5 items-center`}>
                         <View>
-                            <TouchableOpacity style={twrnc `bg-gray-200 h-12 w-12 mt-2 rounded-full`}>
+                            <TouchableOpacity style={twrnc `bg-gray-200 h-12 w-12 mt-2 rounded-full`} onPress={handleBackWardNavigation}>
                                 <View style={twrnc `items-center mt-3`}>
                                     <MaterialCommunityIcons name="arrow-left" size={24}/>
                                 </View>
@@ -36,7 +45,7 @@ const Review_Details = () => {
                         </View>
 
                         {/*Add review button*/}
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={AddReviewScreen}>
                             <View style={[twrnc `h-10 w-28 rounded-lg`,styles.primary]}>
                                 <View style={twrnc `flex-row items-center ml-2.5 mt-2.5`}>
                                     <Icon_SimpleLineIcons name="note" size={15} color="white" />

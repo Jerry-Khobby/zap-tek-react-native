@@ -12,15 +12,17 @@ import {
 } from '@expo/vector-icons';
 import { Text, Switch,Avatar,Title,Caption} from 'react-native-paper';
 import React, { useState } from "react";
+import { useDarkMode } from '../../context/darkmode';
 
 const DrawerContents = (props) => {
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
+  
+    const {isDarkMode,toggleDarkMode} = useDarkMode();
+    
+const handleClick = () => {
+        toggleDarkMode(); // This will toggle the isDarkMode state in the context
+      };
 
-    const toggleDarkMode = () => {
-      setIsDarkMode(!isDarkMode);
-      // You can perform any actions here when the dark mode is toggled
-    };
     return(
         <View style={tw `flex-1`}>
             <DrawerContentScrollView {...props}>
@@ -80,17 +82,21 @@ const DrawerContents = (props) => {
                     </View>
 
                     <View style={tw `mt-8`}>
+                        <TouchableOpacity onPress={() => {props.navigation.navigate('Order')}}>
                         <View style={tw `flex-row`}>
                             <SimpleLineIcons name="handbag" size={20} color={"gray"}/>
                             <Text style={tw `mt-0.5 ml-5 mb-1 text-lg`}>Order</Text>
                         </View>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={tw `mt-8`}>
+                    <TouchableOpacity onPress={() => {props.navigation.navigate('screen15')}}>
                         <View style={tw `flex-row`}>
                             <MaterialCommunityIcons name="wallet-outline" size={24} color="gray" />
                             <Text style={tw `mt-0.5 ml-5 mb-1 text-lg`}>My Cards</Text>
                         </View>
+                            </TouchableOpacity>
                     </View>
 
                     <View style={tw `mt-8`}>

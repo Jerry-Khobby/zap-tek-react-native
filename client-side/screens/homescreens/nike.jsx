@@ -9,12 +9,14 @@ import {
     Image,
   } from "react-native";
   import React from "react";
-  import { useNavigation } from "@react-navigation/native";
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
   import { brand } from "../../data/brand";
   
-  const Nike = () => {
-    const navigation = useNavigation();
+  const Nike = ({navigation}) => {
+    //backwards navigations
+    const BackToHome=()=>{
+      navigation.navigate("Home");
+    }
     return (
       <View className="flex-1 bg-white pt-11">
         {/* Top part */}
@@ -22,7 +24,7 @@ import {
           {/* Navigate back */}
           <TouchableOpacity
             className="bg-gray-200 p-2 rounded-full"
-            onPress={() => alert("Navigate Back is under construction")}
+            onPress={BackToHome}
           >
             <MaterialCommunityIcons name="arrow-left" size={24} />
           </TouchableOpacity>
