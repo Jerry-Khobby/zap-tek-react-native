@@ -10,6 +10,7 @@ import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Wishlist from '../../screens/homescreens/wishlist';
 import Nike from '../../screens/homescreens/nike';
 import {useDarkMode} from "../../context/darkmode"
+/* import { useColorScheme } from 'react-native-appearance'; */
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -21,6 +22,7 @@ const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         activeTintColor: 'blue',
         inactiveTintColor: 'white',
+        
         tabBarIcon: ({ color, size }) => {
           if (route.name === 'Home') {
             return <Icon_Ant name="home" size={size} color={color} />;
@@ -33,11 +35,12 @@ const BottomTabNavigator = () => {
           }
         },
       })}
-      tabBarStyle={{
-        backgroundColor: !isDarkMode ? 'black' : 'white', // Set the background color based on dark mode state
+      tabBarOptions={{
+        activeBackgroundColor: !isDarkMode ? "white" : "rgba(0, 0, 0, 0.9)",
+        inactiveBackgroundColor: !isDarkMode ? "white" : "rgba(0, 0, 0, 0.9)",
       }}
     >
-      <Tab.Screen name="Home" component={Homescreen}  options={{headerShown:false}}/>
+      <Tab.Screen name="Home" component={Homescreen}  options={{headerShown:false}} tabColor={!isDarkMode? twrnc`bg-gray-700`:twrnc`bg-black`}/>
       <Tab.Screen name="Wishlist" component={Wishlist} options={{headerShown:false}} />
       <Tab.Screen name="Order" component={Nike}  options={{headerShown:false}}/>
       <Tab.Screen name="Wallet" component={DetailScreen} options={{headerShown:false}} />

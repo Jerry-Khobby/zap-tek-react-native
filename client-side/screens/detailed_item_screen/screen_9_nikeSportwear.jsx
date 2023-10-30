@@ -16,9 +16,13 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import React, {useState} from "react";
 import {Review_rating} from "../../data/review_ratings";
-
+import {useDarkMode} from "../../context/darkmode";
 
 const NikeSportsWear = ({navigation}) => {
+
+// dark mode works 
+const {isDarkMode}=useDarkMode()
+
 
     const handleBackWardNavigation=()=>{
         navigation.navigate("HomeComponents");
