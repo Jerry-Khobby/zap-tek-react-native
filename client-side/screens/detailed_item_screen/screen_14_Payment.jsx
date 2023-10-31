@@ -5,6 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Carousel from 'react-native-snap-carousel';
 import  {PaymentCarousel}  from '../../data/carouseldata';
+import { useDarkMode } from '../../context/darkmode';
 
 
 
@@ -50,19 +51,23 @@ const backWardNavigation=()=>{
   {/** creating a function for the pagination  */}
 
 
+  // make use of the dark mode 
+
+  const {isDarkMode} =useDarkMode();
+
 
 
   return (
-    <View style={twrnc`flex flex-1 w-full h-full flex-col pt-10 relative bg-white`}>
+<View style={twrnc`flex flex-1 w-full h-full flex-col pt-10 relative ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
       {/* Top View */}
       <View style={twrnc`mx-5 flex items-center flex-row justify-between `}>
         <View>
-          <TouchableOpacity onPress={backWardNavigation}   className="bg-gray-200 p-2 rounded-full">
-            <MaterialCommunityIcons name="arrow-left" size={24}/>
+        <TouchableOpacity onPress={backWardNavigation} className={`p-2 rounded-full ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
+            <MaterialCommunityIcons name="arrow-left" size={24} color={isDarkMode ? 'white' : 'black'}/>
           </TouchableOpacity>
         </View>
         <View className="mr-5">
-        <Text style={twrnc`text-2xl font-bold`}>Payment</Text>
+        <Text style={twrnc`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>Payment</Text>
         </View>
         <View></View>
       </View>
@@ -96,11 +101,14 @@ const backWardNavigation=()=>{
   {/** the sections  involving the text boxes and the rest  */}
   {/** the first one for the card owner , more editin will performed on this when we are handling the POST method in the forms  */}
   <View style={twrnc`mt-2 flex items-start mx-5 flex-col justify-between`}>
-            <Text className="text-lg font-medium mb-2">Card Owner</Text>
-            <TextInput
-                 className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
-                placeholder="Mrh Raju"
-  />
+  <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Card Owner</Text>
+  <TextInput
+    className={`h-12 w-full ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'} rounded-lg pl-2 text-sm`}
+    placeholder="Mrh Raju"
+    placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+    // other props...
+/>
+
             </View>
 
   
@@ -108,11 +116,14 @@ const backWardNavigation=()=>{
    {/** the sections  involving the text boxes and the rest, the second for the user's card number*/}
   
    <View style={twrnc`mt-2 flex items-start mx-5 flex-col justify-between`}>
-            <Text className="text-lg font-medium mb-2">Card Number</Text>
-            <TextInput
-                 className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
-                placeholder="22423324 3423432"
-  />
+   <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Card Number</Text>
+   <TextInput
+    className={`h-12 w-full ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'} rounded-lg pl-2 text-sm`}
+    placeholder="22423324 3423432"
+    placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+    // other props...
+/>
+
             </View>
 
 
@@ -121,22 +132,24 @@ const backWardNavigation=()=>{
     {/* Country and City Inputs on the Same Line */}
     <View className="flex mx-5 mt-2 flex-row items-center justify-between">
                 <View className="flex flex-col items-start justify-center">
-                    <Text className="text-lg font-medium mb-2">EXP</Text>
-                    <TextInput
-                        placeholder="24/24"
-                        className="h-14 w-44 bg-gray-100 rounded-lg pl-3 font-normal text-base  text-start"
-                        // the Onchange functions will come later 
+                <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>EXP</Text>
+                <TextInput
+    placeholder="24/24"
+    className={`h-14 w-44 ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'} rounded-lg pl-3 text-base`}
+    placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+    // other props...
+/>
 
-                    />
                 </View>
                 <View>
-                    <Text className="text-lg font-medium mb-2">CVV</Text>
-                    <TextInput
-                        placeholder="7763"
-                        className="h-14 w-44 bg-gray-100 rounded-lg pl-3 font-normal text-base text-start "
-                        // the on change functions will come later when we are working on the backend
+                <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>CVV</Text>
+                <TextInput
+    placeholder="7763"
+    className={`h-14 w-44 ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'} rounded-lg pl-3 text-base`}
+    placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
+    // other props...
+/>
 
-                    />
                 </View>
   </View>
 
@@ -144,10 +157,12 @@ const backWardNavigation=()=>{
 
    {/* Where the switch is located  */}
    <View className="mt-2 flex items-start mx-5 flex-row justify-between">
-                <Text className="text-lg font-medium mb-2">Save card info</Text>
+   <Text className={`text-lg font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Save Card info</Text>
                 <Switch
                 value={isSwitchOn}
                 onValueChange={toggleSwitch}
+                trackColor={{ false: "#767577", true: "#4caf50" }}
+                ios_backgroundColor="gray"
                 />
             </View>
 
