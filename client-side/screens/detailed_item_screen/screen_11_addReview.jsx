@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from 'react-nat
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import twrnc from 'tailwind-react-native-classnames';
 import Slider from '@react-native-community/slider';
+import { useDarkMode } from '../../context/darkmode';
 
 const AddReview = ({navigation}) => {
   const [name, setName] = useState('');
@@ -20,28 +21,33 @@ navigation.navigate("screen10");
   const BackToHome=()=>{
     navigation.navigate("HomeComponents");
   }
+
+  const {isDarkMode} = useDarkMode();
   
 
   return (
-    <View style={twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`}>
+    <View style={!isDarkMode?twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`:twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-black`}>
       {/* Top View */}
       <View style={twrnc`mx-5 flex items-center flex-row justify-between `}>
         <View>
-          <TouchableOpacity onPress={handleBackWardMovement}   className="bg-gray-200 p-2 rounded-full">
-            <MaterialCommunityIcons name="arrow-left" size={24}/>
+          <TouchableOpacity onPress={handleBackWardMovement}  style={twrnc`bg-${isDarkMode ? 'gray-700' : 'gray-200'} p-2 rounded-full`}>
+            <MaterialCommunityIcons name="arrow-left" size={24} color={isDarkMode ? 'white' : 'black'} />
           </TouchableOpacity>
         </View>
         <View>
-        <Text style={twrnc`text-xl font-bold`}>Add Review</Text>
+        <Text style={twrnc`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>Add Review</Text>
         </View>
         <View></View>
       </View>
 
       {/* Name Text Input */}
       <View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
-      <Text className="text-lg font-medium mb-2">Name</Text>
+      <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Name</Text>
       <TextInput
-      className="h-12 w-full bg-gray-100 rounded-lg pl-2 font-normal text-sm"
+      style={twrnc`h-12 w-full rounded-lg pl-2 font-normal text-sm ${
+        isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
+    }`}
+    placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
         placeholder="Type your name"
         value={name}
         onChangeText={(text) => setName(text)}
@@ -50,9 +56,12 @@ navigation.navigate("screen10");
 
       {/* Experience Text Input */}
       <View className="mt-5 flex items-start mx-5 flex-col justify-between">
-      <Text className="text-lg font-medium mb-2">How was your Experience?</Text>
+      <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>How was your Experience?</Text>
       <TextInput
-      className="h-56 w-full bg-gray-100 rounded-lg pl-3 font-normal text-base "
+      style={twrnc`h-56 w-full rounded-lg pl-3 font-normal text-base ${
+        isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
+    }`}
+    placeholderTextColor={isDarkMode ? '#ccc' : '#999'}
         placeholder="Describe your experience"
         multiline={true}
         numberOfLines={4}
@@ -63,10 +72,12 @@ navigation.navigate("screen10");
 
       {/* Star Text and Rating Scale */}
       <View className="flex flex-col mt-5 w-full mx-5">
-      <Text className="font-medium text-lg">Star</Text>
+      <Text className={isDarkMode ? 'text-white font-medium text-lg' : 'font-medium text-lg'}>
+        Star
+      </Text>
       </View>
       <View style={twrnc`flex flex-row items-center justify-start mx-5`}>
-        <Text style={twrnc`text-sm mr-1`}>0.0</Text>
+      <Text style={isDarkMode ? twrnc`text-white text-sm mr-1` : twrnc`text-sm mr-1`}>0.0</Text>
         <View className="flex-1 w-3/4">
         <Slider
           minimumValue={0}
@@ -77,7 +88,7 @@ navigation.navigate("screen10");
           onValueChange={(value) => setRating(value)}
         />
         </View>
-        <Text style={twrnc`text-sm ml-1`}>5.0</Text>
+        <Text style={isDarkMode ? twrnc`text-white text-sm ml-1` : twrnc`text-sm ml-1`}>5.0</Text>
       </View>
 
 
