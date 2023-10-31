@@ -39,12 +39,10 @@ const {isDarkMode} = useDarkMode();
     </View>
     <View></View>
 </View>
-
-
             {/* Name Input */}
-            <View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
-            <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Address</Text>
-            <TextInput
+<View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
+ <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Address</Text>
+<TextInput
                  style={twrnc`h-12 w-full rounded-lg pl-2 font-normal text-sm ${
                     isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
                 }`}
