@@ -9,7 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.19.4",
     "@react-native-community/slider": "^4.4.3",
+    "@react-native-firebase/app": "^18.6.0",
     "@react-navigation/bottom-tabs": "^6.5.10",
     "@react-navigation/drawer": "^6.6.5",
     "@react-navigation/native": "^6.1.8",
@@ -23,6 +25,7 @@
     "react": "18.2.0",
     "react-native": "0.72.5",
     "react-native-appearance": "^0.3.4",
+    "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "^2.12.0",
     "react-native-paper": "^5.11.0",
     "react-native-reanimated": "~3.3.0",
