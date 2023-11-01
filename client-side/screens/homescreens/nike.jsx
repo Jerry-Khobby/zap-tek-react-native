@@ -11,39 +11,74 @@ import {
   import React from "react";
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
   import { brand } from "../../data/brand";
+  import { useDarkMode } from "../../context/darkmode";
   
   const Nike = ({navigation}) => {
     //backwards navigations
     const BackToHome=()=>{
       navigation.navigate("Home");
     }
+
+
+    const navigateScreenNine=()=>{
+      navigation.navigate("screen9");
+    }
+
+    const { isDarkMode } = useDarkMode();
     return (
-      <View className="flex-1 bg-white pt-11">
+      <View className={`flex-1 pt-11 bg-${!isDarkMode ? "white" : "black"}`}>
         {/* Top part */}
         <View className="flex-row justify-between items-center mx-5 my-5">
           {/* Navigate back */}
           <TouchableOpacity
-            className="bg-gray-200 p-2 rounded-full"
+            className={`bg-gray-${!isDarkMode ? "200" : "700"} p-2 rounded-full`}
             onPress={BackToHome}
           >
-            <MaterialCommunityIcons name="arrow-left" size={24} />
+             <MaterialCommunityIcons
+            name="arrow-left"
+            size={24}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
           </TouchableOpacity>
           <View className="bg-gray-200 p-3 px-5 rounded-xl h-11 w-20">
             <Image source={require("../../assets/Vector.png")} />
           </View>
-          <TouchableOpacity className="bg-gray-200 p-2 rounded-full">
-            <MaterialCommunityIcons name="shopping-outline" size={24} />
+          <TouchableOpacity  className={`bg-gray-${!isDarkMode ? "200" : "700"} p-2 rounded-full`}>
+          <MaterialCommunityIcons
+            name="shopping-outline"
+            size={24}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
           </TouchableOpacity>
         </View>
   
         <View className="flex-row justify-between mx-5 items-center">
           <View>
-            <Text className="font-semibold text-xl">365 Items</Text>
+          <Text
+            className={`text-${
+              !isDarkMode ? "black" : "white"
+            } font-semibold text-xl`}
+          >
+            365 Items
+          </Text>
             <Text className="text-gray-500 text-lg">Available in stock</Text>
           </View>
-          <View className="flex-row items-center bg-gray-200 p-2 rounded-xl">
-            <MaterialCommunityIcons name="text" size={24} />
-            <Text className="ml-2 text-xl font-semibold">Sort</Text>
+          <View className={`flex-row items-center bg-gray-${
+            !isDarkMode ? "200" : "700"
+          } p-2 rounded-xl`}>
+             <MaterialCommunityIcons
+            name="text"
+            size={24}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
+          <Text
+            className={`text-${
+              !isDarkMode ? "black" : "white"
+            } ml-2 text-xl font-medium`}
+          >
+            Sort
+          </Text>
+
           </View>
         </View>
   
@@ -67,9 +102,30 @@ import {
                   />
                 </View>
               </View>
-              <Text className="font-semibold text-base">{item.brandName}</Text>
-              <Text className="text-base font-semibold">{item.product}</Text>
-              <Text className="text-lg font-bold">{item.price}</Text>
+              <TouchableOpacity onPress={navigateScreenNine}>
+              <Text
+              className={`text-${
+                !isDarkMode ? "black" : "white"
+              } font-semibold text-base`}
+            >
+              {item.brandName}
+            </Text>
+            <Text
+              className={`text-${
+                !isDarkMode ? "black" : "white"
+              } text-base font-semibold`}
+            >
+              {item.product}
+            </Text>
+              <Text
+              className={`text-${
+                !isDarkMode ? "black" : "white"
+              } text-lg font-bold`}
+            >
+              {item.price}
+            </Text>
+            </TouchableOpacity>
+
             </View>
           )}
         />

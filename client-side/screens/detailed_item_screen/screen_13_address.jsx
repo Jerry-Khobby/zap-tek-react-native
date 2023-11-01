@@ -24,13 +24,23 @@ const AddressScreen = ({navigation}) => {
 
 //
 const {isDarkMode} = useDarkMode();
+// backwards movements 
+
+const backwardMovement=()=>{
+    navigation.navigate("screen12");
+}
+
+// return back to home screen 
+const homescreen=()=>{
+    navigation.navigate("HomeComponents");
+}
 
     return (
         <View style={!isDarkMode?twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-white`:twrnc`flex flex-1 w-full h-full flex-col pt-11 relative bg-black`}>
             {/* Top View */}
             <View style={twrnc`mx-5 flex items-center flex-row justify-between`}>
     <View>
-        <TouchableOpacity style={twrnc`bg-${isDarkMode ? 'gray-700' : 'gray-200'} p-2 rounded-full`}>
+        <TouchableOpacity style={twrnc`bg-${isDarkMode ? 'gray-700' : 'gray-200'} p-2 rounded-full`} onPress={backwardMovement}>
             <MaterialCommunityIcons name="arrow-left" size={24} color={isDarkMode ? 'white' : 'black'} />
         </TouchableOpacity>
     </View>
@@ -39,12 +49,10 @@ const {isDarkMode} = useDarkMode();
     </View>
     <View></View>
 </View>
-
-
             {/* Name Input */}
-            <View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
-            <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Address</Text>
-            <TextInput
+<View style={twrnc`mt-5 flex items-start mx-5 flex-col justify-between`}>
+ <Text style={twrnc`${isDarkMode ? 'text-white' : 'text-black'} text-lg font-medium mb-2`}>Address</Text>
+<TextInput
                  style={twrnc`h-12 w-full rounded-lg pl-2 font-normal text-sm ${
                     isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'
                 }`}
@@ -120,13 +128,16 @@ const {isDarkMode} = useDarkMode();
             <Switch 
             onValueChange={(value) => setIsPrimary(value)}
         value={isPrimary} 
-        trackColor={{ false: "#767577", true: "#4caf50" }}/>
+        trackColor={{ false: "#767577", true: "#4caf50" }}
+        ios_backgroundColor="gray"
+        />
             </View>
 {/** the buttom sections where the submit review is  */}
 <View>
   {/** I want the something at the bottom of screen , it will remain the bottom of the screen and I have a text of Submit review meaning , it is a button  I want it to remain at the bottom of the screen no matter the screen size */}
   <View style={twrnc`flex-1 justify-center items-center top-36 absolute  w-full h-14 bg-purple-500`}>
         <TouchableOpacity className="flex items-center justify-center"
+        onPress={homescreen}
         >
           <Text style={twrnc`text-white text-lg font-medium`}>Save Address</Text>
         </TouchableOpacity>
