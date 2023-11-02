@@ -39,4 +39,4 @@ yarn-error.*
 **/.env
 
 # Ignore .firebase.js files
-**/.firebase.js
+***/.firebase.js
