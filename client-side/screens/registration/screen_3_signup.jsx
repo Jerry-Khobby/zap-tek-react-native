@@ -1,12 +1,13 @@
-import {Text, View,TouchableOpacity,TextInput} from 'react-native'
+import {Text, View,TouchableOpacity,TextInput, Alert,ActivityIndicator} from 'react-native'
 import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
-import {auth} from "./firebase"
+import {auth,firebase} from "./firebase"
 
 const SignUp = ({navigation}) => {
     const [isToggled,setIsToggled]=useState(false);
+    const [loading, setLoading] = useState(false); // State to track loading status
     const handleToggle=()=>{
         setIsToggled(!isToggled);
     }
@@ -17,6 +18,7 @@ const SignUp = ({navigation}) => {
       email: ''
     });
 
+
     
 const handleChange = (name,value) => {
         setInputs(values => ({ ...values, [name]: value }));
@@ -24,6 +26,7 @@ const handleChange = (name,value) => {
 
       const handleSubmit = () => {
         const { email, password, username } = inputs;
+        setLoading(true); // Set loading to true when signup starts
       
         if (isValidEmail(email)) {
           auth.createUserWithEmailAndPassword(email, password)
@@ -35,8 +38,16 @@ const handleChange = (name,value) => {
               })
               .then(() => {
                 // Signed in and username set successfully
+                firebase.database().ref('users/' + user.uid).set({
+                  username: username,
+                  email: email,
+                  password: password
+                });
                 console.log('User account created & signed in with username:', user);
                 // Call your createWithSignIn function here if needed
+                setLoading(false); // Set loading to false after successful signup
+                navigation.replace('screenFour'); 
+
               })
               .catch((error) => {
                 console.error('Error setting username:', error);
@@ -46,9 +57,12 @@ const handleChange = (name,value) => {
               const errorCode = error.code;
               const errorMessage = error.message;
               console.error('Error creating user:', errorCode, errorMessage);
+              Alert.alert('Error', "This email address currently has an account and cannot create a new account");
+              setLoading(false);
             });
         } else {
           console.error('Invalid email address. Please provide a valid email.');
+          setLoading(false);
         }
       };
       
@@ -86,7 +100,6 @@ const handleChange = (name,value) => {
 <View style={twrnc`flex items-center justify-center mt-2`}>
     <Text style={twrnc`text-3xl font-semibold`}>Sign Up</Text>
 </View>
-
 {/** I change the button and make it a text input field where the first field will be username , the next one will password and the last field will email add  */}
 <View style={twrnc`mt-32 mx-5`}>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
@@ -124,6 +137,11 @@ const handleChange = (name,value) => {
     />
     </View>
     </View>
+    {loading && (
+        <View style={twrnc`...absolute inset-0 items-center justify-center flex-1 flex`}>
+          <ActivityIndicator size="large" color="blue" />
+        </View>
+      )}
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-600`}>Email Address</Text>
     <View style={twrnc`mb-3 -mt-4`}>
@@ -138,7 +156,6 @@ const handleChange = (name,value) => {
     value={inputs.email} 
     onChangeText={(text) => handleChange("email", text)}
     type="email"
-
     />
     </View>
     </View>
