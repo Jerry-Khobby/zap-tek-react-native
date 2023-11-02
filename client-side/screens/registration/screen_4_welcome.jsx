@@ -28,7 +28,7 @@ const Welcome = ({navigation}) => {
       const { email, password } = inputs;
 
       const handleSubmit = () => {
-       
+        setLoading(true);
         if (email && password) {
           auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
@@ -57,19 +57,6 @@ const Welcome = ({navigation}) => {
         }
       };
 
-
-
-      const handleLogin = () => {
-        auth
-          .signInWithEmailAndPassword(email, password)
-          .then(userCredentials => {
-            const user = userCredentials.user;
-            console.log("Signed in with : ", user.email);
-            navigation.navigate('homescreen')
-          })
-          .catch(error => alert(error.message));
-      };
-    
   // functions for the routings or navigations 
 
   const handleForgotPasswordNavigation=()=>{
@@ -81,10 +68,6 @@ const Welcome = ({navigation}) => {
   }
 
 
-
-const handleForWardNavigation=()=>{
-  navigation.navigate("homescreen");
-}
 
   return (
     <SafeAreaView style={twrnc`flex-1 flex bg-white`}>
@@ -116,7 +99,7 @@ const handleForWardNavigation=()=>{
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
     value={inputs.email} 
-    onChange={(text)=>handleChange("email",text)}
+    onChangeText={(text) => handleChange("email", text)}
 
     />
     </View>
@@ -136,7 +119,7 @@ const handleForWardNavigation=()=>{
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
     value={inputs.password} 
-    onChange={(text)=>handleChange("password",text)}
+    onChangeText={(text) => handleChange("password", text)}
     />
     </View>
     </View>
@@ -173,7 +156,7 @@ const handleForWardNavigation=()=>{
 
 {/** the button below that will allow you to login  */}
 <View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-24 flex`}>
-        <TouchableOpacity style={twrnc`w-full h-full flex items-center justify-center pt-5`} onPress={handleLogin}>
+        <TouchableOpacity style={twrnc`w-full h-full flex items-center justify-center pt-5`} onPress={handleSubmit}>
           <Text style={twrnc` flex items-center justify-center mb-auto text-white text-center font-semibold`}>Login </Text>
         </TouchableOpacity>
       </View>
