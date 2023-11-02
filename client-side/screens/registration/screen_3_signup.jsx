@@ -3,6 +3,7 @@ import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
+import {auth} from "./firebase"
 
 const SignUp = ({navigation}) => {
     const [isToggled,setIsToggled]=useState(false);
@@ -10,17 +11,56 @@ const SignUp = ({navigation}) => {
         setIsToggled(!isToggled);
     }
 
-    const [inputs,setInputs]=useState({});
+    const [inputs,setInputs]=useState({
+      username: '',
+      password: '',
+      email: ''
+    });
 
     
-    const handleChange = (name, value) => {
+const handleChange = (name,value) => {
         setInputs(values => ({ ...values, [name]: value }));
       };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(JSON.stringify(inputs,null,2));
-  }
+      const handleSubmit = () => {
+        const { email, password, username } = inputs;
+      
+        if (isValidEmail(email)) {
+          auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              // Set the user's display name (username)
+              user.updateProfile({
+                displayName: username,
+              })
+              .then(() => {
+                // Signed in and username set successfully
+                console.log('User account created & signed in with username:', user);
+                // Call your createWithSignIn function here if needed
+              })
+              .catch((error) => {
+                console.error('Error setting username:', error);
+              });
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error('Error creating user:', errorCode, errorMessage);
+            });
+        } else {
+          console.error('Invalid email address. Please provide a valid email.');
+        }
+      };
+      
+
+
+  
+      function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+      
+      
 
 
   //functions that will handle the navigations
@@ -28,10 +68,13 @@ const SignUp = ({navigation}) => {
   const handleBackWardNavigation=()=>{
     navigation.navigate("screenTwo");
   }
+// setting up firebase in my codes 
+
+
 
 
   return (
-    <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
+    <View style={twrnc`flex w-full h-full flex-col pt-11 relative bg-white`}>
       {/** this is the view for the icon  */}
 <View style={twrnc`mx-5`}>
     <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
@@ -58,7 +101,7 @@ const SignUp = ({navigation}) => {
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
     value={inputs.username} 
-    onChange={handleChange}
+    onChangeText={(text) => handleChange("username", text)}
 
     />
     </View>
@@ -75,7 +118,8 @@ const SignUp = ({navigation}) => {
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
     value={inputs.password} 
-    onChange={handleChange}
+    onChangeText={(text) => handleChange("password", text)}
+    type="password"
 
     />
     </View>
@@ -92,7 +136,8 @@ const SignUp = ({navigation}) => {
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
     value={inputs.email} 
-    onChange={handleChange}
+    onChangeText={(text) => handleChange("email", text)}
+    type="email"
 
     />
     </View>
@@ -117,7 +162,7 @@ const SignUp = ({navigation}) => {
 
 
 {/** this is the last button that will stack to the button of the screen and will  */}
-<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-28 flex`}>
+<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-14 flex`}>
         <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleSubmit}>
           <Text style={twrnc`text-white text-center font-semibold`}>Sign Up </Text>
         </TouchableOpacity>

@@ -1,4 +1,4 @@
-import {Text, View,TouchableOpacity,TextInput} from 'react-native'
+import {Text, View,TouchableOpacity,TextInput,SafeAreaView} from 'react-native'
 import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
@@ -42,7 +42,8 @@ const handleForWardNavigation=()=>{
 }
 
   return (
-    <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
+    <SafeAreaView style={twrnc`flex-1 flex bg-white`}>
+    <View style={twrnc`flex w-full h-full flex-col mt-11 relative `}>
          {/** this is the view for the icon  */}
       <View style={twrnc`mx-5`}>
     <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
@@ -130,6 +131,7 @@ const handleForWardNavigation=()=>{
         </TouchableOpacity>
       </View>
     </View>
+    </SafeAreaView>
   )
 }
 
