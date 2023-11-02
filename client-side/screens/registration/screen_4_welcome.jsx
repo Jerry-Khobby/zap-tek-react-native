@@ -1,11 +1,14 @@
-import {Text, View,TouchableOpacity,TextInput,SafeAreaView} from 'react-native'
+import {Text, View,TouchableOpacity,TextInput,SafeAreaView,ActivityIndicator,Alert} from 'react-native'
 import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
+import { auth } from  "./firebase";
 
 const Welcome = ({navigation}) => {
 
+
+  const [loading, setLoading] = useState(false); // State to track loading status
 
     const [isToggled,setIsToggled]=useState(false);
     const handleToggle=()=>{
@@ -13,18 +16,60 @@ const Welcome = ({navigation}) => {
     }
 
 
-    const [inputs,setInputs]=useState({});
+    const [inputs,setInputs]=useState({
+      email:'',
+      password:'',
+    });
 
     
     const handleChange = (name, value) => {
         setInputs(values => ({ ...values, [name]: value }));
       };
+      const { email, password } = inputs;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(JSON.stringify(inputs,null,2));
-  }
+      const handleSubmit = () => {
+       
+        if (email && password) {
+          auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              setLoading(false);
+              navigation.replace('homescreen');
+              
+            })
+            
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              setLoading(false);
+      
+              if (errorCode === 'auth/user-not-found') {
+                Alert.alert('Error', 'No account found with this email address.');
+              } else if (errorCode === 'auth/wrong-password') {
+                Alert.alert('Error', 'Incorrect password. Please try again.');
+              } else {
+                Alert.alert('Error', 'Something went wrong. Please try again later.');
+              }
+            });
+        } else {
+          Alert.alert('Error', 'Please enter both email and password.');
+          setLoading(false);
+        }
+      };
 
+
+
+      const handleLogin = () => {
+        auth
+          .signInWithEmailAndPassword(email, password)
+          .then(userCredentials => {
+            const user = userCredentials.user;
+            console.log("Signed in with : ", user.email);
+            navigation.navigate('homescreen')
+          })
+          .catch(error => alert(error.message));
+      };
+    
   // functions for the routings or navigations 
 
   const handleForgotPasswordNavigation=()=>{
@@ -60,36 +105,38 @@ const handleForWardNavigation=()=>{
 {/** the forms to be handled  */}
 <View style={twrnc`mt-32 mx-5`}>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
-    <Text style={twrnc`font-normal text-base text-gray-600`}>Username</Text>
+    <Text style={twrnc`font-normal text-base text-gray-600`}>Email</Text>
     <View style={twrnc`mb-3 -mt-4`}>
     <TextInput
     style={twrnc`
     h-12 w-full pt-5
     `}
-    placeholder="Enter your username"
+    placeholder="Enter your email address"
     underlineColorAndroid="transparent"
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
-    value={inputs.username} 
-    onChange={handleChange}
+    value={inputs.email} 
+    onChange={(text)=>handleChange("email",text)}
 
     />
     </View>
     </View>
+    {loading && (
+        <View style={twrnc`...absolute inset-0 items-center justify-center flex-1 flex`}>
+          <ActivityIndicator size="large" color="blue" />
+        </View>
+      )}
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-600`}>Password</Text>
     <View style={twrnc`mb-3 -mt-4`}>
     <TextInput
-    style={twrnc`
-    h-12 w-full pt-5
-    `}
-    placeholder="Enter your username"
+    style={twrnc`h-12 w-full pt-5`}
+    placeholder="Enter your password"
     underlineColorAndroid="transparent"
     borderBottomWidth={1} // For iOS
     borderBottomColor="gray" //
     value={inputs.password} 
-    onChange={handleChange}
-
+    onChange={(text)=>handleChange("password",text)}
     />
     </View>
     </View>
@@ -126,7 +173,7 @@ const handleForWardNavigation=()=>{
 
 {/** the button below that will allow you to login  */}
 <View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-24 flex`}>
-        <TouchableOpacity style={twrnc`w-full h-full flex items-center justify-center pt-5`} onPress={handleForWardNavigation}>
+        <TouchableOpacity style={twrnc`w-full h-full flex items-center justify-center pt-5`} onPress={handleLogin}>
           <Text style={twrnc` flex items-center justify-center mb-auto text-white text-center font-semibold`}>Login </Text>
         </TouchableOpacity>
       </View>
