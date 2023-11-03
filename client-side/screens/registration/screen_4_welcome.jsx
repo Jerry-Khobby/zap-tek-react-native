@@ -35,27 +35,29 @@ const Welcome = ({navigation}) => {
               const user = userCredential.user;
               setLoading(false);
               navigation.replace('homescreen');
-              
             })
-            
             .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
               setLoading(false);
-      
-              if (errorCode === 'auth/user-not-found') {
-                Alert.alert('Error', 'No account found with this email address.');
-              } else if (errorCode === 'auth/wrong-password') {
-                Alert.alert('Error', 'Incorrect password. Please try again.');
-              } else {
-                Alert.alert('Error', 'Something went wrong. Please try again later.');
+              console.error('Firebase Authentication Error:', error);
+              switch (error.code) {
+                case 'auth/invalid-email':
+                  Alert.alert('Error', 'Invalid email address format.');
+                  break;
+                case 'auth/user-not-found':
+                  Alert.alert('Error', 'No user found with this email address.');
+                  break;
+                case 'auth/wrong-password':
+                  Alert.alert('Error', 'Incorrect password. Please try again.');
+                  break;
+                default:
+                  Alert.alert('Error', 'Authentication failed. Please check your credentials and try again.');
+                  break;
               }
             });
-        } else {
-          Alert.alert('Error', 'Please enter both email and password.');
-          setLoading(false);
+            
         }
       };
+      
 
   // functions for the routings or navigations 
 

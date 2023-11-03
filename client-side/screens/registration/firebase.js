@@ -10,13 +10,13 @@ import 'firebase/database'
 
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
-  measurementId: "",
+  apiKey: "AIzaSyAXCojgclX9reonVX3X3Thl7M4duPeEpZw",
+  authDomain: "zaptechmobileapp.firebaseapp.com",
+  projectId: "zaptechmobileapp",
+  storageBucket: "zaptechmobileapp.appspot.com",
+  messagingSenderId: "112260528090",
+  appId: "1:112260528090:web:cbab4201aa8ff76ea2f2e3",
+  measurementId: "G-DBVXVN15E8",
 };
 
 // Initialize Firebase
