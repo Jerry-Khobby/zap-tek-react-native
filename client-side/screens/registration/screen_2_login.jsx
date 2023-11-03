@@ -1,5 +1,5 @@
 import { View, TouchableOpacity, Text, SafeAreaView } from "react-native";
-import React from "react";
+import React,{useState,useEffect} from "react";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
@@ -10,6 +10,8 @@ const LoginCredentials = ({ navigation }) => {
   // please your margin top should mt-11 and your left and right must be mx-5
 
   // handle the going back on the screen
+
+
 
   const { isDarkMode } = useDarkMode();
 
@@ -24,6 +26,13 @@ const LoginCredentials = ({ navigation }) => {
   const handleCreateAccountNavigation = () => {
     navigation.navigate("screenThree");
   };
+
+
+
+
+
+
+
 
   return (
     <SafeAreaView
@@ -80,6 +89,7 @@ const LoginCredentials = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={twrnc`bg-red-600  rounded-md h-12 w-96 flex items-center justify-center flex-row`}
+              onPress={{}}
             >
               <Icon_Ant name="google" color="white" size={20} />
               <Text style={twrnc`text-white text-center font-semibold ml-4`}>
