@@ -175,7 +175,7 @@ const Welcome = ({navigation}) => {
 {/** bottom side of the page  */}
 
 <View style={twrnc`mt-32 flex items-center justify-center mx-5`}>
-  <Text style={twrnc`text-center`}>
+  <Text style={twrnc`text-center ${!isDarkMode?"black":"white"}`}>
     By connecting your account, confirm that you agree{'\n'}
     <Text
               style={twrnc`font-bold mt-2 text-${

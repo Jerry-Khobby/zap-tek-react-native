@@ -27,7 +27,7 @@ const ForgotPassword = ({navigation}) => {
   const { isDarkMode } = useDarkMode();
 
   return (
-    <View style={twrnc`flex w-full h-full flex-col mt-11 relative bg-${
+    <View style={twrnc`flex w-full h-full flex-col pt-11 relative bg-${
       !isDarkMode ? "white" : "black"
     }`}
   >
@@ -93,7 +93,7 @@ const ForgotPassword = ({navigation}) => {
 </View>
 
 {/** the button below that will allow you to login  */}
-<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-28 flex`}>
+<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-14 flex`}>
         <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleSubmit}>
           <Text style={twrnc`text-white text-center font-semibold`}>Confirm Mail </Text>
         </TouchableOpacity>
