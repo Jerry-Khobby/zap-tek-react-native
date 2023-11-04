@@ -4,6 +4,7 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
 import {auth,firebase} from "./firebase"
+import { useDarkMode } from "../../context/darkmode";
 
 const SignUp = ({navigation}) => {
     const [isToggled,setIsToggled]=useState(false);
@@ -94,56 +95,64 @@ const handleChange = (name,value) => {
 // setting up firebase in my codes 
 
 
-
+const { isDarkMode } = useDarkMode();
 
   return (
-    <View style={twrnc`flex w-full h-full flex-col pt-11 relative bg-white`}>
+    <View
+    style={twrnc`flex w-full h-full flex-col pt-11 relative bg-${
+      !isDarkMode ? "white" : "black"
+    }`}
+  >
       {/** this is the view for the icon  */}
 <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
-    {/** this is the view for the icon  */}
-    <Icon_Ant name="arrowleft" size={25}/>
-</TouchableOpacity>
+<TouchableOpacity
+          style={twrnc`h-11 w-11 bg-gray-${
+            !isDarkMode ? "200" : "700"
+          } items-center justify-center  rounded-full`}
+          onPress={handleBackWardNavigation}
+        >
+          {/** this is the view for the icon  */}
+          <Icon_Ant
+            name="arrowleft"
+            size={25}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
+        </TouchableOpacity>
 </View>
 
 <View style={twrnc`flex items-center justify-center mt-2`}>
-    <Text style={twrnc`text-3xl font-semibold`}>Sign Up</Text>
+<Text style={twrnc`text-3xl font-semibold text-${!isDarkMode ? "black" : "white"}`}> Sign Up </Text>
 </View>
 {/** I change the button and make it a text input field where the first field will be username , the next one will password and the last field will email add  */}
 <View style={twrnc`mt-32 mx-5`}>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-800`}>Username</Text>
     <View style={twrnc`mb-3 -mt-4`}>
-    <TextInput
-    style={twrnc`
-    h-12 w-full pt-5
-    `}
-    placeholder="Enter your username"
-    underlineColorAndroid="transparent"
-    borderBottomWidth={1} // For iOS
-    borderBottomColor="gray" //
-    value={inputs.username} 
-    onChangeText={(text) => handleChange("username", text)}
-
-    />
+    <TextInput style={twrnc`h-12 w-full pt-5 text-${!isDarkMode ? "black" : "white"}`}
+            placeholder="Enter your username"
+              underlineColorAndroid="transparent"
+              borderBottomWidth={1} // For iOS
+              borderBottomColor="gray" //
+              value={inputs.username}
+              onChangeText={(text) => handleChange("username", text)}
+            />
     </View>
     </View>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-800`}>Password</Text>
     <View style={twrnc`mb-3 -mt-4`}>
     <TextInput
-    style={twrnc`
+              style={twrnc`
     h-12 w-full pt-5
-    `}
-    placeholder="Enter your password"
-    underlineColorAndroid="transparent"
-    borderBottomWidth={1} // For iOS
-    borderBottomColor="gray" //
-    value={inputs.password} 
-    onChangeText={(text) => handleChange("password", text)}
-    type="password"
-
-    />
+    text-${!isDarkMode ? "black" : "white"}`}
+              placeholder="Enter your password"
+              underlineColorAndroid="transparent"
+              borderBottomWidth={1} // For iOS
+              borderBottomColor="gray" //
+              value={inputs.password}
+              onChangeText={(text) => handleChange("password", text)}
+              type="password"
+            />
     </View>
     </View>
     {loading && (
@@ -155,17 +164,18 @@ const handleChange = (name,value) => {
     <Text style={twrnc`font-normal text-base text-gray-800`}>Email Address</Text>
     <View style={twrnc`mb-3 -mt-4`}>
     <TextInput
-    style={twrnc`
+              style={twrnc`
     h-12 w-full pt-5
-    `}
-    placeholder="Enter your username"
-    underlineColorAndroid="transparent"
-    borderBottomWidth={1} // For iOS
-    borderBottomColor="gray" //
-    value={inputs.email} 
-    onChangeText={(text) => handleChange("email", text)}
-    type="email"
-    />
+    text-${!isDarkMode ? "black" : "white"}`}
+              placeholder="Enter your username"
+              underlineColorAndroid="transparent"
+              borderBottomWidth={1} // For iOS
+              borderBottomColor="gray" //
+              value={inputs.email}
+              onChangeText={(text) => handleChange("email", text)}
+              type="email"
+            />
+
     </View>
     </View>
 </View>
@@ -175,10 +185,20 @@ const handleChange = (name,value) => {
 
 {/** the remember me and the section for the toggler for to keep the user remembered  */}
 <View style={twrnc`mt-8 flex items-center justify-between flex-row mx-5`}>
-        <Text style={twrnc`font-medium text-base`}>Remember me</Text>
+<Text style={twrnc`font-medium text-base text-${
+            !isDarkMode ? "black" : "white"
+          }`}
+        >
+          Remember me
+        </Text>
         <TouchableOpacity onPress={handleToggle}>
-          <Icon_Fontiso name={isToggled ? 'toggle-on' : 'toggle-off'} color={isToggled ? 'green' : 'gray'} size={32} />
+          <Icon_Fontiso
+            name={isToggled ? "toggle-on" : "toggle-off"}
+            color={isToggled ? "green" : "gray"}
+            size={32}
+          />
         </TouchableOpacity>
+
       </View>
 
 
