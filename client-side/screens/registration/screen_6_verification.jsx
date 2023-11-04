@@ -2,6 +2,7 @@ import {View,TouchableOpacity,Text,Image,TextInput,Alert } from 'react-native'
 import React,{useState,useEffect } from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
+import { useDarkMode } from "../../context/darkmode";
 
 const Verification = ({navigation}) => {
     const [pins,setPins]=useState(['','','','']);
@@ -57,21 +58,33 @@ const Verification = ({navigation}) => {
   }, [timer]);
 
   // But once the handleSubmit is clicked again , the timer must start afresh 
+  const { isDarkMode } = useDarkMode();
 
   return (
-    <View style={twrnc`flex w-full h-full flex-col mt-11 relative`}>
+    <View
+    style={twrnc`flex w-full h-full flex-col mt-11 relative bg-${ !isDarkMode ? "white" : "black"}`}
+  >
         {/** the icon for navigation backwards  */}
         <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`}>
-    {/** this is the view for the icon  */}
-    <Icon_Ant name="arrowleft" size={25}/>
-</TouchableOpacity>
+        <TouchableOpacity
+          style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full bg-gray-${
+            !isDarkMode ? "200" : "700"
+          }`}
+        >
+          {/** this is the view for the icon  */}
+          <Icon_Ant
+            name="arrowleft"
+            size={25}
+            color={`${!isDarkMode ? "black" : "white"}`}
+          />
+        </TouchableOpacity>
 </View>
 
 {/** the forgot password headings  */}
 
 <View style={twrnc`flex items-center justify-center mt-2`}>
-    <Text style={twrnc`text-3xl font-semibold`}>Verification Code</Text>
+<Text style={twrnc`text-3xl font-semibold text-${ !isDarkMode ? "black" : "white"  }`}> Verification Code</Text>
+
 </View>
 
 {/** the image below the heading tag  */}
@@ -84,7 +97,9 @@ const Verification = ({navigation}) => {
     {pins.map((pin,index)=>(
             <TextInput
             key={index}
-            style={twrnc`h-24 w-20 text-center border-2 border-gray-400 rounded-lg mx-2 text-3xl font-medium`}
+            style={twrnc`h-24 w-20 text-center border-2 border-gray-400 rounded-lg mx-2 text-3xl font-medium text-${
+              !isDarkMode ? "black" : "white"
+            }`}
             maxLength={1} // Allow only one character input
             keyboardType="numeric" // Show numeric keyboard
             value={pin}
@@ -102,9 +117,10 @@ const Verification = ({navigation}) => {
 {/* bottom side of the page */}
 <View style={twrnc`mt-40 flex items-center justify-center mx-5`}>
         <Text style={twrnc`text-center text-gray-500`}>
-          <Text style={twrnc`font-bold text-black`}>{`${Math.floor(timer / 60)}:${(timer % 60)
+        <Text style={twrnc`font-bold text-${!isDarkMode ? "black" : "white"}`}>{`${Math.floor(timer / 60)}:${(timer % 60)
             .toString()
-            .padStart(2, '0')}`}</Text> resend confirmation code
+            .padStart(2, "0")}`}</Text>{" "}
+          resend confirmation code
         </Text>
       </View>
 
