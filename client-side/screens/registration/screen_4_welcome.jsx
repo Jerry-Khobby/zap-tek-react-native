@@ -4,6 +4,7 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
 import { auth } from  "./firebase";
+import { useDarkMode } from "../../context/darkmode";
 
 const Welcome = ({navigation}) => {
 
@@ -26,6 +27,9 @@ const Welcome = ({navigation}) => {
         setInputs(values => ({ ...values, [name]: value }));
       };
       const { email, password } = inputs;
+
+
+      const { isDarkMode } = useDarkMode();
 
       const handleSubmit = () => {
         setLoading(true);
@@ -72,18 +76,30 @@ const Welcome = ({navigation}) => {
 
 
   return (
-    <SafeAreaView style={twrnc`flex-1 flex bg-white`}>
+    <SafeAreaView
+    style={twrnc`flex-1 flex bg-${!isDarkMode ? "white" : "black"}`}
+  >
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative `}>
          {/** this is the view for the icon  */}
       <View style={twrnc`mx-5`}>
-    <TouchableOpacity style={twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`} onPress={handleBackWardNavigation}>
-    {/** this is the view for the icon  */}
-    <Icon_Ant name="arrowleft" size={25}/>
-</TouchableOpacity>
+      <TouchableOpacity
+            style={twrnc`h-11 w-11 bg-gray-${
+              !isDarkMode ? "200" : "700"
+            } items-center justify-center  rounded-full`}
+            onPress={handleBackWardNavigation}
+          >
+            {/** this is the view for the icon  */}
+            <Icon_Ant
+              name="arrowleft"
+              size={25}
+              color={`${!isDarkMode ? "black" : "white"}`}
+            />
+          </TouchableOpacity>
+
 </View>
 {/** the heading sections l */}
 <View style={twrnc`flex items-center justify-center mt-2`}>
-    <Text style={twrnc`text-3xl font-semibold`}>Welcome</Text>
+<Text style={twrnc`text-3xl font-semibold text-${!isDarkMode ? "black" : "white"}`}> Welcome</Text>
     <Text style={twrnc`font-normal text-base text-gray-400`}>Please enter your data to continue</Text>
 </View>
 
@@ -92,18 +108,14 @@ const Welcome = ({navigation}) => {
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-600`}>Email</Text>
     <View style={twrnc`mb-3 -mt-4`}>
-    <TextInput
-    style={twrnc`
-    h-12 w-full pt-5
-    `}
-    placeholder="Enter your email address"
-    underlineColorAndroid="transparent"
-    borderBottomWidth={1} // For iOS
-    borderBottomColor="gray" //
-    value={inputs.email} 
-    onChangeText={(text) => handleChange("email", text)}
-
-    />
+    <TextInput style={twrnc`h-12 w-full pt-5 text-${!isDarkMode ? "black" : "white"}`}
+                placeholder="Enter your email address"
+                underlineColorAndroid="transparent"
+                borderBottomWidth={1} // For iOS
+                borderBottomColor="gray" //
+                value={inputs.email}
+                onChangeText={(text) => handleChange("email", text)}
+/>
     </View>
     </View>
     {loading && (
@@ -114,15 +126,17 @@ const Welcome = ({navigation}) => {
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-600`}>Password</Text>
     <View style={twrnc`mb-3 -mt-4`}>
-    <TextInput
-    style={twrnc`h-12 w-full pt-5`}
-    placeholder="Enter your password"
-    underlineColorAndroid="transparent"
-    borderBottomWidth={1} // For iOS
-    borderBottomColor="gray" //
-    value={inputs.password} 
-    onChangeText={(text) => handleChange("password", text)}
-    />
+    <TextInput style={twrnc`h-12 w-full pt-5 text-${
+                  !isDarkMode ? "black" : "white"
+                }`}
+                placeholder="Enter your password"
+                underlineColorAndroid="transparent"
+                borderBottomWidth={1} // For iOS
+                borderBottomColor="gray" //
+                value={inputs.password}
+                onChangeText={(text) => handleChange("password", text)}
+              />
+
     </View>
     </View>
 </View>
@@ -136,10 +150,21 @@ const Welcome = ({navigation}) => {
 
 {/** the remember me and the section for the toggler for to keep the user remembered  */}
 <View style={twrnc`mt-8 flex items-center justify-between flex-row mx-5`}>
-        <Text style={twrnc`font-medium text-base`}>Remember me</Text>
-        <TouchableOpacity onPress={handleToggle}>
-          <Icon_Fontiso name={isToggled ? 'toggle-on' : 'toggle-off'} color={isToggled ? 'green' : 'gray'} size={32} />
-        </TouchableOpacity>
+<Text
+            style={twrnc`font-medium text-base text-${
+              !isDarkMode ? "black" : "white"
+            }`}
+          >
+            Remember me
+          </Text>
+          <TouchableOpacity onPress={handleToggle}>
+            <Icon_Fontiso
+              name={isToggled ? "toggle-on" : "toggle-off"}
+              color={isToggled ? "green" : "gray"}
+              size={32}
+            />
+          </TouchableOpacity>
+
       </View>
 
 
@@ -152,7 +177,13 @@ const Welcome = ({navigation}) => {
 <View style={twrnc`mt-32 flex items-center justify-center mx-5`}>
   <Text style={twrnc`text-center`}>
     By connecting your account, confirm that you agree{'\n'}
-    <Text style={twrnc`font-bold mt-2`}>with our Terms and Conditions</Text>
+    <Text
+              style={twrnc`font-bold mt-2 text-${
+                !isDarkMode ? "black" : "white"
+              }`}
+            >
+              with our Terms and Conditions
+            </Text>
   </Text>
 </View>
 
