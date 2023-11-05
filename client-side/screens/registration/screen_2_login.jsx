@@ -5,6 +5,9 @@ import Icon_Ant from "react-native-vector-icons/AntDesign";
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 
 import { useDarkMode } from "../../context/darkmode";
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
 
 const LoginCredentials = ({ navigation }) => {
   // please your margin top should mt-11 and your left and right must be mx-5
@@ -27,6 +30,25 @@ const LoginCredentials = ({ navigation }) => {
     navigation.navigate("screenThree");
   };
 
+
+/*   useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com', // Get this from Firebase console
+    });
+  }, []);
+
+// function to handle the login with google 
+const handleGoogleSignIn = async () => {
+  try {
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
+    const { idToken } = userInfo;
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    await auth().signInWithCredential(googleCredential);
+  } catch (error) {
+    console.error(error);
+  }
+}; */
 
 
 

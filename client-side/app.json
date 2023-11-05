@@ -2,6 +2,7 @@
   "expo": {
     "name": "client-side",
     "slug": "client-side",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,12 +20,19 @@
     },
     "android": {
       "adaptiveIcon": {
+        "googleServicesFile": "./google-services.json",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jerry_anku.clientside"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b2ceca90-b43c-4374-b578-7422a4d7f532"
+      }
     }
   }
 }
