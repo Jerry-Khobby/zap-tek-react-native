@@ -17,12 +17,12 @@ const ForgotPassword = ({ navigation }) => {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const { isDarkMode } = useDarkMode();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(JSON.stringify(inputs, null, 2));
   };
+
+  const { isDarkMode } = useDarkMode();
 
   return (
     <View
