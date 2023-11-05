@@ -31,7 +31,7 @@ const LoginCredentials = ({ navigation }) => {
   };
 
 
-/*   useEffect(() => {
+ useEffect(() => {
     GoogleSignin.configure({
       webClientId: '79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com', // Get this from Firebase console
     });
@@ -45,10 +45,12 @@ const handleGoogleSignIn = async () => {
     const { idToken } = userInfo;
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     await auth().signInWithCredential(googleCredential);
+
+    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
   } catch (error) {
     console.error(error);
   }
-}; */
+}; 
 
 
 
@@ -111,7 +113,7 @@ const handleGoogleSignIn = async () => {
           <View>
             <TouchableOpacity
               style={twrnc`bg-red-600  rounded-md h-12 w-96 flex items-center justify-center flex-row`}
-              onPress={{}}
+              onPress={handleGoogleSignIn}
             >
               <Icon_Ant name="google" color="white" size={20} />
               <Text style={twrnc`text-white text-center font-semibold ml-4`}>
