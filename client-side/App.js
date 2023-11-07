@@ -6,6 +6,7 @@ import MainStackRouter from './routes/mainstacknavigator/MainStackRouter';
 import { NavigationContainer } from '@react-navigation/native';
 /* import BottomTabNavigator from "./routes/tabnavigation/tabnavigation"; */
 import 'react-native-gesture-handler';
+import "expo-dev-client";
 import { DarkModeProvider } from './context/darkmode';
 
 

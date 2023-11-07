@@ -83,9 +83,6 @@ const handleChange = (name,value) => {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailPattern.test(email);
       }
-
-
-      const { isDarkMode } = useDarkMode();
       
       
 
@@ -98,11 +95,14 @@ const handleChange = (name,value) => {
 // setting up firebase in my codes 
 
 
-
+const { isDarkMode } = useDarkMode();
 
   return (
     <View
-    style={twrnc`flex w-full h-full flex-col pt-11 relative bg-${ !isDarkMode ? "white" : "black"}`}>
+    style={twrnc`flex w-full h-full flex-col pt-11 relative bg-${
+      !isDarkMode ? "white" : "black"
+    }`}
+  >
       {/** this is the view for the icon  */}
 <View style={twrnc`mx-5`}>
 <TouchableOpacity
@@ -121,28 +121,30 @@ const handleChange = (name,value) => {
 </View>
 
 <View style={twrnc`flex items-center justify-center mt-2`}>
-<Text style={twrnc`text-3xl font-semibold text-${!isDarkMode ? "black" : "white"}`}>Sign Up</Text>
+<Text style={twrnc`text-3xl font-semibold text-${!isDarkMode ? "black" : "white"}`}> Sign Up </Text>
 </View>
 {/** I change the button and make it a text input field where the first field will be username , the next one will password and the last field will email add  */}
 <View style={twrnc`mt-32 mx-5`}>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-800`}>Username</Text>
     <View style={twrnc`mb-3 -mt-4`}>
-    <TextInput style={twrnc`  h-12 w-full pt-5 text-${!isDarkMode ? "black" : "white"}`}
-              placeholder="Enter your username"
+    <TextInput style={twrnc`h-12 w-full pt-5 text-${!isDarkMode ? "black" : "white"}`}
+            placeholder="Enter your username"
               underlineColorAndroid="transparent"
               borderBottomWidth={1} // For iOS
               borderBottomColor="gray" //
               value={inputs.username}
               onChangeText={(text) => handleChange("username", text)}
             />
-
     </View>
     </View>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-800`}>Password</Text>
     <View style={twrnc`mb-3 -mt-4`}>
-    <TextInput style={twrnc` h-12 w-full pt-5 text-${!isDarkMode ? "black" : "white"}`}
+    <TextInput
+              style={twrnc`
+    h-12 w-full pt-5
+    text-${!isDarkMode ? "black" : "white"}`}
               placeholder="Enter your password"
               underlineColorAndroid="transparent"
               borderBottomWidth={1} // For iOS
@@ -161,7 +163,10 @@ const handleChange = (name,value) => {
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
     <Text style={twrnc`font-normal text-base text-gray-800`}>Email Address</Text>
     <View style={twrnc`mb-3 -mt-4`}>
-    <TextInput style={twrnc` h-12 w-full pt-5  text-${!isDarkMode ? "black" : "white"}`}
+    <TextInput
+              style={twrnc`
+    h-12 w-full pt-5
+    text-${!isDarkMode ? "black" : "white"}`}
               placeholder="Enter your username"
               underlineColorAndroid="transparent"
               borderBottomWidth={1} // For iOS
@@ -170,6 +175,7 @@ const handleChange = (name,value) => {
               onChangeText={(text) => handleChange("email", text)}
               type="email"
             />
+
     </View>
     </View>
 </View>
@@ -179,7 +185,12 @@ const handleChange = (name,value) => {
 
 {/** the remember me and the section for the toggler for to keep the user remembered  */}
 <View style={twrnc`mt-8 flex items-center justify-between flex-row mx-5`}>
-<Text style={twrnc`font-medium text-base text-${ !isDarkMode ? "black" : "white"}`}> Remember me</Text>
+<Text style={twrnc`font-medium text-base text-${
+            !isDarkMode ? "black" : "white"
+          }`}
+        >
+          Remember me
+        </Text>
         <TouchableOpacity onPress={handleToggle}>
           <Icon_Fontiso
             name={isToggled ? "toggle-on" : "toggle-off"}
@@ -187,6 +198,7 @@ const handleChange = (name,value) => {
             size={32}
           />
         </TouchableOpacity>
+
       </View>
 
 

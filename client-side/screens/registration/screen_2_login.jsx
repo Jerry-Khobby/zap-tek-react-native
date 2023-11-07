@@ -1,15 +1,21 @@
 import { View, TouchableOpacity, Text, SafeAreaView } from "react-native";
-import React from "react";
+import React,{useState,useEffect} from "react";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 
 import { useDarkMode } from "../../context/darkmode";
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+
 
 const LoginCredentials = ({ navigation }) => {
   // please your margin top should mt-11 and your left and right must be mx-5
 
   // handle the going back on the screen
+
+
 
   const { isDarkMode } = useDarkMode();
 
@@ -24,6 +30,72 @@ const LoginCredentials = ({ navigation }) => {
   const handleCreateAccountNavigation = () => {
     navigation.navigate("screenThree");
   };
+
+
+ useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com', // Get this from Firebase console
+    });
+  }, []);
+
+// function to handle the login with google 
+const handleGoogleSignIn = async () => {
+  try {
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
+    const { idToken } = userInfo;
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    await auth().signInWithCredential(googleCredential);
+
+    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+  } catch (error) {
+    console.error(error);
+  }
+}; 
+
+
+
+
+
+// signup with facebook codes here 
+
+const handleFacebookSignIn = async () => {
+  try {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccessToken
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+    // Sign-in the user with the credential
+    await auth().signInWithCredential(facebookCredential);
+
+    // Navigate to the next screen after successful sign-in
+    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+// signup with twitter 
+
+
+
+
+
 
   return (
     <SafeAreaView
@@ -80,6 +152,7 @@ const LoginCredentials = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={twrnc`bg-red-600  rounded-md h-12 w-96 flex items-center justify-center flex-row`}
+              onPress={handleGoogleSignIn}
             >
               <Icon_Ant name="google" color="white" size={20} />
               <Text style={twrnc`text-white text-center font-semibold ml-4`}>

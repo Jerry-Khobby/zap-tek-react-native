@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "79608993528",
+    "project_id": "zapteksignin",
+    "storage_bucket": "zapteksignin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79608993528:android:16aa9d0037c17fe2c5cd0d",
+        "android_client_info": {
+          "package_name": "com.jerry_anku.clientside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79608993528-2loti0a2k8q8rm32t6dj2bkgjgmnctrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jerry_anku.clientside",
+            "certificate_hash": "ba59ae4560f1d7e8e8b3439a193fdd7f6cda2789"
+          }
+        },
+        {
+          "client_id": "79608993528-el349gdvrhlivrlhdtvs59k4bptg3edh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jerry_anku.clientside",
+            "certificate_hash": "226a67f4520d82deb7e541ea92752414b5fdb85e"
+          }
+        },
+        {
+          "client_id": "79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOiFMIzSmaqxZc7qPRt1z11ZKgaAA67Y4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
