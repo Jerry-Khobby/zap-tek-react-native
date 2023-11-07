@@ -8,14 +8,13 @@ import {
   Image,
   FlatList,
   ScrollView,
-  ImageBackground,
 } from "react-native";
 import React, { useState } from "react";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Icon_Encrypto from "react-native-vector-icons/Entypo";
 import { DrawerActions } from "@react-navigation/native";
-import Feather from "react-native-vector-icons/Feather";
+
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import { items } from "../../data/carouseldata";
@@ -25,8 +24,8 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { useDarkMode } from "../../context/darkmode";
 
 import { productSlice } from "../../store/productSlice";
+import { favSlice } from "../../store/favSlice";
 import { useSelector, useDispatch } from "react-redux";
-// import { brand } from "../../data/brand";
 
 const Homescreen = ({ navigation }) => {
   const brand = useSelector((state) => state.product.products);
@@ -34,6 +33,26 @@ const Homescreen = ({ navigation }) => {
   // a function that will open the drawer and close it
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
+  };
+
+  const handleFavBtn = () => {
+    dispatch(favSlice.actions.addFav({ brand }));
+    // alert("hello World");
+  };
+
+  const [favoriteColor, setFavoriteColor] = useState("gray");
+  const [favoriteIcon, setFavoriteIcon] = useState("heart-outline");
+
+  const handleFavoriteBtn = () => {
+    if (favoriteColor === "gray") {
+      setFavoriteColor("red");
+      setFavoriteIcon("heart");
+      dispatch(favSlice.actions.addFav());
+    } else {
+      setFavoriteColor("gray");
+      setFavoriteIcon("heart-outline");
+      dispatch(favSlice.actions.removeFav());
+    }
   };
 
   const { isDarkMode } = useDarkMode();
@@ -93,19 +112,6 @@ const Homescreen = ({ navigation }) => {
         ))}
       </View>
     );
-  };
-
-  const [favoriteColor, setFavoriteColor] = useState("gray");
-  const [favoriteIcon, setFavoriteIcon] = useState("heart-outline");
-
-  const handleFavoriteBtn = () => {
-    if (favoriteColor === "gray") {
-      setFavoriteColor("red");
-      setFavoriteIcon("heart");
-    } else {
-      setFavoriteColor("gray");
-      setFavoriteIcon("heart-outline");
-    }
   };
 
   const [likedItems, setLikedItems] = useState({});
@@ -266,6 +272,7 @@ const Homescreen = ({ navigation }) => {
         </View>
 
         {/**  the next section that shows the carousel of the images  */}
+
         <ArrivalList />
         {/** @kelvin this is where , you are supposed to work
          *
@@ -284,19 +291,19 @@ const Homescreen = ({ navigation }) => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View className="flex-1 m-2 mx-3 w-1/2">
-              <View className="w-full h-72 rounded-xl bg-red-500">
+              <View className="w-full h-72 rounded-xl bg-gray-500">
                 <Image
                   source={item.imageSource}
                   className="h-full w-full rounded-xl"
                 />
                 <TouchableOpacity
                   className="absolute top-5 right-5"
-                  onPress={handleFavoriteBtn}
+                  onPress={handleFavBtn}
                 >
                   <MaterialCommunityIcons
-                    name={favoriteIcon}
+                    name={"heart-outline"}
                     size={24}
-                    color={favoriteColor}
+                    color={"gray"}
                   />
                 </TouchableOpacity>
               </View>

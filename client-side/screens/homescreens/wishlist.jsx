@@ -1,23 +1,17 @@
 // Screen 19 => Livingstone
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  FlatList,
-  Image,
-  StatusBar,
-} from "react-native";
+import { Text, View, TouchableOpacity, FlatList, Image } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { brand } from "../../data/brand";
 import { useDarkMode } from "../../context/darkmode";
-
 import { useSelector } from "react-redux";
 
 const Wishlist = ({ navigation }) => {
-  const brand = useSelector((state) => state.product.products);
-
   // navigation backward function for wishlist screen to the homescreen
+
+  const favs = useSelector((state) => state.fav.favs);
+
   const handleBackWardNavigation = () => {
     navigation.navigate("Home");
   };
@@ -123,9 +117,9 @@ const Wishlist = ({ navigation }) => {
 
         <FlatList
           className="flex-1"
-          data={brand}
+          data={favs}
           numColumns={2}
-          keyExtractor={(item) => item.id.toString()}
+          // keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View className="flex-1 m-2 mx-3 w-1/2">
               <View className="w-full h-72 rounded-xl bg-red-500">
@@ -135,9 +129,9 @@ const Wishlist = ({ navigation }) => {
                 />
                 <TouchableOpacity className="absolute top-5 right-5">
                   <MaterialCommunityIcons
-                    name={likedItems[item.id] ? "heart" : "heart-outline"}
+                    name={"heart-outline"}
                     size={24}
-                    color={likedItems[item.id] ? "red" : "gray"}
+                    color={"gray"}
                   />
                 </TouchableOpacity>
               </View>
@@ -147,21 +141,21 @@ const Wishlist = ({ navigation }) => {
                     isDarkMode ? "text-white" : "text-black"
                   } font-semibold text-base`}
                 >
-                  {item.brandName}
+                  {item.brandName}bN
                 </Text>
                 <Text
                   className={`${
                     isDarkMode ? "text-white" : "text-black"
                   } font-semibold text-base`}
                 >
-                  {item.product}
+                  {item.product}p
                 </Text>
                 <Text
                   className={`${
                     isDarkMode ? "text-white" : "text-black"
                   } text-lg font-bold`}
                 >
-                  {item.price}
+                  {item.price}p
                 </Text>
               </TouchableOpacity>
             </View>
