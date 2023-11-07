@@ -7,6 +7,7 @@ import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 import { useDarkMode } from "../../context/darkmode";
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 
 const LoginCredentials = ({ navigation }) => {
@@ -52,6 +53,44 @@ const handleGoogleSignIn = async () => {
   }
 }; 
 
+
+
+
+
+// signup with facebook codes here 
+
+const handleFacebookSignIn = async () => {
+  try {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccessToken
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+    // Sign-in the user with the credential
+    await auth().signInWithCredential(facebookCredential);
+
+    // Navigate to the next screen after successful sign-in
+    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+// signup with twitter 
 
 
 

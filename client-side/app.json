@@ -2,7 +2,14 @@
   "expo": {
     "name": "client-side",
     "slug": "client-side",
-    "plugins": ["@react-native-google-signin/google-signin"],
+    "plugins": ["@react-native-google-signin/google-signin",
+    "react-native-fbsdk-next",
+    {
+      "appID": "48127127xxxxxxxx",
+      "clientToken": "c5078631e4065b60d7544a95xxxxxxxx",
+      "displayName": "RN SDK Demo"
+    }
+  ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

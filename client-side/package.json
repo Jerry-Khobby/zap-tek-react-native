@@ -24,6 +24,7 @@
     "expo": "~49.0.13",
     "expo-dev-client": "~2.4.11",
     "expo-linear-gradient": "~12.3.0",
+    "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.5.2",
     "install": "^0.13.0",
@@ -31,6 +32,7 @@
     "npm": "^10.2.3",
     "react": "18.2.0",
     "react-native": "0.72.6",
+    "react-native-fbsdk-next": "^12.1.0",
     "react-native-gesture-handler": "^2.12.0",
     "react-native-paper": "^5.11.0",
     "react-native-reanimated": "~3.3.0",
@@ -39,8 +41,7 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^10.0.1",
-    "tailwind-react-native-classnames": "^1.5.1",
-    "expo-splash-screen": "~0.20.5"
+    "tailwind-react-native-classnames": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
