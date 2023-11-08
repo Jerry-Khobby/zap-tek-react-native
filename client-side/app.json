@@ -33,6 +33,7 @@
       "eas": {
         "projectId": "b2ceca90-b43c-4374-b578-7422a4d7f532"
       }
-    }
+    },
+    "scheme": "com.clientside.app"
   }
 }

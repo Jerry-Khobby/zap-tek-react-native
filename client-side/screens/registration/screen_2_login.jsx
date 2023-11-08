@@ -7,15 +7,18 @@ import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 import { useDarkMode } from "../../context/darkmode";
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-/* import { LoginManager, AccessToken } from 'react-native-fbsdk-next'; */
+import { NativeModules } from 'react-native';
+const { RNTwitterSignIn } = NativeModules;
+
+
+
+
 
 
 const LoginCredentials = ({ navigation }) => {
   // please your margin top should mt-11 and your left and right must be mx-5
 
   // handle the going back on the screen
-
-
 
   const { isDarkMode } = useDarkMode();
 
@@ -54,43 +57,31 @@ const handleGoogleSignIn = async () => {
 }; 
 
 
+// signing with twitter here
+RNTwitterSignIn.init('TlLLxDQ1cVPAfFnCqG7HU6nza', 'Gs0Im9SKFLqLJy5Q8kFIO4yKpjADIGwxzc5L6hHf6YuB4gD6jI').then(() =>
+  console.log('Twitter SDK initialized')
+);
 
 
-
-/* // signup with facebook codes here 
-
-const handleFacebookSignIn = async () => {
+async function onTwitterButtonPress() {
   try {
-    // Attempt login with permissions
-    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+    // Perform the login request
+    const { authToken, authTokenSecret } = await RNTwitterSignIn.logIn();
 
-    if (result.isCancelled) {
-      throw 'User cancelled the login process';
-    }
-
-    // Once signed in, get the users AccessToken
-    const data = await AccessToken.getCurrentAccessToken();
-
-    if (!data) {
-      throw 'Something went wrong obtaining access token';
-    }
-
-    // Create a Firebase credential with the AccessToken
-    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+    // Create a Twitter credential with the tokens
+    const twitterCredential = auth.TwitterAuthProvider.credential(authToken, authTokenSecret);
 
     // Sign-in the user with the credential
-    await auth().signInWithCredential(facebookCredential);
+    await auth().signInWithCredential(twitterCredential);
 
-    // Navigate to the next screen after successful sign-in
-    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+    console.log('Signed in with Twitter!');
   } catch (error) {
-    console.error(error);
+    console.error('Twitter sign-in error:', error);
   }
-};
- */
+} 
 
 
-// signup with twitter 
+
 
 
 
@@ -142,6 +133,7 @@ const handleFacebookSignIn = async () => {
           <View style={twrnc`mb-2`}>
             <TouchableOpacity
               style={twrnc`bg-blue-400 rounded-md h-12 w-96 flex items-center justify-center flex-row`}
+              onPress={() => onTwitterButtonPress()}
             >
               <Icon_Ant name="twitter" color="white" size={20} />
               <Text style={twrnc`text-white text-center font-semibold ml-4`}>
