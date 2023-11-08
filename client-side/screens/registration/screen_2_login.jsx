@@ -7,7 +7,7 @@ import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 import { useDarkMode } from "../../context/darkmode";
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+/* import { LoginManager, AccessToken } from 'react-native-fbsdk-next'; */
 
 
 const LoginCredentials = ({ navigation }) => {
@@ -57,7 +57,7 @@ const handleGoogleSignIn = async () => {
 
 
 
-// signup with facebook codes here 
+/* // signup with facebook codes here 
 
 const handleFacebookSignIn = async () => {
   try {
@@ -87,7 +87,7 @@ const handleFacebookSignIn = async () => {
     console.error(error);
   }
 };
-
+ */
 
 
 // signup with twitter 
