@@ -2,7 +2,8 @@
   "expo": {
     "name": "client-side",
     "slug": "client-side",
-    "plugins": ["@react-native-google-signin/google-signin"],
+    "plugins": ["@react-native-google-signin/google-signin"
+  ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -5,6 +5,7 @@ import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
 import {auth,firebase} from "./firebase"
 import { useDarkMode } from "../../context/darkmode";
+/* import auth from '@react-native-firebase/auth'; */
 
 const SignUp = ({navigation}) => {
     const [isToggled,setIsToggled]=useState(false);
