@@ -31,50 +31,36 @@ const handleChange = (name,value) => {
         setLoading(true);
       
         if (isValidEmail(email)) {
-          // Check if the email already exists in the database
-          firebase.database().ref('users').orderByChild('email').equalTo(email).once('value', (snapshot) => {
-            if (snapshot.exists()) {
-              // Email already exists, show an error message
-              Alert.alert('Error', 'This email address is already in use.');
+          // Create a new user without saving data to the database
+          auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              user.updateProfile({
+                displayName: username,
+              })
+              .then(() => {
+                console.log('User account created & signed in with username:', user);
+                setLoading(false);
+                navigation.replace('screenFour');
+              })
+              .catch((error) => {
+                console.error('Error setting username:', error);
+                setLoading(false);
+              });
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error('Error creating user:', errorCode, errorMessage);
+              Alert.alert('Error', errorMessage);
               setLoading(false);
-            } else {
-              // Email does not exist, create a new user
-              auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                  const user = userCredential.user;
-                  user.updateProfile({
-                    displayName: username,
-                  })
-                    .then(() => {
-                      // Save user data in the database
-                      firebase.database().ref('users/' + user.uid).set({
-                        username: username,
-                        email: email,
-                        password: password
-                      });
-                      console.log('User account created & signed in with username:', user);
-                      setLoading(false);
-                      navigation.replace('screenFour');
-                    })
-                    .catch((error) => {
-                      console.error('Error setting username:', error);
-                      setLoading(false);
-                    });
-                })
-                .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  console.error('Error creating user:', errorCode, errorMessage);
-                  Alert.alert('Error', errorMessage);
-                  setLoading(false);
-                });
-            }
-          });
+            });
         } else {
           console.error('Invalid email address. Please provide a valid email.');
           setLoading(false);
         }
       };
+      
       
       
 
