@@ -75,7 +75,7 @@ async function onTwitterButtonPress() {
 
     // Sign-in the user with the credential
     await auth().signInWithCredential(twitterCredential);
-
+    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
     console.log('Signed in with Twitter!');
   } catch (error) {
     console.error('Twitter sign-in error:', error);
@@ -106,7 +106,12 @@ async function onFacebookButtonPress() {
   const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
 
   // Sign-in the user with the credential
-  return auth().signInWithCredential(facebookCredential);
+  await auth().signInWithCredential(facebookCredential);
+  navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+
+
+  
+  
 }catch(e) {
   console.log("There was an error signing");
 }

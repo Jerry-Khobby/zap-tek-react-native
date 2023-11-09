@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import { useDarkMode } from "../../context/darkmode";
 import Icon_Ant from "react-native-vector-icons/AntDesign"
-/* import Icon_EvilIcons from "react-native-vector-icons/EvilIcons"; */
+import {auth} from "./firebase";
 
 const ForgotPassword = ({navigation}) => {
 
@@ -12,7 +12,9 @@ const ForgotPassword = ({navigation}) => {
     navigation.navigate("screenFour");
   }
 
-    const [inputs,setInputs]=useState({});
+    const [inputs,setInputs]=useState({
+      email:''
+    });
 
     
     const handleChange = (name, value) => {
@@ -25,6 +27,29 @@ const ForgotPassword = ({navigation}) => {
   }
 
   const { isDarkMode } = useDarkMode();
+
+
+
+
+const forgottenPassword = ()=>{
+  const {email}=inputs;
+  if(isValidEmail(email)){
+
+    
+  }
+
+
+}
+
+
+
+
+// function to check the email address validity
+function isValidEmail(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
+
 
   return (
     <View style={twrnc`flex w-full h-full flex-col pt-11 relative bg-${
@@ -67,15 +92,15 @@ const ForgotPassword = ({navigation}) => {
 {/** the forms to be handled  */}
 <View style={twrnc`mt-14 mx-5`}>
     <View style={twrnc`mb-2 flex flex-col  justify-between`}>
-    <Text style={twrnc`font-normal text-base text-gray-600`}>Username</Text>
+    <Text style={twrnc`font-normal text-base text-gray-600`}>Email</Text>
     <View style={twrnc`mb-3 -mt-4`}>
     <TextInput  style={twrnc`h-12 w-full pt-5 text-${!isDarkMode ? "black" : "white"}`}
-              placeholder="Enter your username"
+              placeholder="Please enter your valid email address"
               underlineColorAndroid="transparent"
               borderBottomWidth={1} // For iOS
               borderBottomColor="gray" //
-              value={inputs.username}
-              onChange={handleChange}
+              value={inputs.email}
+              onChangeText={(text) => handleChange("email", text)}
             />
     </View>
     </View>
@@ -85,7 +110,7 @@ const ForgotPassword = ({navigation}) => {
 
 {/** bottom side of the page  */}
 
-<View style={twrnc`mt-36 flex items-center justify-center mx-5`}>
+<View style={twrnc`mt-28 flex items-center justify-center mx-5`}>
   <Text style={twrnc`text-center text-gray-500`}>
     Please write your email to receive a {'\n'}
     <Text style={twrnc` mt-2`}>confirmation code to set a new password </Text>
@@ -93,7 +118,7 @@ const ForgotPassword = ({navigation}) => {
 </View>
 
 {/** the button below that will allow you to login  */}
-<View style={twrnc`flex items-center   absolute bottom-0 mt-auto bg-purple-500 w-full h-14 flex`}>
+<View style={twrnc`flex items-center  mb-0 absolute bottom-0  bg-purple-500 w-full h-14 flex`}>
         <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleSubmit}>
           <Text style={twrnc`text-white text-center font-semibold`}>Confirm Mail </Text>
         </TouchableOpacity>
