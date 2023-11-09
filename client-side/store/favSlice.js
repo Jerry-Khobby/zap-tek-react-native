@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { brand } from "../data/brand";
 
 const initialState = {
   favs: [],
@@ -9,8 +10,8 @@ export const favSlice = createSlice({
   initialState,
   reducers: {
     addFav: (state, action) => {
-      const NewFav = action.payload.brand;
-      state.favs.push({ NewFav });
+      const NewFav = action.payload;
+      state.favs.push({ brand: NewFav });
     },
     removeFav: (state, action) => {
       const NewFav = action.payload;

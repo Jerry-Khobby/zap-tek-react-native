@@ -122,7 +122,7 @@ const Wishlist = ({ navigation }) => {
           // keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View className="flex-1 m-2 mx-3 w-1/2">
-              <View className="w-full h-72 rounded-xl bg-red-500">
+              <View className="w-full h-72 rounded-xl bg-gray-500">
                 <Image
                   source={item.imageSource}
                   className="h-full w-full rounded-xl"
