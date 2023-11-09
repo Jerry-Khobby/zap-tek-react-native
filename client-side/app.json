@@ -2,7 +2,14 @@
   "expo": {
     "name": "client-side",
     "slug": "client-side",
-    "plugins": ["@react-native-google-signin/google-signin"
+    "plugins": ["@react-native-google-signin/google-signin",["react-native-fbsdk-next",
+    {
+      "appID": "1528267521268306",
+      "clientToken": "f94767e7dd902ba19b991c73e20b2b3c",
+      "displayName": "@ZaptechApp",
+      "scheme": "fb1528267521268306"
+    }
+  ]
   ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -34,7 +41,6 @@
       "eas": {
         "projectId": "b2ceca90-b43c-4374-b578-7422a4d7f532"
       }
-    },
-    "scheme": "com.clientside.app"
+    }
   }
 }

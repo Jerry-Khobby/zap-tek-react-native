@@ -7,6 +7,7 @@ import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 import { useDarkMode } from "../../context/darkmode";
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import { NativeModules } from 'react-native';
 const { RNTwitterSignIn } = NativeModules;
 
@@ -85,6 +86,33 @@ async function onTwitterButtonPress() {
 
 // handle sign in with facebook 
 
+async function onFacebookButtonPress() {
+  try{
+  // Attempt login with permissions
+  const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+  if (result.isCancelled) {
+    throw 'User cancelled the login process';
+  }
+
+  // Once signed in, get the users AccessToken
+  const data = await AccessToken.getCurrentAccessToken();
+
+  if (!data) {
+    throw 'Something went wrong obtaining access token';
+  }
+
+  // Create a Firebase credential with the AccessToken
+  const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+  // Sign-in the user with the credential
+  return auth().signInWithCredential(facebookCredential);
+}catch(e) {
+  console.log("There was an error signing");
+}
+}
+
+
 
 
 
@@ -123,6 +151,7 @@ async function onTwitterButtonPress() {
           <View style={twrnc`mb-2`}>
             <TouchableOpacity
               style={twrnc`bg-blue-600  rounded-md h-12 w-96 flex items-center justify-center flex-row`}
+              onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
             >
               <Icon_EvilIcons name="sc-facebook" color="white" size={24} />
               <Text style={twrnc`text-white text-center font-semibold ml-3`}>
