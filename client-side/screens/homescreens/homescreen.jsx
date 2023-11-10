@@ -1,5 +1,5 @@
 import {Text, View,TouchableOpacity,TextInput,StyleSheet,Pressable,Image,FlatList} from 'react-native'
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 import Icon_Encrypto from "react-native-vector-icons/Entypo";
@@ -10,6 +10,7 @@ import {items} from '../../data/carouseldata';
 import { brand } from "../../data/brand";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from '../../context/darkmode';
+import { StatusBar } from 'expo-status-bar';
 
 
 const Homescreen = ({navigation}) => {
@@ -94,6 +95,10 @@ const handleLikeToggle = (itemId) => {
   return (
     <View style={!isDarkMode?twrnc`flex w-full h-full flex-col  pt-11 relative bg-white`:twrnc`flex w-full h-full flex-col  pt-11 relative bg-black`}>
       {/** the header will consist of two iccons at the top of the screen  */}
+      <StatusBar
+        backgroundColor={!isDarkMode ? 'white' : 'white'} // Set status bar background color based on dark mode state
+      />
+
      <View style={twrnc`flex flex-row items-center justify-between`}>
         {/** the icon for navigation backwards  */}
     <View style={twrnc`mx-5`}>

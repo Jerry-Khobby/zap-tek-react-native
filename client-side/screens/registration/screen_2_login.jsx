@@ -22,7 +22,7 @@ const LoginCredentials = ({ navigation }) => {
 
   // handle the going back on the screen
 
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode,toggleLoginMode } = useDarkMode();
 
   const handleBackWardNavigation = () => {
     navigation.navigate("screenOne");
@@ -53,6 +53,7 @@ const handleGoogleSignIn = async () => {
     await auth().signInWithCredential(googleCredential);
 
     navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+    toggleLoginMode();
   } catch (error) {
     console.error(error);
   }
@@ -76,6 +77,7 @@ async function onTwitterButtonPress() {
     // Sign-in the user with the credential
     await auth().signInWithCredential(twitterCredential);
     navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+    toggleLoginMode();
     console.log('Signed in with Twitter!');
   } catch (error) {
     console.error('Twitter sign-in error:', error);
@@ -108,6 +110,7 @@ async function onFacebookButtonPress() {
   // Sign-in the user with the credential
   await auth().signInWithCredential(facebookCredential);
   navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
+toggleLoginMode(true);
 
 
   

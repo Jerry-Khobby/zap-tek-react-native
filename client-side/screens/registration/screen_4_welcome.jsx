@@ -4,7 +4,7 @@ import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
 import Icon_Fontiso from "react-native-vector-icons/FontAwesome";
 import { auth } from  "./firebase";
-import { useDarkMode } from "../../context/darkmode";
+import { useDarkMode} from "../../context/darkmode";
 
 const Welcome = ({navigation}) => {
 
@@ -29,7 +29,7 @@ const Welcome = ({navigation}) => {
       const { email, password } = inputs;
 
 
-      const { isDarkMode } = useDarkMode();
+      const { isDarkMode,toggleLoginMode } = useDarkMode();
 
       const handleSubmit = () => {
         setLoading(true);
@@ -39,6 +39,7 @@ const Welcome = ({navigation}) => {
               const user = userCredential.user;
               setLoading(false);
               navigation.replace('homescreen');
+              toggleLoginMode();
             })
             .catch((error) => {
               setLoading(false);

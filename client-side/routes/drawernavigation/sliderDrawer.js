@@ -45,6 +45,7 @@ const DrawerMainComponent = ({navigation}) => {
     <Drawer.Screen name="screen15" component={AddNewCard}/>
     <Drawer.Screen name="screen16" component={OrderConfirmed}/>
     <Drawer.Screen name="screen18" component={Nike}/>
+
       </Drawer.Navigator>
    /*  </NavigationContainer> */
   );

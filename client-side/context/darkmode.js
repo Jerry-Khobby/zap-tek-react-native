@@ -5,6 +5,7 @@ const DarkModeContext = createContext();
 
 export const DarkModeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isLoggin,setIsLoggin] = useState(false);
 
   useEffect(() => {
     // Load dark mode state from AsyncStorage when the component mounts
@@ -22,6 +23,33 @@ export const DarkModeProvider = ({ children }) => {
     loadDarkModeState();
   }, []);
 
+
+  useEffect(()=>{
+    const loadIsLoggInState=async()=>{
+      try{
+        const savedLogginState=await AsyncStorage.getItem('loginMode');
+        if(savedLogginState!==null){
+          setIsLoggin(JSON.parse(savedLogginState))
+        }
+
+      }catch(error){
+        console.error('Error loading dark mode state:', error);
+      }
+    }
+    loadIsLoggInState();
+  },[]);
+
+const toggleLoginMode=()=>{
+  setIsLoggin((prevMode)=>{
+    const newMode=!prevMode;
+    AsyncStorage.setItem('loginMode',JSON.stringify(newMode)).catch((error)=>{
+      console.error('Error saving dark mode state:', error);
+    });
+    return newMode;
+  })
+}
+
+
   const toggleDarkMode = () => {
     // Toggle dark mode state and save it to AsyncStorage
     setIsDarkMode((prevMode) => {
@@ -34,7 +62,7 @@ export const DarkModeProvider = ({ children }) => {
   };
 
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode,toggleLoginMode,isLoggin}}>
       {children}
     </DarkModeContext.Provider>
   );

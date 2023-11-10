@@ -12,6 +12,7 @@ import {
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
   import { brand } from "../../data/brand";
   import { useDarkMode } from "../../context/darkmode";
+  import { StatusBar } from "expo-status-bar";
   
   const Nike = ({navigation}) => {
     //backwards navigations
@@ -28,6 +29,9 @@ import {
     return (
       <View className={`flex-1 pt-11 bg-${!isDarkMode ? "white" : "black"}`}>
         {/* Top part */}
+        <StatusBar
+        backgroundColor={!isDarkMode ? 'white' : 'white'} // Set status bar background color based on dark mode state
+      />
         <View className="flex-row justify-between items-center mx-5 my-5">
           {/* Navigate back */}
           <TouchableOpacity

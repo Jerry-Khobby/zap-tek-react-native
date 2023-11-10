@@ -1,2 +1,17 @@
 # zap-tek-react-native
 This is a mobile application built with react native by a group 
+
+
+Api key-TlLLxDQ1cVPAfFnCqG7HU6nza
+Api Secret-Gs0Im9SKFLqLJy5Q8kFIO4yKpjADIGwxzc5L6hHf6YuB4gD6jI
+bearer token-AAAAAAAAAAAAAAAAAAAAAKikqwEAAAAAGiIg%2BJ38GXe0gWQUJ3G%2BmXzIvq0%3DGMku4dyUePutlLvc0km9Q1VbZROVNUa0lYVUhs42ZZHhO26GIA
+
+
+
+Access Token-1482334304768299011-V9eArVFIlGG5KjiCN2VvmqMxYpqnYX
+Access Secret token-BWDRh1cbgOZPnRxWhAph3BSxWT32X2duVUhG40HIB8iAf
+
+
+clentID-UFk2TDdPazgxZUxnNmlienRDbzE6MTpjaQ
+clientscreetID-ppFPyjQlX8wg9vuxKBsd3tB3CNN28eVH5ZWKIJgzSjwAHcq8wn
+
