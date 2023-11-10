@@ -14,13 +14,26 @@ import { Text, Switch,Avatar,Title,Caption} from 'react-native-paper';
 import React, { useState } from "react";
 import { useDarkMode } from '../../context/darkmode';
 import Feather from 'react-native-vector-icons/Feather';
+import { getAuth, signOut } from 'firebase/auth';
 
 const DrawerContents = (props) => {
 
   
-    const {isDarkMode,toggleDarkMode} = useDarkMode();
-    
+    const {isDarkMode,toggleDarkMode,toggleLoginMode} = useDarkMode();
 
+
+    const auth = getAuth();
+    
+    const handleSignOut = async () => {
+        try {
+          await signOut(auth);
+          toggleLoginMode(); // Set the login status to false
+          // Navigate to the signup screen (assuming you are using React Navigation)
+          props.navigation.replace('screenTwo'); // Replace 'SignUp' with the actual screen name for your signup screen
+        } catch (error) {
+          console.error('Error signing out:', error);
+        }
+      };
 
     return(
         <View style={!isDarkMode ? tw`flex-1` : tw`flex-1 bg-black`}>
@@ -117,7 +130,10 @@ const DrawerContents = (props) => {
                             <Text style={!isDarkMode ? tw`text-lg ml-2` : tw`text-lg ml-2 text-white`}>Settings</Text>
                         </View>
                     </View>
-                    <TouchableOpacity>
+                    
+                    <TouchableOpacity
+                    onPress={handleSignOut}
+                    >
                         <View style={tw `mt-10  flex-row`}>
                             <MaterialIcons name="logout" size={24} color="red" />
                             <Text style={tw`text-red-500 text-lg ml-5`}>Logout</Text>

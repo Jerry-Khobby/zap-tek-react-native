@@ -28,7 +28,7 @@ function MainStackRouter() {
       await new Promise(resolve => setTimeout(resolve, 2000)); // Simulating 2 seconds delay
 
       // Set the initial route based on the login status
-      setInitialRoute(!isLoggin ? 'homescreen' : 'screenTwo');
+      setInitialRoute(!isLoggin ? 'screenTwo' : 'homescreen');
     };
 
     checkLoginStatus();
