@@ -1,23 +1,18 @@
-import {Text, View,TouchableOpacity,TextInput,StyleSheet,Pressable,Image,FlatList,ScrollView,ImageBackground} from 'react-native'
-import React,{useState} from 'react'
+import {Text, View,TouchableOpacity,TextInput,StyleSheet,Pressable,Image,FlatList} from 'react-native'
+import React,{useState,useEffect} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 import Icon_Encrypto from "react-native-vector-icons/Entypo";
 import { DrawerActions } from '@react-navigation/native';
-import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import {items} from '../../data/carouseldata';
-import { newArrivalData } from '../../data/carouseldata';
-import tw from 'tailwind-react-native-classnames';
 import { brand } from "../../data/brand";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from '../../context/darkmode';
 
 
 const Homescreen = ({navigation}) => {
-
-
   // a function that will open the drawer and close it 
   const openDrawer=()=>{
     navigation.dispatch(DrawerActions.toggleDrawer());
@@ -25,17 +20,27 @@ const Homescreen = ({navigation}) => {
 
 const { isDarkMode} = useDarkMode();
 
-
-
-
-
-
-
-
   //moving to the next screen on clicking the an image 
 const handleScreenMovement=()=>{
   navigation.navigate("screen9");
 }
+
+
+// implementing a function for the search textinput fields 
+const [search,setSearch]=useState('');
+const [filteredData, setFilteredData] = useState(brand);
+
+
+
+
+const searchFilteredFunction = (text) => {
+  setSearch(text);
+  const filteredItems = brand.filter((item) =>
+    item.brandName.toLowerCase().includes(text.toLowerCase())
+  );
+  setFilteredData(filteredItems);
+};
+
 
   // defining a function that will handle the brands of the carousels at the top 
   const ListCategories = () => {
@@ -131,6 +136,8 @@ const handleLikeToggle = (itemId) => {
           placeholder="Search..."
           underlineColorAndroid="transparent"
           placeholderTextColor={isDarkMode ? '#999999' : '#CCCCCC'} // Change placeholder text color based on isDarkMode state
+          onChangeText={(text) =>searchFilteredFunction(text)}
+          value={search}
         />
         </View>
       </View>
@@ -165,21 +172,11 @@ const handleLikeToggle = (itemId) => {
   />
 </View>
 
-{/**  the next section that shows the carousel of the images  */}
 <ArrivalList/>
-{/** @kelvin this is where , you are supposed to work 
- * 
- * 
- * please create the cards items , you did in your codes, please do well to do by the dimensions in the figma design and use your phone expo to test okay 
- * 
- * Please communicate any issues or bugs or errors in the group so we all collaborate thank you 
- * 
- * And please go by the tailwind format, because I got alot of errors working which says, most of the tailwindcss classes you used are invalid 
- * 
-  */}
+
     <FlatList
             className="flex-1"
-            data={brand}
+            data={filteredData}
             numColumns={2}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (

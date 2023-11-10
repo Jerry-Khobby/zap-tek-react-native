@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import { useDarkMode } from "../../context/darkmode";
 import Icon_Ant from "react-native-vector-icons/AntDesign"
-import {auth} from "./firebase";
+import {firebase} from "./firebase";
 
 const ForgotPassword = ({navigation}) => {
 
@@ -34,11 +34,14 @@ const ForgotPassword = ({navigation}) => {
 const forgottenPassword = ()=>{
   const {email}=inputs;
   if(isValidEmail(email)){
-
-    
+firebase.auth().sendPasswordResetEmail(email)
+.then(()=>{
+  alert("reset email sent to "+email);
+})
+.catch(function(e){
+  console.log(e);
+})
   }
-
-
 }
 
 
@@ -119,7 +122,7 @@ function isValidEmail(email) {
 
 {/** the button below that will allow you to login  */}
 <View style={twrnc`flex items-center  mb-0 absolute bottom-0  bg-purple-500 w-full h-14 flex`}>
-        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={handleSubmit}>
+        <TouchableOpacity style={twrnc`w-full flex items-center justify-center pt-5`} onPress={forgottenPassword}>
           <Text style={twrnc`text-white text-center font-semibold`}>Confirm Mail </Text>
         </TouchableOpacity>
       </View>
