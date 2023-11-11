@@ -31,7 +31,12 @@ const handleScreenMovement=()=>{
 const [search,setSearch]=useState('');
 const [filteredData, setFilteredData] = useState(brand);
 
-
+// handling the color of the icons on clicked 
+const [isClicked, setIsClicked] = useState(false);
+const handlePress = () => {
+  // Toggle the state when the button is pressed
+  setIsClicked(!isClicked);
+};
 
 
 const searchFilteredFunction = (text) => {
@@ -86,10 +91,11 @@ const [likedItems, setLikedItems] = useState({});
   
 const handleLikeToggle = (itemId) => {
   setLikedItems((prevLikedItems) => {
-    return { ...prevLikedItems, [itemId]: !prevLikedItems[itemId] };
+    const updatedLikedItems = { ...prevLikedItems };
+    updatedLikedItems[itemId] = !updatedLikedItems[itemId];
+    return updatedLikedItems;
   });
 };
-
 
 
   return (
@@ -179,45 +185,40 @@ const handleLikeToggle = (itemId) => {
 
 <ArrivalList/>
 
-    <FlatList
-            className="flex-1"
-            data={filteredData}
-            numColumns={2}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <View className="flex-1 m-2 mx-3 w-1/2">
-                <View className="w-full h-72 rounded-xl bg-red-500">
-                  <Image
-                    source={item.imageSource}
-                    className="h-full w-full rounded-xl"
-                  />
-                  <TouchableOpacity className="absolute top-5 right-5">
-                  <MaterialCommunityIcons
-                  name={
-                    likedItems[item.id]
-                      ? "heart"
-                      : "heart-outline"
-                  }
-                  size={24}
-                  color={likedItems[item.id] ? "red" : "gray"}
-                />
-                  </TouchableOpacity>
-                </View>
-                <TouchableOpacity onPress={handleScreenMovement}>
-                <Text style={!isDarkMode ? twrnc`font-semibold text-base` : [twrnc`font-semibold text-base`, { color: '#CCCCCC' }]}>
-  {item.brandName}
-</Text>
-<Text style={!isDarkMode ? twrnc`text-base font-semibold` : [twrnc`text-base font-semibold`, { color: '#CCCCCC' }]}>
-  {item.product}
-</Text>
-<Text style={!isDarkMode ? twrnc`text-lg font-bold` : [twrnc`text-lg font-bold`, { color: '#CCCCCC' }]}>
-  {item.price}
-</Text>
-
-                </TouchableOpacity>
-              </View>
-            )}
-          />
+<FlatList
+      className="flex-1"
+      data={filteredData}
+      numColumns={2}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
+        <View className="flex-1 m-2 mx-3 w-1/2">
+          <View className="w-full h-72 rounded-xl bg-red-500">
+            <Image source={item.imageSource} className="h-full w-full rounded-xl" />
+            <TouchableOpacity
+              onPress={() => handleLikeToggle(item.id)}
+              className="absolute top-5 right-5"
+            >
+              <MaterialCommunityIcons
+                name={likedItems[item.id] ? 'heart' : 'heart-outline'}
+                size={24}
+                color={likedItems[item.id] ? 'red' : 'gray'}
+              />
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity onPress={handleScreenMovement}>
+            <Text style={!isDarkMode ? twrnc`font-semibold text-base` : [twrnc`font-semibold text-base`, { color: '#CCCCCC' }]}>
+              {item.brandName}
+            </Text>
+            <Text style={!isDarkMode ? twrnc`text-base font-semibold` : [twrnc`text-base font-semibold`, { color: '#CCCCCC' }]}>
+              {item.product}
+            </Text>
+            <Text style={!isDarkMode ? twrnc`text-lg font-bold` : [twrnc`text-lg font-bold`, { color: '#CCCCCC' }]}>
+              {item.price}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+    />
 </View>
   )
 }
