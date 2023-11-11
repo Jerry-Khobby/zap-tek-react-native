@@ -11,6 +11,8 @@ import { brand } from "../../data/brand";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from '../../context/darkmode';
 import { StatusBar } from 'expo-status-bar';
+import { useDispatch, useSelector } from "react-redux";
+import { addToWishList, removeFromWishList } from "../../state/reducers";
 
 
 const Homescreen = ({navigation}) => {
@@ -20,6 +22,11 @@ const Homescreen = ({navigation}) => {
   };
 
 const { isDarkMode} = useDarkMode();
+
+
+/// dispatching the redux reducers 
+const dispatch = useDispatch();
+
 
   //moving to the next screen on clicking the an image 
 const handleScreenMovement=()=>{
@@ -87,14 +94,19 @@ const ArrivalList = () => {
 
 
 
-const [likedItems, setLikedItems] = useState({});
+const likedItems = useSelector((state) => state.wishlist.wishListItems);
   
 const handleLikeToggle = (itemId) => {
-  setLikedItems((prevLikedItems) => {
-    const updatedLikedItems = { ...prevLikedItems };
-    updatedLikedItems[itemId] = !updatedLikedItems[itemId];
-    return updatedLikedItems;
-  });
+  const isItemLiked = likedItems.some((item) => item.id === itemId);
+
+  if (isItemLiked) {
+    // If item is liked, remove it from the wishlist
+    dispatch(removeFromWishList(itemId));
+  } else {
+    // If item is not liked, add it to the wishlist
+    const selectedItem = filteredData.find((item) => item.id === itemId);
+    dispatch(addToWishList(selectedItem));
+  }
 };
 
 
@@ -198,11 +210,11 @@ const handleLikeToggle = (itemId) => {
               onPress={() => handleLikeToggle(item.id)}
               className="absolute top-5 right-5"
             >
-              <MaterialCommunityIcons
-                name={likedItems[item.id] ? 'heart' : 'heart-outline'}
-                size={24}
-                color={likedItems[item.id] ? 'red' : 'gray'}
-              />
+             <MaterialCommunityIcons
+                  name={likedItems.some((likedItem) => likedItem.id === item.id) ? 'heart' : 'heart-outline'}
+                  size={24}
+                  color={likedItems.some((likedItem) => likedItem.id === item.id) ? 'red' : 'gray'}
+                />
             </TouchableOpacity>
           </View>
           <TouchableOpacity onPress={handleScreenMovement}>

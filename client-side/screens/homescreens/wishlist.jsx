@@ -8,10 +8,11 @@ import {
     StatusBar,
   } from "react-native";
   import React,{useState} from "react";
-  import { useNavigation } from "@react-navigation/native";
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
   import { brand } from "../../data/brand";
   import { useDarkMode } from "../../context/darkmode";
+  import { useSelector,useDispatch } from "react-redux";
+  import { removeFromWishList } from "../../state/reducers";
   
   const Wishlist = ({navigation}) => {
   // navigation backward function for wishlist screen to the homescreen 
@@ -20,17 +21,34 @@ const handleBackWardNavigation=()=>{
     navigation.navigate("Home");
 }
 
-    const [likedItems, setLikedItems] = useState({});
-  
-    const handleLikeToggle = (itemId) => {
-      setLikedItems((prevLikedItems) => {
-        return { ...prevLikedItems, [itemId]: !prevLikedItems[itemId] };
-      });
-    };
 
+  
+
+
+    const wishlistItems = useSelector((state) => state.wishlist.wishListItems);
+    const dispatch = useDispatch();
+ // Initialize likedItems state with IDs of items in the wishlist
+ const initialLikedItems = wishlistItems.reduce((acc, item) => {
+  acc[item.id] = true;
+  return acc;
+}, {});
+const [likedItems, setLikedItems] = useState(initialLikedItems);
 
 
   const {isDarkMode}=useDarkMode();
+
+
+  const handleLikeToggle = (itemId) => {
+    // Dispatch the removeFromWishList action with the item ID
+    dispatch(removeFromWishList(itemId));
+
+    // Update likedItems state by removing the item with the given ID
+    setLikedItems((prevLikedItems) => {
+      const newLikedItems = { ...prevLikedItems };
+      delete newLikedItems[itemId];
+      return newLikedItems;
+    });
+  };
 
 
 // I will be doing the
@@ -39,6 +57,9 @@ const handleBackWardNavigation=()=>{
   const handleScreenMovement=()=>{
     navigation.navigate("screen9");
   }
+
+
+
 
 
 
@@ -80,7 +101,7 @@ const handleBackWardNavigation=()=>{
   
           <FlatList
             className="flex-1"
-            data={brand}
+            data={wishlistItems} // Use wishlistItems instead of brand
             numColumns={2}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
@@ -90,15 +111,13 @@ const handleBackWardNavigation=()=>{
                     source={item.imageSource}
                     className="h-full w-full rounded-xl"
                   />
-                  <TouchableOpacity className="absolute top-5 right-5">
+                  <TouchableOpacity className="absolute top-5 right-5"
+                  onPress={() => handleLikeToggle(item.id)} // Pass the item ID to handleLikeToggle
+                  >
                   <MaterialCommunityIcons
-                  name={
-                    likedItems[item.id]
-                      ? "heart"
-                      : "heart-outline"
-                  }
+                  name={likedItems[item.id] ? "heart" : "heart"}
                   size={24}
-                  color={likedItems[item.id] ? "red" : "gray"}
+                  color="red" // Set color to red for liked items
                 />
                   </TouchableOpacity>
                 </View>
