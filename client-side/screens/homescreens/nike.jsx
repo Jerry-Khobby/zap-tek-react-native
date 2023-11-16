@@ -139,4 +139,3 @@ import {
   
   export default Nike;
   
-  const styles = StyleSheet.create({});

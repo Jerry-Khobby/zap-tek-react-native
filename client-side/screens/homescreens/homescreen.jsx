@@ -12,7 +12,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { useDarkMode } from '../../context/darkmode';
 import { StatusBar } from 'expo-status-bar';
 import { useDispatch, useSelector } from "react-redux";
-import { addToWishList, removeFromWishList } from "../../state/reducers";
+import { addToWishList, removeFromWishList,addToMovableItems } from "../../state/reducers";
 
 
 const Homescreen = ({navigation}) => {
@@ -28,10 +28,6 @@ const { isDarkMode} = useDarkMode();
 const dispatch = useDispatch();
 
 
-  //moving to the next screen on clicking the an image 
-const handleScreenMovement=()=>{
-  navigation.navigate("screen9");
-}
 
 
 // implementing a function for the search textinput fields 
@@ -217,7 +213,11 @@ const handleLikeToggle = (itemId) => {
                 />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={handleScreenMovement}>
+          <TouchableOpacity
+  onPress={() => {dispatch(addToMovableItems({ id: item.id,imageSource: item.imageSource,brandName: item.brandName,product: item.product,price: item.price,}));
+  navigation.navigate("screen9", { imageSource: item.imageSource });
+  }}
+>
             <Text style={!isDarkMode ? twrnc`font-semibold text-base` : [twrnc`font-semibold text-base`, { color: '#CCCCCC' }]}>
               {item.brandName}
             </Text>

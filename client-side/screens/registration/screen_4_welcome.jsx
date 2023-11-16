@@ -1,4 +1,4 @@
-import {Text, View,TouchableOpacity,TextInput,SafeAreaView,ActivityIndicator,Alert} from 'react-native'
+import {Text, View,TouchableOpacity,TextInput,SafeAreaView,ActivityIndicator,Alert,ScrollView} from 'react-native'
 import React,{useState} from 'react'
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_Ant from "react-native-vector-icons/AntDesign"
@@ -80,6 +80,7 @@ const Welcome = ({navigation}) => {
     <SafeAreaView
     style={twrnc`flex-1 flex bg-${!isDarkMode ? "white" : "black"}`}
   >
+     <ScrollView contentContainerStyle={twrnc`flex w-full h-full`}>
     <View style={twrnc`flex w-full h-full flex-col mt-11 relative `}>
          {/** this is the view for the icon  */}
       <View style={twrnc`mx-5`}>
@@ -195,6 +196,7 @@ const Welcome = ({navigation}) => {
         </TouchableOpacity>
       </View>
     </View>
+    </ScrollView>
     </SafeAreaView>
   )
 }
