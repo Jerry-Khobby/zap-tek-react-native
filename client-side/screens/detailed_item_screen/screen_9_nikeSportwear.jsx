@@ -22,7 +22,9 @@ import { addToMovableItems } from '../../state/reducers';
 
 const NikeSportsWear = ({navigation,route}) => {
 
-    const { imageSource } = route.params;
+    const { imageSource } = route.params ?? {};
+
+
 
 // dark mode works 
 const {isDarkMode}=useDarkMode()
