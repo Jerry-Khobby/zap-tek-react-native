@@ -42,6 +42,7 @@ const CartScreen = ({navigation}) => {
 //implementing the dark mode 
 const {isDarkMode}=useDarkMode();
   return (
+    <ScrollView>
     <View className={`flex-1 ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
       <View className="flex-row mx-5 mt-7 items-center flex justify-between">
         <TouchableOpacity onPress={handleBackWardNavigation}>
@@ -57,7 +58,7 @@ const {isDarkMode}=useDarkMode();
         <View/>
       </View>
       <ScrollView>
-      <View className={`flex-row mx-5 mt-4 ${isDarkMode ? 'bg-gray-700' : 'bg-white'} p-3 rounded-xl shadow`}>
+      <View className={`flex-row mx-5 mt-8 ${isDarkMode ? 'bg-gray-700' : 'bg-white'} p-3 rounded-xl shadow`}>
       <Image source={require('../../assets/icon.png')} className="w-24 h-28 rounded-xl" />
       <View className="ml-5">
         <Text className={`text-base font-semibold ${isDarkMode ? 'text-white' : 'text-black'}`}>
@@ -186,7 +187,7 @@ const {isDarkMode}=useDarkMode();
         <Text className="text-base text-gray-500">Shipping cost</Text>
         <Text className={`text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-500'}`}>$10</Text>
       </View>
-      <View className="mx-5 flex-row justify-between items-center">
+      <View className="mx-5 mb-14 flex-row justify-between items-center">
         <Text className="text-base text-gray-500">Total</Text>
         <Text className={`text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-500'}`}>$120</Text>
       </View>
@@ -200,6 +201,7 @@ const {isDarkMode}=useDarkMode();
     </TouchableOpacity>
       </View>
     </View>
+  </ScrollView>
   );
 };
 

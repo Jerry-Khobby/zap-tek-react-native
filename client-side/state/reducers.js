@@ -40,17 +40,30 @@ state.wishListItems=state.wishListItems.filter(
 addToMovableItems: (state, action) => {
     const { id, imageSource, brandName, product, price } = action.payload;
     // Add item to movable items
-    state.movableItems.push({
-      id,
-      imageSource,
-      brandName,
-      product,
-      price,
-    });
-  },
-    }
-
-
+    const existingItemIndex = state.movableItems.findIndex(
+        (item) => item.id === id
+      );
+      if (existingItemIndex !== -1) {
+        // If the item exists, replace it with the new one
+        state.movableItems[existingItemIndex] = {
+          id,
+          imageSource,
+          brandName,
+          product,
+          price,
+        };
+      } else {
+        // If the item doesn't exist, add it to movableItems
+        state.movableItems.push({
+          id,
+          imageSource,
+          brandName,
+          product,
+          price,
+        });
+      }
+    }  
+}
 })
 
 

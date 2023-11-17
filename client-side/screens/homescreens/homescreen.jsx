@@ -215,7 +215,6 @@ const handleLikeToggle = (itemId) => {
           </View>
           <TouchableOpacity
 onPress={() => {
-  if (item && item.imageSource) {
     dispatch(addToMovableItems({
       id: item.id,
       imageSource: item.imageSource,
@@ -223,8 +222,8 @@ onPress={() => {
       product: item.product,
       price: item.price,
     }));
-    navigation.navigate("screen9", { imageSource: item.imageSource });
-  }
+    navigation.navigate("screen9");
+
 }}
 >
             <Text style={!isDarkMode ? twrnc`font-semibold text-base` : [twrnc`font-semibold text-base`, { color: '#CCCCCC' }]}>

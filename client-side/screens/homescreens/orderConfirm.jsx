@@ -47,7 +47,7 @@ const {isDarkMode}=useDarkMode();
         source={require("../../assets/Order.png")}
         className="relative -top-16 mx-auto my-auto"
       />
-      <View className="relative -top-36">
+      <View className="relative -top-14">
       <Text className={`text-4xl font-bold text-center ${isDarkMode ? 'text-white' : 'text-black'}`}>
   Order Confirmed!
 </Text>

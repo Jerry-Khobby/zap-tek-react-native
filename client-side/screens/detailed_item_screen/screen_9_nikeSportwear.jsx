@@ -17,19 +17,16 @@ import EvilIcons from "react-native-vector-icons/EvilIcons";
 import React, {useState} from "react";
 import {Review_rating} from "../../data/review_ratings";
 import {useDarkMode} from "../../context/darkmode";
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import { addToMovableItems } from '../../state/reducers';
 
-const NikeSportsWear = ({navigation,route}) => {
+const NikeSportsWear = ({navigation}) => {
 
-    const { imageSource } = route.params ?? {};
 
 
 
 // dark mode works 
 const {isDarkMode}=useDarkMode()
-
-
 const likedItems = useSelector((state) => state.wishlist.movableItems);
     const handleBackWardNavigation=()=>{
         navigation.navigate("HomeComponents");
@@ -146,7 +143,7 @@ const handleForwardReview=()=>{
             {/* Topmost view: containing the background image and other accompanying features.*/}
             <View style={twrnc `bg-gray-100`}>
                 <ImageBackground
-                    source={imageSource}
+                      source={likedItems.length > 0 ? likedItems[0].imageSource : null}
                     resizeMode={"contain"}
                     style={twrnc `h-80 w-full mt-4`}>
                     <View style={twrnc `flex-row justify-between`}>
