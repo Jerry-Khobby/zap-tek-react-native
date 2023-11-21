@@ -78,12 +78,39 @@ addToMovableItems: (state, action) => {
     })
     },
     updateQuantityCartItem:()=>{
-      
+      // for us to update the quantity we have check if the item exists 
+      const existingItemIndex=state.cartItems.findIndex((item)=>item.id===id);
+      if(existingItemIndex!==-1){
+        state.cartItems[existingItemIndex].quantity++;
+      }else{
+       // If the item doesn't exist, add it to cartItems with a quantity of 1
+    state.cartItems.push({
+      id,
+      imageSource,
+      brandName,
+      product,
+      price,
+      quantity: 1,
+    });
+      }
+    },
+    removalCartItem:(state,action)=>{
+      const itemIdToRemove=action.payload;
+      state.cartItems=state.cartItems.filter(
+          (item)=>item.id!==itemIdToRemove
+      )
     }
 
 }
 })
 
 
-export const {addToWishList,removeFromWishList,addToMovableItems}=wishListSlice.actions;
+export const {
+  addToWishList,
+  removeFromWishList,
+  addToMovableItems,
+  removalCartItem,
+  addItemsToCartScreen,
+  updateQuantityCartItem
+}=wishListSlice.actions;
 export default wishListSlice.reducer; 
