@@ -121,7 +121,7 @@ const Welcome = ({navigation}) => {
     </View>
     </View>
     {loading && (
-        <View style={twrnc`...absolute inset-0 items-center justify-center flex-1 flex`}>
+        <View style={twrnc`absolute inset-0 items-center justify-center flex-1 flex`}>
           <ActivityIndicator size="large" color="blue" />
         </View>
       )}

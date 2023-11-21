@@ -6,6 +6,9 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState={
     wishListItems:[],// now any item from the wish list will be stored in this empty array 
     movableItems: [], // New state for movable items
+    cartItems:[],// manage the state of the cart items that have added 
+    quantity: 0, //The initial value for the quantity must be zero 
+
 
 }
 
@@ -62,7 +65,22 @@ addToMovableItems: (state, action) => {
           price,
         });
       }
-    }  
+    },
+    addItemsToCartScreen:(state,action)=>{
+      const {id,imageSource,brandName,product,price} = action.payload;
+      state.cartItems.push({
+        id,
+        imageSource,
+        brandName,
+        product,
+        price,
+      quantity:state.quantity+1,
+    })
+    },
+    updateQuantityCartItem:()=>{
+      
+    }
+
 }
 })
 
