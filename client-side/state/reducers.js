@@ -41,31 +41,28 @@ state.wishListItems=state.wishListItems.filter(
 )
 },
 addToMovableItems: (state, action) => {
-    const { id, imageSource, brandName, product, price } = action.payload;
-    // Add item to movable items
-    const existingItemIndex = state.movableItems.findIndex(
-        (item) => item.id === id
-      );
-      if (existingItemIndex !== -1) {
-        // If the item exists, replace it with the new one
-        state.movableItems[existingItemIndex] = {
-          id,
-          imageSource,
-          brandName,
-          product,
-          price,
-        };
-      } else {
-        // If the item doesn't exist, add it to movableItems
-        state.movableItems.push({
-          id,
-          imageSource,
-          brandName,
-          product,
-          price,
-        });
-      }
-    },
+  const { id, imageSource, brandName, product, price } = action.payload;
+  
+  // Check if the item already exists in movableItems
+  const existingItemIndex = state.movableItems.findIndex(
+    (item) => item.id === id
+  );
+
+  if (existingItemIndex !== -1) {
+    // If the item exists, remove it
+    state.movableItems.splice(existingItemIndex, 1);
+  }
+
+  // Add the new item to the beginning of movableItems
+  state.movableItems.unshift({
+    id,
+    imageSource,
+    brandName,
+    product,
+    price,
+  });
+},
+
     addItemsToCartScreen:(state,action)=>{
       const {id,imageSource,brandName,product,price} = action.payload;
       state.cartItems.push({

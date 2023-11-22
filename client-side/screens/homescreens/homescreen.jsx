@@ -222,6 +222,16 @@ onPress={() => {
       product: item.product,
       price: item.price,
     }));
+
+    
+    // Log the dispatched item
+    console.log("Dispatched Item:", {
+      id: item.id,
+      imageSource: item.imageSource,
+      brandName: item.brandName,
+      product: item.product,
+      price: item.price,
+    });
     navigation.navigate("screen9");
 
 }}

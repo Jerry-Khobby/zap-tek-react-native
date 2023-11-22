@@ -32,21 +32,23 @@ const dispatch = useDispatch();
 
 // dark mode works 
 const {isDarkMode}=useDarkMode()
-const likedItems = useSelector((state) => state.wishlist.movableItems);
+const likedItems = useSelector((state) => state.wishlist.movableItems[0]);
     const handleBackWardNavigation=()=>{
         navigation.navigate("HomeComponents");
       }
 
       // handle move to the cart screen 
       const CartScreenNavigation=()=>{
+        if(selectedItem){
         dispatch(addItemsToCartScreen({
-            id: likedItems[0].id,
-            imageSource: likedItems[0].imageSource,
-            brandName: likedItems[0].brandName,
-            product: likedItems[0].product,
-            price: likedItems[0].price,
+            id: selectedItem.id,
+            imageSource: selectedItem.imageSource,
+            brandName: selectedItem.brandName,
+            product: selectedItem.product,
+            price: selectedItem.price,
           }));
         navigation.navigate("screen12");
+        }
       }
 
 
@@ -155,7 +157,7 @@ const handleForwardReview=()=>{
             {/* Topmost view: containing the background image and other accompanying features.*/}
             <View style={twrnc `bg-gray-100`}>
                 <ImageBackground
-                      source={likedItems.length > 0 ? likedItems[0].imageSource : null}
+                      source={likedItems?likedItems.imageSource:null}
                     resizeMode={"contain"}
                     style={twrnc `h-80 w-full mt-4`}>
                     <View style={twrnc `flex-row justify-between`}>
@@ -182,12 +184,12 @@ const handleForwardReview=()=>{
                 <View style={twrnc `mx-4`}>
                     <View>
                         <View style={twrnc `flex-row justify-between mt-3`}>
-                            <Text style={twrnc `text-gray-300`}>{likedItems.length > 0 ? likedItems[0].product : null}</Text>
+                            <Text style={twrnc `text-gray-300`}>{likedItems? likedItems.product : null}</Text>
                             <Text style={twrnc `text-gray-300 mr-2`}>Price</Text>
                         </View>
                         <View style={twrnc `flex-row justify-between mt-1`}>
-                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>{likedItems.length > 0 ? likedItems[0].brandName : null}</Text>
-                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>{likedItems.length > 0 ? likedItems[0].price : null}</Text>
+                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>{likedItems? likedItems.brandName : null}</Text>
+                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>{likedItems? likedItems.price : null}</Text>
                         </View>
                     </View>
 
