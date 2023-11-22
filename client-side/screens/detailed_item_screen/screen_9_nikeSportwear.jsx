@@ -17,12 +17,17 @@ import EvilIcons from "react-native-vector-icons/EvilIcons";
 import React, {useState} from "react";
 import {Review_rating} from "../../data/review_ratings";
 import {useDarkMode} from "../../context/darkmode";
-import { useSelector} from 'react-redux';
-import { addToMovableItems } from '../../state/reducers';
+import { useSelector,useDispatch} from 'react-redux';
+import { addToWishList,
+    removeFromWishList,
+    addToMovableItems,
+    removalCartItem,
+    addItemsToCartScreen,
+    updateQuantityCartItem } from '../../state/reducers';
 
 const NikeSportsWear = ({navigation}) => {
 
-
+const dispatch = useDispatch();
 
 
 // dark mode works 
@@ -34,6 +39,13 @@ const likedItems = useSelector((state) => state.wishlist.movableItems);
 
       // handle move to the cart screen 
       const CartScreenNavigation=()=>{
+        dispatch(addItemsToCartScreen({
+            id: likedItems[0].id,
+            imageSource: likedItems[0].imageSource,
+            brandName: likedItems[0].brandName,
+            product: likedItems[0].product,
+            price: likedItems[0].price,
+          }));
         navigation.navigate("screen12");
       }
 
@@ -170,12 +182,12 @@ const handleForwardReview=()=>{
                 <View style={twrnc `mx-4`}>
                     <View>
                         <View style={twrnc `flex-row justify-between mt-3`}>
-                            <Text style={twrnc `text-gray-300`}>Men's Printed Pullover Hoodie</Text>
+                            <Text style={twrnc `text-gray-300`}>{likedItems.length > 0 ? likedItems[0].product : null}</Text>
                             <Text style={twrnc `text-gray-300 mr-2`}>Price</Text>
                         </View>
                         <View style={twrnc `flex-row justify-between mt-1`}>
-                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>Nike Club Fleece</Text>
-                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>$120</Text>
+                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>{likedItems.length > 0 ? likedItems[0].brandName : null}</Text>
+                        <Text style={!isDarkMode ? twrnc`text-black text-lg font-bold` : twrnc`text-white text-lg font-bold`}>{likedItems.length > 0 ? likedItems[0].price : null}</Text>
                         </View>
                     </View>
 

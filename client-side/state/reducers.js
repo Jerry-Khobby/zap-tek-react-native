@@ -111,6 +111,5 @@ export const {
   addToMovableItems,
   removalCartItem,
   addItemsToCartScreen,
-  updateQuantityCartItem
-}=wishListSlice.actions;
+  updateQuantityCartItem}=wishListSlice.actions;
 export default wishListSlice.reducer; 
