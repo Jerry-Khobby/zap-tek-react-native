@@ -25,7 +25,7 @@ const splashScreenImageSource = !isDarkMode
           if(isLoggin){
 navigation.navigate("homescreen");
           }else{
-            navigation.navigate("screenOne");
+            navigation.navigate("screenTwo");
 }
 
         }, 3000); // 10 seconds in milliseconds

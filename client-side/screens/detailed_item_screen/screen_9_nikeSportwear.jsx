@@ -14,7 +14,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import EvilIcons from "react-native-vector-icons/EvilIcons";
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {Review_rating} from "../../data/review_ratings";
 import {useDarkMode} from "../../context/darkmode";
 import { useSelector,useDispatch} from 'react-redux';
@@ -36,17 +36,26 @@ const likedItems = useSelector((state) => state.wishlist.movableItems[0]);
     const handleBackWardNavigation=()=>{
         navigation.navigate("HomeComponents");
       }
-
+      const cartItems = useSelector(state => state.cartItems);
       // handle move to the cart screen 
       const CartScreenNavigation=()=>{
-        if(selectedItem){
+        if(likedItems){
         dispatch(addItemsToCartScreen({
-            id: selectedItem.id,
-            imageSource: selectedItem.imageSource,
-            brandName: selectedItem.brandName,
-            product: selectedItem.product,
-            price: selectedItem.price,
+            id: likedItems.id,
+            imageSource: likedItems.imageSource,
+            brandName: likedItems.brandName,
+            product: likedItems.product,
+            price: likedItems.price,
           }));
+          console.log("Dispatched Item:", {
+            id: likedItems.id,
+            imageSource: likedItems.imageSource,
+            brandName: likedItems.brandName,
+            product: likedItems.product,
+            price: likedItems.price,
+          });
+           // Log the items in the cart after dispatching the action
+ 
         navigation.navigate("screen12");
         }
       }

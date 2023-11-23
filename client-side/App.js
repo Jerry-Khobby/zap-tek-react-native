@@ -13,8 +13,6 @@ import store from './state/store';
 
 
 
-
-
 const App = () => {
 
   return (

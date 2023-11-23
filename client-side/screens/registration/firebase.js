@@ -9,14 +9,16 @@ import 'firebase/database'
 
 
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAXCojgclX9reonVX3X3Thl7M4duPeEpZw",
-  authDomain: "zaptechmobileapp.firebaseapp.com",
-  projectId: "zaptechmobileapp",
-  storageBucket: "zaptechmobileapp.appspot.com",
-  messagingSenderId: "112260528090",
-  appId: "1:112260528090:web:cbab4201aa8ff76ea2f2e3",
-  measurementId: "G-DBVXVN15E8",
+  // Your config options here
+  apiKey: "AIzaSyA79xAFsBk-180CYybDMMx_KVfzvmoyJIs",
+  authDomain: "zapteksignin.firebaseapp.com",
+  projectId: "zapteksignin",
+  storageBucket: "zapteksignin.appspot.com",
+  messagingSenderId: "79608993528",
+  appId: "1:79608993528:web:9a6554ce56fc727bc5cd0d",
+  measurementId: "G-XF9E5T97TE"
 };
 
 // Initialize Firebase
@@ -31,7 +33,6 @@ else{
 
 //store the authentication details in a conatiner auth and export.
 const auth = firebase.auth()
-
 
 
 
