@@ -10,24 +10,17 @@ import {
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from "../../context/darkmode";
-import { brand } from "../../data/brand";
-import {useSelector} from "react-redux"
+/* import { brand } from "../../data/brand"; */
+import {useSelector,useDispatch} from "react-redux"
+import  {
+  removalCartItem,  decreaseQuantity,
+  increaseQuantity,
+} from "../../state/reducers";
+
 
 const CartScreen = ({ navigation }) => {
-  const [count, setCount] = useState(1);
   const likedItems = useSelector((state) => state.wishlist.cartItems);
-
-  const increment = () => {
-    if (count < 8) {
-      setCount(count + 1);
-    }
-  };
-
-  const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
+  const dispatch=useDispatch();
 
   // navgiation backwards
   const handleBackWardNavigation = () => {
@@ -56,8 +49,8 @@ const CartScreen = ({ navigation }) => {
   // the item to be implemented by the redux 
 
   return (
-    <ScrollView>
-      <View className={`flex-1 ${isDarkMode ? "bg-black" : "bg-white"}`}>
+    <ScrollView className="h-full w-full">
+      <View className={`flex-1  ${isDarkMode ? "bg-black" : "bg-white"}`}>
         <View className="flex-row mx-5 mt-7 items-center flex justify-between">
           <TouchableOpacity onPress={handleBackWardNavigation}>
             <View
@@ -118,12 +111,14 @@ const CartScreen = ({ navigation }) => {
                       isDarkMode ? "text-white" : "text-gray-500"
                     }`}
                   >
-                    ${item.price}
+                    {item.price}
                   </Text>
                   <View className="flex-row mt-1 items-center">
                     <TouchableOpacity
                       className="border-2 border-gray-100 rounded-full p-1 mr-3 text-center"
-                      onPress={decrement}
+                      onPress={()=>{
+                        dispatch(decreaseQuantity(item.id));
+                      }}
                     >
                       <MaterialCommunityIcons
                         name="chevron-down"
@@ -132,13 +127,16 @@ const CartScreen = ({ navigation }) => {
                       />
                     </TouchableOpacity>
                     <Text style={{ color: isDarkMode ? "white" : "black" }}>
-                      {count}
+                      {item.quantity}
                     </Text>
                     <TouchableOpacity
                       className={`border-2 border-gray-100 rounded-full p-1 ml-3 text-center ${
                         isDarkMode ? "bg-gray-700" : ""
                       }`}
-                      onPress={increment}
+                      onPress={()=>{
+                        dispatch(increaseQuantity(item.id));
+                        console.log("it is working");
+                      }}
                     >
                       <MaterialCommunityIcons
                         name="chevron-up"
@@ -151,6 +149,9 @@ const CartScreen = ({ navigation }) => {
                         name="delete-outline"
                         size={20}
                         color={isDarkMode ? "white" : "black"}
+                    onPress={()=>{
+                      dispatch(removalCartItem(item.id))
+                    }}
                       />
                     </View>
                   </View>
