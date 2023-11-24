@@ -116,14 +116,15 @@ const CartScreen = ({ navigation }) => {
                   <View className="flex-row mt-1 items-center">
                     <TouchableOpacity
                       className="border-2 border-gray-100 rounded-full p-1 mr-3 text-center"
-                      onPress={()=>{
-                        dispatch(decreaseQuantity(item.id));
-                      }}
+
                     >
                       <MaterialCommunityIcons
                         name="chevron-down"
                         size={20}
                         color={isDarkMode ? "white" : "black"}
+                        onPress={()=>{
+                          dispatch(decreaseQuantity(item.id));
+                        }}
                       />
                     </TouchableOpacity>
                     <Text style={{ color: isDarkMode ? "white" : "black" }}>
@@ -133,15 +134,16 @@ const CartScreen = ({ navigation }) => {
                       className={`border-2 border-gray-100 rounded-full p-1 ml-3 text-center ${
                         isDarkMode ? "bg-gray-700" : ""
                       }`}
-                      onPress={()=>{
-                        dispatch(increaseQuantity(item.id));
-                        console.log("it is working");
-                      }}
+                     
                     >
                       <MaterialCommunityIcons
                         name="chevron-up"
                         size={20}
                         color={isDarkMode ? "white" : "black"}
+                        onPress={()=>{
+                          dispatch(increaseQuantity(item.id));
+                          console.log("it is working");
+                        }}
                       />
                     </TouchableOpacity>
                     <View className="border-2 border-gray-100 rounded-full p-1 ml-16">

@@ -88,25 +88,21 @@ addItemsToCartScreen: (state, action) => {
   }
 },
 increaseQuantity: (state, action) => {
-  const { id } = action.payload;
-  const updatedCartItems = state.cartItems.map((item) => {
-    if (item.id === id) {
-      const newQuantity = item.quantity + 1;
+  const  id  = action.payload;
+  const existingItemIndex = state.cartItems.findIndex((item) => item.id === id);
 
-      // Split the price into dollars and cents
+  if (existingItemIndex !== -1) {
+    // Use the existingItemIndex to directly access the item
+    state.cartItems[existingItemIndex].quantity += 1;
+     // Split the price into dollars and cents
+// Update the price based on quantity
 
-      return {
-        ...item,
-        quantity: newQuantity,
-      };
-    }
-    return item;
-  });
-  return { ...state, cartItems: updatedCartItems };
+  }
 },
 
+
 decreaseQuantity: (state, action) => {
-  const { id } = action.payload;
+  const id = action.payload;
   const updatedCartItems = state.cartItems.map((item) => {
     if (item.id === id) {
       const newQuantity = item.quantity - 1;
@@ -128,6 +124,8 @@ decreaseQuantity: (state, action) => {
 
   return { ...state, cartItems: filteredCartItems };
 },
+
+
 
 removalCartItem:(state,action)=>{
       const itemIdToRemove=action.payload;
