@@ -17,7 +17,11 @@ import {
   decreaseQuantity,
   increaseQuantity,
 } from "../../state/reducers";
-import { selectedSubTotal } from "../../state/reducers";
+import {
+  selectedSubTotal,
+  selectedDeliveryFee,
+  selectedTotal,
+} from "../../state/reducers";
 
 const CartScreen = ({ navigation }) => {
   const likedItems = useSelector((state) => state.wishlist.cartItems);
@@ -44,9 +48,9 @@ const CartScreen = ({ navigation }) => {
     navigation.navigate("screen16");
   };
 
-  // getting the subtotal
-  const subtotal = useSelector(selectedSubTotal);
-
+  const subtotal = useSelector(selectedSubTotal); // getting the subtotal
+  const delivery = useSelector(selectedDeliveryFee); // getting the delivery fee
+  const total = useSelector(selectedTotal); // getting the total fee
   //implementing the dark mode
   const { isDarkMode } = useDarkMode();
 
@@ -270,7 +274,7 @@ const CartScreen = ({ navigation }) => {
               isDarkMode ? "text-white" : "text-gray-500"
             }`}
           >
-            $10
+            ${delivery}
           </Text>
         </View>
         <View className="mx-5 mb-14 flex-row justify-between items-center">
@@ -280,7 +284,7 @@ const CartScreen = ({ navigation }) => {
               isDarkMode ? "text-white" : "text-gray-500"
             }`}
           >
-            $120
+            ${total}
           </Text>
         </View>
       </ScrollView>

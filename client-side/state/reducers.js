@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 // we define an initial state for the items that we are about to store
 const initialState = {
@@ -144,3 +144,16 @@ export const selectedSubTotal = (state) =>
     (acc, cartItems) => acc + cartItems.price * cartItems.quantity,
     0
   );
+
+export const numOfSelectedItems = (state) => state.wishlist.cartItems.length;
+
+export const selectedDeliveryFee = createSelector(
+  selectedSubTotal,
+  (subTotal) => (subTotal === 0 ? 0 : 20)
+);
+
+export const selectedTotal = createSelector(
+  selectedSubTotal,
+  selectedDeliveryFee,
+  (subtotal, deliveryFee) => subtotal + deliveryFee
+);
