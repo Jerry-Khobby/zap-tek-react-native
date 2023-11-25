@@ -233,7 +233,7 @@ onPress={() => {
               {item.product}
             </Text>
             <Text style={!isDarkMode ? twrnc`text-lg font-bold` : [twrnc`text-lg font-bold`, { color: '#CCCCCC' }]}>
-              {item.price}
+              ${item.price}
             </Text>
           </TouchableOpacity>
         </View>
