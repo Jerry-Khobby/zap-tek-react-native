@@ -10,6 +10,7 @@ import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Wishlist from '../../screens/homescreens/wishlist';
 import Nike from '../../screens/homescreens/nike';
 import { useDarkMode } from "../../context/darkmode";
+import AddNewCard from "../../screens/detailed_item_screen/screen_15_addNewCard"
 
 const Tab = createBottomTabNavigator();
 
