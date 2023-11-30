@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import DrawerMainComponent from '../drawernavigation/sliderDrawer';
 import React, { useState, useEffect } from 'react';
 import {useDarkMode} from "../../context/darkmode"
+import Nike from '../../screens/homescreens/nike';
 
 
 
@@ -50,6 +51,7 @@ function MainStackRouter() {
         <Stack.Screen name="screenFour" component={Welcome} />
         <Stack.Screen name="screenFive" component={ForgotPassword} />
         <Stack.Screen name="screenSix" component={Verification} />
+        <Stack.Screen name="nike" component={Nike}/>
         <Stack.Screen name="homescreen" component={DrawerMainComponent} />
       </Stack.Navigator>
     </NavigationContainer>

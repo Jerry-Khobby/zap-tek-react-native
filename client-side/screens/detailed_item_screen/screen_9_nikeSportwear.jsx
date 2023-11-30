@@ -20,12 +20,7 @@ import {
   import { useDarkMode } from "../../context/darkmode";
   import { useSelector, useDispatch } from "react-redux";
   import {
-    addToWishList,
-    removeFromWishList,
-    addToMovableItems,
-    removalCartItem,
     addItemsToCartScreen,
-    updateQuantityCartItem,
   } from "../../state/reducers";
   
   const NikeSportsWear = ({ navigation }) => {

@@ -27,6 +27,7 @@ import {
   removeFromWishList,
   addToMovableItems,
 } from "../../state/reducers";
+import Nike from "./nike";
 
 const Homescreen = ({ navigation }) => {
   // a function that will open the drawer and close it
@@ -88,14 +89,21 @@ const Homescreen = ({ navigation }) => {
   //ArrivalList function that must be  called  in the main body
   const ArrivalList = () => {
     const categoryList = ["New Arrival", "View All"];
-    const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+    const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  
+    const handleCategoryPress = (index) => {
+      setSelectedCategoryIndex(index);
+  
+      // Check if "View All" is clicked, then navigate to "Nike"
+      if (index === 1) {
+        navigation.navigate("nike");
+      }
+    };
+  
     return (
-      <View style={twrnc`mt-2  mx-6 flex-row justify-between`}>
+      <View style={twrnc`mt-2 mx-6 flex-row justify-between`}>
         {categoryList.map((minor, index) => (
-          <Pressable
-            key={index}
-            onPress={() => setSelectedCategoryIndex(index)}
-          >
+          <Pressable key={index} onPress={() => handleCategoryPress(index)}>
             <Text
               style={[
                 minorCategoryListText,
@@ -108,7 +116,7 @@ const Homescreen = ({ navigation }) => {
         ))}
       </View>
     );
-  };
+  }
 
   const likedItems = useSelector((state) => state.wishlist.wishListItems);
 
