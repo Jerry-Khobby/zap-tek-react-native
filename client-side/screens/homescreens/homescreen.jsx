@@ -322,6 +322,7 @@ const Homescreen = ({ navigation }) => {
                       product: item.product,
                       price: item.price,
                       description: item.description,
+                      rating: item.rating,
                     })
                   );
                   navigation.navigate("screen9");

@@ -34,8 +34,15 @@ const wishListSlice = createSlice({
       );
     },
     addToMovableItems: (state, action) => {
-      const { id, imageSource, brandName, product, price, description } =
-        action.payload;
+      const {
+        id,
+        imageSource,
+        brandName,
+        product,
+        price,
+        description,
+        rating,
+      } = action.payload;
 
       // Check if the item already exists in movableItems
       const existingItemIndex = state.movableItems.findIndex(
@@ -55,6 +62,7 @@ const wishListSlice = createSlice({
         product,
         price,
         description,
+        rating,
       });
     },
 

@@ -49,6 +49,7 @@ const NikeSportsWear = ({ navigation }) => {
           product: likedItems.product,
           price: likedItems.price,
           description: likedItems.description,
+          rating: likedItems.rating,
         })
       );
       console.log("Dispatched Item:", {
@@ -58,6 +59,7 @@ const NikeSportsWear = ({ navigation }) => {
         product: likedItems.product,
         price: likedItems.price,
         description: likedItems.description,
+        rating: likedItems.rating,
       });
       // Log the items in the cart after dispatching the action
 
@@ -302,7 +304,7 @@ const NikeSportsWear = ({ navigation }) => {
               </Text>
               <Text
                 className="text-base text-violet-600"
-                onPress={() => navigation.navigate("screen10")}
+                onPress={handleForwardReview}
               >
                 View All
               </Text>
@@ -316,10 +318,18 @@ const NikeSportsWear = ({ navigation }) => {
               />
               <View style={twrnc`flex-row`}>
                 <View style={twrnc`ml-2`}>
-                  <Text style={twrnc`ml-1 font-bold`}>Ronald Richards</Text>
+                  <Text
+                    style={twrnc`ml-1 font-bold text-${
+                      !isDarkMode ? "black" : "white"
+                    }`}
+                  >
+                    {likedItems.rating[0].name}
+                  </Text>
                   <View style={twrnc`flex-row mt-2`}>
                     <EvilIcons name="clock" size={24} color="gray" />
-                    <Text style={twrnc`text-gray-500`}>13 Sep, 2020</Text>
+                    <Text style={twrnc`text-gray-500`}>
+                      {likedItems.rating[0].date}
+                    </Text>
                   </View>
                 </View>
 
@@ -331,10 +341,11 @@ const NikeSportsWear = ({ navigation }) => {
                         : twrnc`font-bold ml-8 text-white`
                     }
                   >
-                    4.8 <Text style={twrnc`text-gray-500`}>rating</Text>
+                    {likedItems.rating[0].rating}{" "}
+                    <Text style={twrnc`text-gray-500`}>rating</Text>
                   </Text>
                   <View style={twrnc`ml-9 mt-1`}>
-                    <Review_rating />
+                    <Review_rating numOfStars={likedItems.rating[0].rating} />
                   </View>
                 </View>
               </View>
@@ -342,15 +353,9 @@ const NikeSportsWear = ({ navigation }) => {
 
             {/*Text description of the reviewed person*/}
             <View style={twrnc`mt-4`}>
-              <TouchableOpacity onPress={handleForwardReview}>
-                <Text style={twrnc`text-gray-400 mt-1`}>
-                  Lorem ipsum dolor sit amet, consectetur
-                </Text>
-                <Text style={twrnc`text-gray-400 mt-1`}>
-                  adispiscing elit. Pellentesque malesuada eget
-                </Text>
-                <Text style={twrnc`text-gray-400 mt-1`}>vitae amet...</Text>
-              </TouchableOpacity>
+              <Text className={`text-gray-500`}>
+                {likedItems.rating[0].review}
+              </Text>
             </View>
 
             <View style={twrnc`mt-8 pb-4`}>

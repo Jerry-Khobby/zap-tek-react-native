@@ -2,7 +2,7 @@ export const reviewData = [
   {
     id: 1,
     name: "Sally",
-    rating: 5.0,
+    rating: 4.8,
     review: "This is the best product ever! I love it! I love it! I love it!",
     date: "13 Sept, 2020",
     imageSource: require("../assets/39.png"),

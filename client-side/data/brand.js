@@ -11,6 +11,26 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 270 delivers visible air and unbelievable comfort under every step. Updated for modern comfort, it nods to the original, 1991 Air Max 180 with its exaggerated tongue top and heritage tongue logo.",
+    rating: [
+      {
+        id: 1,
+        name: "Sally",
+        rating: 4.8,
+        review:
+          "This is the best product ever! I love it! I love it! I love it!",
+        date: "13 Sept, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+      {
+        id: 2,
+        name: "Billy",
+        rating: 1.0,
+        review:
+          "This is the worst product ever! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it!",
+        date: "19 Sept, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+    ],
   },
   {
     id: 2,
@@ -21,6 +41,26 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 90 stays true to its OG running roots with the iconic Waffle sole, stitched overlays and classic TPU accents. Fresh colours give a modern look while Max Air cushioning adds comfort to your journey.",
+    rating: [
+      {
+        id: 1,
+        name: "John",
+        rating: 3.2,
+        review:
+          "This is an okay product! Just okay! But not great! hope this helps! the company is great!",
+        date: "21 Sept, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+      {
+        id: 2,
+        name: "Jane",
+        rating: 4.5,
+        review:
+          "This is a good product, but not great. A little bit more work and it will be great. Maybe in the next version!",
+        date: "23 Sept, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+    ],
   },
   {
     id: 3,
@@ -31,6 +71,32 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 95 made its mark as the first shoe to include visible Nike Air cushioning in the forefoot. The Nike Air Max 95 OG Shoe energises the iconic design with updated materials in a variety of textures and accents.",
+    rating: [
+      {
+        id: 1,
+        name: "Esi",
+        rating: 2.7,
+        review: "This is the worst product ever!",
+        date: "2 Dec, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 2,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Dec, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+      {
+        id: 3,
+        name: "Kwame",
+        rating: 4.6,
+        review: "This is a good product!",
+        date: "17 Dec, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+    ],
   },
   {
     id: 4,
@@ -41,6 +107,24 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 97 keeps a sneaker icon going strong with the same design details that made it famous: water-ripple lines, reflective piping and full-length Max Air cushioning.",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+    ],
   },
   {
     id: 5,
@@ -51,6 +135,32 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 98 brings back retro Air Max style with contemporary comfort innovations. A full-length Max Air unit gives total cushioning in every step.",
+    rating: [
+      {
+        id: 1,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "2 Oct, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+      {
+        id: 2,
+        name: "Esi",
+        rating: 3.7,
+        review: "This is the worst product ever!",
+        date: "21 Oct, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 3,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Nov, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+    ],
   },
   {
     id: 6,
@@ -61,6 +171,24 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 200 radiates cool while providing extreme comfort with the largest Max Air unit to date. Inspired by the energy and patterns born from the Earth",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+    ],
   },
   {
     id: 7,
@@ -71,6 +199,32 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 270 delivers visible air and unbelievable comfort under every step. Updated for modern comfort, it nods to the original, 1991 Air Max 180 with its exaggerated tongue top and heritage tongue logo.",
+    rating: [
+      {
+        id: 1,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "2 Oct, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+      {
+        id: 2,
+        name: "Esi",
+        rating: 3.7,
+        review: "This is the worst product ever!",
+        date: "21 Oct, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 3,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Nov, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+    ],
   },
   {
     id: 8,
@@ -81,6 +235,24 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 90 stays true to its OG running roots with the iconic Waffle sole, stitched overlays and classic TPU accents. Fresh colours give a modern look while Max Air cushioning adds comfort to your journey.",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+    ],
   },
   {
     id: 9,
@@ -91,6 +263,24 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 95 made its mark as the first shoe to include visible Nike Air cushioning in the forefoot. The Nike Air Max 95 OG Shoe energises the iconic design with updated materials in a variety of textures and accents.",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+    ],
   },
   {
     id: 10,
@@ -101,6 +291,40 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 97 keeps a sneaker icon going strong with the same design details that made it famous: water-ripple lines, reflective piping and full-length Max Air cushioning.",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+      {
+        id: 3,
+        name: "Esi",
+        rating: 3.7,
+        review: "This is the worst product ever!",
+        date: "21 Oct, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 4,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Nov, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+    ],
   },
   {
     id: 11,
@@ -111,6 +335,32 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 98 brings back retro Air Max style with contemporary comfort innovations. A full-length Max Air unit gives total cushioning in every step.",
+    rating: [
+      {
+        id: 1,
+        name: "Esi",
+        rating: 2.7,
+        review: "This is the worst product ever!",
+        date: "2 Dec, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 2,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Dec, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+      {
+        id: 3,
+        name: "Kwame",
+        rating: 4.6,
+        review: "This is a good product!",
+        date: "17 Dec, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+    ],
   },
   {
     id: 12,
@@ -121,6 +371,24 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 200 radiates cool while providing extreme comfort with the largest Max Air unit to date. Inspired by the energy and patterns born from the Earth",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+    ],
   },
   {
     id: 13,
@@ -131,6 +399,44 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 270 delivers visible air and unbelievable comfort under every step. Updated for modern comfort, it nods to the original, 1991 Air Max 180 with its exaggerated tongue top and heritage tongue logo.",
+    rating: [
+      {
+        id: 1,
+        name: "Sally",
+        rating: 4.8,
+        review:
+          "This is the best product ever! I love it! I love it! I love it!",
+        date: "13 Sept, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+      {
+        id: 2,
+        name: "Billy",
+        rating: 1.0,
+        review:
+          "This is the worst product ever! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it! I hate it!",
+        date: "19 Sept, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 3,
+        name: "John",
+        rating: 3.2,
+        review:
+          "This is an okay product! Just okay! But not great! hope this helps! the company is great!",
+        date: "21 Sept, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+      {
+        id: 4,
+        name: "Jane",
+        rating: 4.5,
+        review:
+          "This is a good product, but not great. A little bit more work and it will be great. Maybe in the next version!",
+        date: "23 Sept, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+    ],
   },
   {
     id: 14,
@@ -141,6 +447,32 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 90 stays true to its OG running roots with the iconic Waffle sole, stitched overlays and classic TPU accents. Fresh colours give a modern look while Max Air cushioning adds comfort to your journey.",
+    rating: [
+      {
+        id: 1,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Nov, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+      {
+        id: 2,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 3,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+    ],
   },
   {
     id: 15,
@@ -151,6 +483,24 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 95 made its mark as the first shoe to include visible Nike Air cushioning in the forefoot. The Nike Air Max 95 OG Shoe energises the iconic design with updated materials in a variety of textures and accents.",
+    rating: [
+      {
+        id: 1,
+        name: "Esi",
+        rating: 2.7,
+        review: "This is the worst product ever!",
+        date: "2 Dec, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 2,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Dec, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+    ],
   },
   {
     id: 16,
@@ -161,5 +511,39 @@ export const brand = [
     quantity: 1,
     description:
       "The Nike Air Max 97 keeps a sneaker icon going strong with the same design details that made it famous: water-ripple lines, reflective piping and full-length Max Air cushioning.",
+    rating: [
+      {
+        id: 1,
+        name: "Kwame",
+        rating: 4.2,
+        review: "This is a good product!",
+        date: "17 Nov, 2020",
+        imageSource: require("../assets/129.png"),
+      },
+      {
+        id: 2,
+        name: "Kofi",
+        rating: 5.0,
+        review: "This is the best product ever!",
+        date: "22 Nov, 2020",
+        imageSource: require("../assets/39.png"),
+      },
+      {
+        id: 3,
+        name: "Esi",
+        rating: 3.7,
+        review: "This is the worst product ever!",
+        date: "21 Oct, 2020",
+        imageSource: require("../assets/41.png"),
+      },
+      {
+        id: 4,
+        name: "Ama",
+        rating: 3.9,
+        review: "This is an okay product!",
+        date: "13 Nov, 2020",
+        imageSource: require("../assets/97.png"),
+      },
+    ],
   },
 ];
