@@ -300,7 +300,12 @@ const NikeSportsWear = ({ navigation }) => {
               >
                 Reviews
               </Text>
-              <Text className="text-base text-violet-600">View All</Text>
+              <Text
+                className="text-base text-violet-600"
+                onPress={() => navigation.navigate("screen10")}
+              >
+                View All
+              </Text>
             </View>
 
             {/*Review section*/}
