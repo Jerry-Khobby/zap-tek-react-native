@@ -1,38 +1,46 @@
+// I think we should delete this file by Livingstone
+
 import Ionicons from "react-native-vector-icons/Ionicons";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import twrnc from "tailwind-react-native-classnames";
 import React from "react";
-import {Text, View} from "react-native";
+import { View, Text } from "react-native";
 import { useDarkMode } from "../context/darkmode";
 
+{
+  /*Star-like ratings ascribed to each review*/
+}
+export const Review_rating = ({ numOfStars }) => {
+  const { isDarkMode } = useDarkMode();
 
+  numOfStars = Math.floor(numOfStars);
 
-
-
-{/*Star-like ratings ascribed to each review*/}
-export const Review_rating = () => {
-    const {isDarkMode} = useDarkMode();
-    return(
-        
-        <View style={twrnc `flex-row`}>
-            <Ionicons name="star" size={12} color="orange" />
-            <Ionicons name="star" size={12} color="orange" />
-            <Ionicons name="star" size={12} color="orange" />
-            <Ionicons name="star" size={12} color="orange" />
-            <EvilIcons name="star" size={14}  color={!isDarkMode ? 'black' : 'white'}style={twrnc `mt-0.5`}/>
+  let stars = [];
+  for (let i = 0; i < 5; i++) {
+    if (i < numOfStars) {
+      stars.push(
+        <View key={i}>
+        <Ionicons name="star" size={12} color="orange" style={twrnc`mr-0.5`} />
         </View>
-)
-};
-
-{/*Iterative statements present under each review tag*/}
-export const Review_description = () => {
-    const {isDarkMode} = useDarkMode();
-    return(
-        <View style={twrnc `mt-4`}>
-            <Text style={twrnc `text-gray-400 mt-1`}>Lorem ipsum dolor sit amet, consectetur</Text>
-            <Text style={twrnc `text-gray-400 mt-1`}>adispiscing elit. Pellentesque malesuada eget</Text>
-            <Text style={twrnc `text-gray-400 mt-1`}>vitae amet...</Text>
+      );
+    } else {
+      stars.push(
+        <View key={i}>
+        <Ionicons
+          name="star-outline"
+          size={12}
+          color={!isDarkMode ? "black" : "white"}
+          style={twrnc`mr-0.5`}
+        />
         </View>
+      );
+    }
+  }
 
-    )
+  return (
+    <View style={twrnc`flex-row`}>
+      {stars}
+      {/* <Text>{numOfStars}</Text> */}
+    </View>
+  );
 };
