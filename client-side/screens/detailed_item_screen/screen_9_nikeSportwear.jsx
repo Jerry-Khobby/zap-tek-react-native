@@ -142,10 +142,18 @@ const handleForwardReview=()=>{
     const Highlights = () => {
         const categoryList = ["Reviews", "View All"]
         const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+        const handleCategoryPress = (index) => {
+            setSelectedCategoryIndex(index);
+    
+            if (categoryList[index] === "View All") {
+                // Navigate to another screen
+                navigation.navigate('screen10'); // Replace 'YourScreenName' with the actual name of your screen
+            }
+        };
         return(
             <View style={twrnc`mt-2 flex-row justify-between`}>
                 {categoryList.map((minor,index)=>(
-                    <Pressable key={index} onPress={()=>setSelectedCategoryIndex(index)}>
+                    <Pressable key={index} onPress={()=>handleCategoryPress(index)}>
                         <Text style={[
                             minorCategoryListText,(index === selectedCategoryIndex && minorActiveCategoryListText )
                         ]}>{minor}</Text>
@@ -243,11 +251,9 @@ const handleForwardReview=()=>{
 
                     {/*Text description of the reviewed person*/}
                     <View style={twrnc `mt-4`}>
-                        <TouchableOpacity onPress={handleForwardReview}>
                         <Text style={twrnc `text-gray-400 mt-1`}>Lorem ipsum dolor sit amet, consectetur</Text>
                         <Text style={twrnc `text-gray-400 mt-1`}>adispiscing elit. Pellentesque malesuada eget</Text>
                         <Text style={twrnc `text-gray-400 mt-1`}>vitae amet...</Text>
-                        </TouchableOpacity>
                     </View>
 
                     <View style={twrnc `mt-8 pb-4`}>

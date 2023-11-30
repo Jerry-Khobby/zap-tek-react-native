@@ -43,6 +43,8 @@ const LoginCredentials = ({ navigation }) => {
     });
   }, []);
 
+
+
 // function to handle the login with google 
 const handleGoogleSignIn = async () => {
   try {
@@ -119,7 +121,6 @@ toggleLoginMode(true);
   console.log("There was an error signing");
 }
 }
-
 
 
 
@@ -224,6 +225,7 @@ toggleLoginMode(true);
           </TouchableOpacity>
         </View>
       </View>
+
     </SafeAreaView>
   );
 };
