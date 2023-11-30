@@ -175,9 +175,8 @@ const Homescreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView className="mt-5">
         {/** now the remaining codes  this where the Hello and the welcoming on the screen is */}
-        <View style={twrnc`flex flex-col mx-5 mt-2`}>
+        <View style={twrnc`flex flex-col mx-5 mt-5`}>
           <View>
             <Text
               style={
@@ -279,8 +278,8 @@ const Homescreen = ({ navigation }) => {
           />
         </View>
 
-        <ArrivalList />
 
+        <ArrivalList />
         <FlatList
           className="flex-1"
           data={filteredData}
@@ -359,7 +358,6 @@ const Homescreen = ({ navigation }) => {
             </View>
           )}
         />
-      </ScrollView>
     </View>
   );
 };
