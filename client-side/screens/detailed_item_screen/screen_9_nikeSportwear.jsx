@@ -56,7 +56,7 @@ const NikeSportsWear = ({ navigation }) => {
       });
       // Log the items in the cart after dispatching the action
 
-      navigation.navigate("screen12");
+      alert("Item added to cart");
     }
   };
 

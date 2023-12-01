@@ -15,6 +15,11 @@ const Order = ({ navigation }) => {
   const handleBackWardNavigation = () => {
     navigation.navigate("Home");
   };
+
+  const handleCartScreenNavigation = () => {
+    navigation.navigate("screen12");
+  };
+
   const { isDarkMode } = useDarkMode();
   return (
     <View className={`mt-2 bg-${!isDarkMode ? "white" : "black"} flex-1`}>
@@ -47,6 +52,7 @@ const Order = ({ navigation }) => {
               ? "bg-gray-200 p-2 rounded-full"
               : "bg-gray-700 p-2 rounded-full"
           }
+          onPress={handleCartScreenNavigation}
         >
           <MaterialCommunityIcons
             name="shopping-outline"

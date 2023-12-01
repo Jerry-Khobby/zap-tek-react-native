@@ -6,6 +6,7 @@ const initialState = {
   movableItems: [], // New state for movable items
   cartItems: [], // manage the state of the cart items that have added
   quantity: 0, //The initial value for the quantity must be zero
+  orderedItems: [], // New state for ordered items
 };
 
 // I will be needing a local storage here so that the user wont open the open the app alway and see that there are not items there
@@ -147,19 +148,23 @@ export const {
 } = wishListSlice.actions;
 export default wishListSlice.reducer;
 
+// The SubTotal
 export const selectedSubTotal = (state) =>
   state.wishlist.cartItems.reduce(
     (acc, cartItems) => acc + cartItems.price * cartItems.quantity,
     0
   );
 
+// The number of items in the cart
 export const numOfSelectedItems = (state) => state.wishlist.cartItems.length;
 
+// The price of the delivery fee
 export const selectedDeliveryFee = createSelector(
   selectedSubTotal,
   (subTotal) => (subTotal === 0 ? 0 : 20)
 );
 
+// The total price of the items in the cart
 export const selectedTotal = createSelector(
   selectedSubTotal,
   selectedDeliveryFee,

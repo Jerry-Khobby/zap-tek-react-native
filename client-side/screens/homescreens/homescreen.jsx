@@ -35,6 +35,10 @@ const Homescreen = ({ navigation }) => {
     navigation.dispatch(DrawerActions.toggleDrawer());
   };
 
+  const handleCartScreenNavigation = () => {
+    navigation.navigate("screen12");
+  };
+
   const { isDarkMode } = useDarkMode();
 
   /// dispatching the redux reducers
@@ -173,6 +177,7 @@ const Homescreen = ({ navigation }) => {
                 ? twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`
                 : twrnc`bg-gray-700  rounded-full h-11 w-11 items-center justify-center`
             }
+            onPress={handleCartScreenNavigation}
           >
             {/** this is the view for the icon  */}
             <Icon_SimpleLineIcons
