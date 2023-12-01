@@ -27,6 +27,7 @@ import {
   removeFromWishList,
   addToMovableItems,
 } from "../../state/reducers";
+import Nike from "./nike";
 
 const Homescreen = ({ navigation }) => {
   // a function that will open the drawer and close it
@@ -88,14 +89,21 @@ const Homescreen = ({ navigation }) => {
   //ArrivalList function that must be  called  in the main body
   const ArrivalList = () => {
     const categoryList = ["New Arrival", "View All"];
-    const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+    const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+
+    const handleCategoryPress = (index) => {
+      setSelectedCategoryIndex(index);
+
+      // Check if "View All" is clicked, then navigate to "Nike"
+      if (index === 1) {
+        navigation.navigate("nike");
+      }
+    };
+
     return (
-      <View style={twrnc`mt-2  mx-6 flex-row justify-between`}>
+      <View style={twrnc`mt-2 mx-6 flex-row justify-between`}>
         {categoryList.map((minor, index) => (
-          <Pressable
-            key={index}
-            onPress={() => setSelectedCategoryIndex(index)}
-          >
+          <Pressable key={index} onPress={() => handleCategoryPress(index)}>
             <Text
               style={[
                 minorCategoryListText,
@@ -175,191 +183,188 @@ const Homescreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView className="mt-5">
-        {/** now the remaining codes  this where the Hello and the welcoming on the screen is */}
-        <View style={twrnc`flex flex-col mx-5 mt-2`}>
-          <View>
-            <Text
-              style={
-                !isDarkMode
-                  ? twrnc`text-black text-4xl `
-                  : twrnc`text-white text-4xl`
-              }
-            >
-              Hello
-            </Text>
-          </View>
-          <View>
-            <Text
-              style={
-                !isDarkMode
-                  ? twrnc`text-gray-400 text-xl`
-                  : twrnc`text-gray-500 text-xl`
-              }
-            >
-              Welcome to Laza
-            </Text>
-          </View>
-        </View>
-
-        {/** this where the search and the microphone icons will be , the search functionalities will implemented here  */}
-        <View
-          style={twrnc`flex flex-row  justify-between items-center mx-5 mt-3`}
-        >
-          {/* Search Box */}
-          <View
+      {/** now the remaining codes  this where the Hello and the welcoming on the screen is */}
+      <View style={twrnc`flex flex-col mx-5 mt-5`}>
+        <View>
+          <Text
             style={
               !isDarkMode
-                ? twrnc`flex-row items-center   bg-gray-200 rounded-xl`
-                : twrnc`rounded-xl flex-row items-center bg-gray-700`
+                ? twrnc`text-black text-4xl `
+                : twrnc`text-white text-4xl`
             }
           >
-            <View
-              style={twrnc`flex flex-row items-center justify-around px-2 h-10 w-10/12`}
-            >
-              <Icon_Ant name="search1" size={20} style={twrnc`mr-2`} />
-              <TextInput
-                style={
-                  !isDarkMode
-                    ? twrnc`flex-1 h-8 text-base font-normal pb-0`
-                    : twrnc`flex-1 h-8 text-base font-normal pb-0`
-                }
-                placeholder="Search..."
-                underlineColorAndroid="transparent"
-                placeholderTextColor={isDarkMode ? "#999999" : "#CCCCCC"} // Change placeholder text color based on isDarkMode state
-                onChangeText={(text) => searchFilteredFunction(text)}
-                value={search}
-              />
-            </View>
-          </View>
-
-          {/* Microphone Icon */}
-          <TouchableOpacity
-            style={[
-              twrnc`h-10 w-12 rounded-xl items-center bg-gray-300`,
-              styles.primary,
-            ]}
+            Hello
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={
+              !isDarkMode
+                ? twrnc`text-gray-400 text-xl`
+                : twrnc`text-gray-500 text-xl`
+            }
           >
-            <View style={twrnc`flex items-center justify-center`}>
-              <MaterialIcons
-                name="keyboard-voice"
-                size={24}
-                color="white"
-                style={twrnc`mt-2`}
-              />
-            </View>
-          </TouchableOpacity>
+            Welcome to Laza
+          </Text>
+        </View>
+      </View>
+
+      {/** this where the search and the microphone icons will be , the search functionalities will implemented here  */}
+      <View
+        style={twrnc`flex flex-row  justify-between items-center mx-5 mt-3`}
+      >
+        {/* Search Box */}
+        <View
+          style={
+            !isDarkMode
+              ? twrnc`flex-row items-center   bg-gray-200 rounded-xl`
+              : twrnc`rounded-xl flex-row items-center bg-gray-700`
+          }
+        >
+          <View
+            style={twrnc`flex flex-row items-center justify-around px-2 h-10 w-10/12`}
+          >
+            <Icon_Ant name="search1" size={20} style={twrnc`mr-2`} />
+            <TextInput
+              style={
+                !isDarkMode
+                  ? twrnc`flex-1 h-8 text-base font-normal pb-0`
+                  : twrnc`flex-1 h-8 text-base font-normal pb-0`
+              }
+              placeholder="Search..."
+              underlineColorAndroid="transparent"
+              placeholderTextColor={isDarkMode ? "#999999" : "#CCCCCC"} // Change placeholder text color based on isDarkMode state
+              onChangeText={(text) => searchFilteredFunction(text)}
+              value={search}
+            />
+          </View>
         </View>
 
-        {/** working the adidas carousel that were showing at the top  */}
-        <ListCategories />
-        {/** the mapping of the carousel  */}
-        <View style={twrnc`flex-row mx-5 mt-1`}>
-          <FlatList
-            data={items}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <View
-                style={twrnc`h-14  mx-1 w-28 bg-gray-200 flex-row items-center rounded-lg justify-around`}
-              >
-                <View style={twrnc`h-9 w-9 bg-white  rounded-lg`}>
-                  <View style={twrnc`items-center mt-1`}>
-                    <Image
-                      source={item.image}
-                      resizeMode={"contain"}
-                      style={twrnc`h-7 w-7`}
-                    />
-                  </View>
-                </View>
-                <Text style={twrnc`font-medium`}>{item.text}</Text>
-              </View>
-            )}
-          />
-        </View>
+        {/* Microphone Icon */}
+        <TouchableOpacity
+          style={[
+            twrnc`h-10 w-12 rounded-xl items-center bg-gray-300`,
+            styles.primary,
+          ]}
+        >
+          <View style={twrnc`flex items-center justify-center`}>
+            <MaterialIcons
+              name="keyboard-voice"
+              size={24}
+              color="white"
+              style={twrnc`mt-2`}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
 
-        <ArrivalList />
-
+      {/** working the adidas carousel that were showing at the top  */}
+      <ListCategories />
+      {/** the mapping of the carousel  */}
+      <View style={twrnc`flex-row mx-5 mt-1`}>
         <FlatList
-          className="flex-1"
-          data={filteredData}
-          numColumns={2}
+          data={items}
+          horizontal
+          showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <View className="flex-1 m-2 mx-3 w-1/2">
-              <View className="w-full h-72 rounded-xl bg-red-500">
-                <Image
-                  source={item.imageSource}
-                  className="h-full w-full rounded-xl"
-                />
-                <TouchableOpacity
-                  onPress={() => handleLikeToggle(item.id)}
-                  className="absolute top-5 right-5"
-                >
-                  <MaterialCommunityIcons
-                    name={
-                      likedItems.some((likedItem) => likedItem.id === item.id)
-                        ? "heart"
-                        : "heart-outline"
-                    }
-                    size={24}
-                    color={
-                      likedItems.some((likedItem) => likedItem.id === item.id)
-                        ? "red"
-                        : "gray"
-                    }
+            <View
+              style={twrnc`h-14  mx-1 w-28 bg-gray-200 flex-row items-center rounded-lg justify-around`}
+            >
+              <View style={twrnc`h-9 w-9 bg-white  rounded-lg`}>
+                <View style={twrnc`items-center mt-1`}>
+                  <Image
+                    source={item.image}
+                    resizeMode={"contain"}
+                    style={twrnc`h-7 w-7`}
                   />
-                </TouchableOpacity>
+                </View>
               </View>
-              <TouchableOpacity
-                onPress={() => {
-                  dispatch(
-                    addToMovableItems({
-                      id: item.id,
-                      imageSource: item.imageSource,
-                      brandName: item.brandName,
-                      product: item.product,
-                      price: item.price,
-                      description: item.description,
-                      rating: item.rating,
-                    })
-                  );
-                  navigation.navigate("screen9");
-                }}
-              >
-                <Text
-                  style={
-                    !isDarkMode
-                      ? twrnc`font-semibold text-base`
-                      : [twrnc`font-semibold text-base`, { color: "#CCCCCC" }]
-                  }
-                >
-                  {item.brandName}
-                </Text>
-                <Text
-                  style={
-                    !isDarkMode
-                      ? twrnc`text-base font-semibold`
-                      : [twrnc`text-base font-semibold`, { color: "#CCCCCC" }]
-                  }
-                >
-                  {item.product}
-                </Text>
-                <Text
-                  style={
-                    !isDarkMode
-                      ? twrnc`text-lg font-bold`
-                      : [twrnc`text-lg font-bold`, { color: "#CCCCCC" }]
-                  }
-                >
-                  ${item.price}
-                </Text>
-              </TouchableOpacity>
+              <Text style={twrnc`font-medium`}>{item.text}</Text>
             </View>
           )}
         />
-      </ScrollView>
+      </View>
+
+      <ArrivalList />
+      <FlatList
+        className="flex-1"
+        data={filteredData}
+        numColumns={2}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View className="flex-1 m-2 mx-3 w-1/2">
+            <View className="w-full h-72 rounded-xl bg-red-500">
+              <Image
+                source={item.imageSource}
+                className="h-full w-full rounded-xl"
+              />
+              <TouchableOpacity
+                onPress={() => handleLikeToggle(item.id)}
+                className="absolute top-5 right-5"
+              >
+                <MaterialCommunityIcons
+                  name={
+                    likedItems.some((likedItem) => likedItem.id === item.id)
+                      ? "heart"
+                      : "heart-outline"
+                  }
+                  size={24}
+                  color={
+                    likedItems.some((likedItem) => likedItem.id === item.id)
+                      ? "red"
+                      : "gray"
+                  }
+                />
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(
+                  addToMovableItems({
+                    id: item.id,
+                    imageSource: item.imageSource,
+                    brandName: item.brandName,
+                    product: item.product,
+                    price: item.price,
+                    description: item.description,
+                    rating: item.rating,
+                  })
+                );
+                navigation.navigate("screen9");
+              }}
+            >
+              <Text
+                style={
+                  !isDarkMode
+                    ? twrnc`font-semibold text-base`
+                    : [twrnc`font-semibold text-base`, { color: "#CCCCCC" }]
+                }
+              >
+                {item.brandName}
+              </Text>
+              <Text
+                style={
+                  !isDarkMode
+                    ? twrnc`text-base font-semibold`
+                    : [twrnc`text-base font-semibold`, { color: "#CCCCCC" }]
+                }
+              >
+                {item.product}
+              </Text>
+              <Text
+                style={
+                  !isDarkMode
+                    ? twrnc`text-lg font-bold`
+                    : [twrnc`text-lg font-bold`, { color: "#CCCCCC" }]
+                }
+              >
+                ${item.price}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      />
     </View>
   );
 };

@@ -19,14 +19,7 @@ import React, { useState, useEffect } from "react";
 import { Review_rating } from "../../data/review_ratings";
 import { useDarkMode } from "../../context/darkmode";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addToWishList,
-  removeFromWishList,
-  addToMovableItems,
-  removalCartItem,
-  addItemsToCartScreen,
-  updateQuantityCartItem,
-} from "../../state/reducers";
+import { addItemsToCartScreen } from "../../state/reducers";
 
 const NikeSportsWear = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -313,7 +306,7 @@ const NikeSportsWear = ({ navigation }) => {
             {/*Review section*/}
             <View style={twrnc`mt-2 flex-row`}>
               <Image
-                source={require("../../assets/97.png")}
+                source={likedItems.rating[0].imageSource}
                 style={twrnc`h-10 w-10`}
               />
               <View style={twrnc`flex-row`}>
