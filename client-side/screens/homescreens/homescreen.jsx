@@ -168,11 +168,10 @@ const Homescreen = ({ navigation }) => {
         {/** the icon for navigation backwards  */}
         <View style={twrnc`mx-5`}>
           <TouchableOpacity
-            style={
-              !isDarkMode
-                ? twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`
-                : twrnc`bg-gray-700  rounded-full h-11 w-11 items-center justify-center`
-            }
+            style={!isDarkMode? twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`: twrnc`bg-gray-700  rounded-full h-11 w-11 items-center justify-center`}
+            onPress={()=>{
+              navigation.navigate("Order")
+            }}
           >
             {/** this is the view for the icon  */}
             <Icon_SimpleLineIcons

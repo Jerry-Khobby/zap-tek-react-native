@@ -9,7 +9,6 @@ import {
   } from "react-native";
   import React from "react";
   import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-  import { brand } from "../../data/brand";
   import { useDarkMode } from "../../context/darkmode";
   import { StatusBar } from "expo-status-bar";
   import twrnc from "tailwind-react-native-classnames";
