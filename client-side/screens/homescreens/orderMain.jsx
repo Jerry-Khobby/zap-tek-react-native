@@ -91,12 +91,13 @@ import {
              Price:{item.price}
             </Text>
             <Text
-              className={`text-${
-                !isDarkMode ? "black" : "white"
-              } text-sm font-bold`}
-            >
-              {item.quantity} quantity ordered
-            </Text>
+  className={`text-${!isDarkMode ? "black" : "white"} text-sm font-bold`}
+>
+  {item.quantity > 1
+    ? `${item.quantity} quantities ordered`
+    : `${item.quantity} quantity ordered`}
+</Text>
+
             </View>
 
             </View>

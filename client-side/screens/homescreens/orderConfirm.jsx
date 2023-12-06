@@ -4,7 +4,6 @@ import {
   View,
   TouchableOpacity,
   Image,
-  Button,
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -24,7 +23,7 @@ const backWardNavigation=()=>{
 }
 //Orders 
 const orderNavigation=()=>{
-  navigation.navigate("screen18");
+  navigation.navigate("Order");
 }
 
 const {isDarkMode}=useDarkMode();
