@@ -1,16 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import Icon_Ant from 'react-native-vector-icons/AntDesign';
-import Icon_Mat from 'react-native-vector-icons/MaterialCommunityIcons';
 import Homescreen from '../../screens/homescreens/homescreen';
 import DetailScreen from '../../screens/detailed_item_screen/detailscreen';
 import twrnc from 'tailwind-react-native-classnames';
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Wishlist from '../../screens/homescreens/wishlist';
-import Nike from '../../screens/homescreens/nike';
 import { useDarkMode } from "../../context/darkmode";
-import AddNewCard from "../../screens/detailed_item_screen/screen_15_addNewCard"
+import OrderMain from '../../screens/homescreens/orderMain';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +39,7 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen name="Home" component={Homescreen} options={{ headerShown: false }} tabColor={!isDarkMode ? twrnc`bg-gray-700` : twrnc`bg-black`} />
       <Tab.Screen name="Wishlist" component={Wishlist} options={{ headerShown: false }} />
-      <Tab.Screen name="Order" component={Nike} options={{ headerShown: false }} />
+      <Tab.Screen name="Order" component={OrderMain} options={{ headerShown: false }} />
       <Tab.Screen name="Wallet" component={DetailScreen} options={{ headerShown: false }} />
     </Tab.Navigator>
   );

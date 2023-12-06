@@ -6,8 +6,8 @@ const initialState = {
   movableItems: [], // New state for movable items
   cartItems: [], // manage the state of the cart items that have added
   quantity: 0, //The initial value for the quantity must be zero
-  addToOrderItems:[]
-};
+  orderItems:[]
+}
 
 // I will be needing a local storage here so that the user wont open the open the app alway and see that there are not items there
 // while he added items there previously
@@ -137,16 +137,16 @@ const wishListSlice = createSlice({
     addToOrderItems: (state, action) => {
       const {id,brandName,quantity,price,imageSource,product}=action.payload;
             // Check if the item already exists in cartItems
-            const existingItemIndex = state.addToOrderItems.findIndex(
+            const existingItemIndex = state.orderItems.findIndex(
               (item) => item.id === id
             );
       
             if (existingItemIndex !== -1) {
-              state.cartItems[existingItemIndex].quantity += 1;
+              state.orderItems[existingItemIndex].quantity += 1;
               // If the item exists, update its quantity
             } else {
               // If the item doesn't exist, add it to cartItems with a quantity of 1
-              state.cartItems.push({
+              state.orderItems.push({
                 id,
                 imageSource,
                 brandName,
@@ -168,6 +168,7 @@ export const {
   addItemsToCartScreen,
   decreaseQuantity,
   increaseQuantity,
+  addToOrderItems
 } = wishListSlice.actions;
 export default wishListSlice.reducer;
 

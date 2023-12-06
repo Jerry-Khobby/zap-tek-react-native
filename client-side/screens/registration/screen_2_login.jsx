@@ -1,5 +1,5 @@
 import { View, TouchableOpacity, Text, SafeAreaView } from "react-native";
-import React,{useState,useEffect} from "react";
+import React,{useEffect} from "react";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";

@@ -7,20 +7,18 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from "../../context/darkmode";
-/* import { brand } from "../../data/brand"; */
 import { useSelector, useDispatch } from "react-redux";
 import {
   removalCartItem,
   decreaseQuantity,
   increaseQuantity,
-} from "../../state/reducers";
-import {
   selectedSubTotal,
   selectedDeliveryFee,
   selectedTotal,
+  addToOrderItems,
 } from "../../state/reducers";
 
 const CartScreen = ({ navigation }) => {
@@ -45,6 +43,19 @@ const CartScreen = ({ navigation }) => {
 
   //moving order
   const orderConfirmed = () => {
+    likedItems.forEach((item) => {
+      dispatch(
+        addToOrderItems({
+          id: item.id,
+          brandName: item.brandName,
+          quantity: item.quantity, // You might need to adjust this based on your data structure
+          price: item.price,
+          imageSource: item.imageSource,
+          product: item.product,
+        })
+      );
+    });
+      // Log the added items
     navigation.navigate("screen16");
   };
 
