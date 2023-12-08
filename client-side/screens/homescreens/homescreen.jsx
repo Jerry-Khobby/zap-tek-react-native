@@ -7,7 +7,6 @@ import {
   Pressable,
   Image,
   FlatList,
-  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import twrnc from "tailwind-react-native-classnames";
@@ -27,7 +26,6 @@ import {
   removeFromWishList,
   addToMovableItems,
 } from "../../state/reducers";
-import Nike from "./nike";
 
 const Homescreen = ({ navigation }) => {
   // a function that will open the drawer and close it

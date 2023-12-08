@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { View, Text, TouchableOpacity,Image,Dimensions,TextInput,Switch} from 'react-native';
+import { View, Text, TouchableOpacity,Image,Dimensions,TextInput,Switch,ScrollView} from 'react-native';
 import twrnc from 'tailwind-react-native-classnames';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -48,7 +48,7 @@ const backWardNavigation=()=>{
     );
   };
 
-  {/** creating a function for the pagination  */}
+  // creating a function for the pagination  
 
 
   // make use of the dark mode 
@@ -174,16 +174,14 @@ const backWardNavigation=()=>{
 
 
 
-  <View>
   {/** I want the something at the bottom of screen , it will remain the bottom of the screen and I have a text of Submit review meaning , it is a button  I want it to remain at the bottom of the screen no matter the screen size */}
-  <View style={twrnc`flex-1 justify-center items-center top-2 absolute  w-full h-16 bg-purple-500`}>
+  <View style={twrnc`flex-1 justify-center items-center top-full absolute  w-full h-16 bg-purple-500 bottom-0 pb-4`}>
         <TouchableOpacity className="flex items-center justify-center"
         onPress={BackToHome}
         >
           <Text style={twrnc`text-white text-lg font-medium`}>Save Cards</Text>
         </TouchableOpacity>
       </View>
-</View>
    </View>
   );
 };
