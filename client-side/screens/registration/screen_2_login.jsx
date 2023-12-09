@@ -1,28 +1,22 @@
 import { View, TouchableOpacity, Text, SafeAreaView } from "react-native";
-import React,{useState,useEffect} from "react";
+import React, { useEffect } from "react";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
 import Icon_EvilIcons from "react-native-vector-icons/EvilIcons";
 
 import { useDarkMode } from "../../context/darkmode";
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
-import { NativeModules } from 'react-native';
+import auth from "@react-native-firebase/auth";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { LoginManager, AccessToken } from "react-native-fbsdk-next";
+import { NativeModules } from "react-native";
 const { RNTwitterSignIn } = NativeModules;
-
-
-
-
-
-
 
 const LoginCredentials = ({ navigation }) => {
   // please your margin top should mt-11 and your left and right must be mx-5
 
   // handle the going back on the screen
 
-  const { isDarkMode,toggleLoginMode } = useDarkMode();
+  const { isDarkMode, toggleLoginMode } = useDarkMode();
 
   const handleBackWardNavigation = () => {
     navigation.navigate("screenOne");
@@ -36,93 +30,90 @@ const LoginCredentials = ({ navigation }) => {
     navigation.navigate("screenThree");
   };
 
-
- useEffect(() => {
+  useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com', // Get this from Firebase console
+      webClientId:
+        "79608993528-tra5anesm6ioiffjrdge7kqn253q69ke.apps.googleusercontent.com", // Get this from Firebase console
     });
   }, []);
 
-// function to handle the login with google 
-const handleGoogleSignIn = async () => {
-  try {
-    await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
-    const { idToken } = userInfo;
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    await auth().signInWithCredential(googleCredential);
+  // function to handle the login with google
+  const handleGoogleSignIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      const { idToken } = userInfo;
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      await auth().signInWithCredential(googleCredential);
 
-    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
-    toggleLoginMode();
-  } catch (error) {
-    console.error(error);
-  }
-}; 
+      navigation.navigate("homescreen"); // Replace 'Home' with the actual name of your home screen component.
+      toggleLoginMode();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  // signing with twitter here
+  RNTwitterSignIn.init(
+    "TlLLxDQ1cVPAfFnCqG7HU6nza",
+    "Gs0Im9SKFLqLJy5Q8kFIO4yKpjADIGwxzc5L6hHf6YuB4gD6jI"
+  ).then(() => console.log("Twitter SDK initialized"));
 
-// signing with twitter here
-RNTwitterSignIn.init('TlLLxDQ1cVPAfFnCqG7HU6nza', 'Gs0Im9SKFLqLJy5Q8kFIO4yKpjADIGwxzc5L6hHf6YuB4gD6jI').then(() =>
-  console.log('Twitter SDK initialized')
-);
+  async function onTwitterButtonPress() {
+    try {
+      // Perform the login request
+      const { authToken, authTokenSecret } = await RNTwitterSignIn.logIn();
 
+      // Create a Twitter credential with the tokens
+      const twitterCredential = auth.TwitterAuthProvider.credential(
+        authToken,
+        authTokenSecret
+      );
 
-async function onTwitterButtonPress() {
-  try {
-    // Perform the login request
-    const { authToken, authTokenSecret } = await RNTwitterSignIn.logIn();
-
-    // Create a Twitter credential with the tokens
-    const twitterCredential = auth.TwitterAuthProvider.credential(authToken, authTokenSecret);
-
-    // Sign-in the user with the credential
-    await auth().signInWithCredential(twitterCredential);
-    navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
-    toggleLoginMode();
-    console.log('Signed in with Twitter!');
-  } catch (error) {
-    console.error('Twitter sign-in error:', error);
-  }
-} 
-
-
-
-// handle sign in with facebook 
-
-async function onFacebookButtonPress() {
-  try{
-  // Attempt login with permissions
-  const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-
-  if (result.isCancelled) {
-    throw 'User cancelled the login process';
+      // Sign-in the user with the credential
+      await auth().signInWithCredential(twitterCredential);
+      navigation.navigate("homescreen"); // Replace 'Home' with the actual name of your home screen component.
+      toggleLoginMode();
+      console.log("Signed in with Twitter!");
+    } catch (error) {
+      console.error("Twitter sign-in error:", error);
+    }
   }
 
-  // Once signed in, get the users AccessToken
-  const data = await AccessToken.getCurrentAccessToken();
+  // handle sign in with facebook
 
-  if (!data) {
-    throw 'Something went wrong obtaining access token';
+  async function onFacebookButtonPress() {
+    try {
+      // Attempt login with permissions
+      const result = await LoginManager.logInWithPermissions([
+        "public_profile",
+        "email",
+      ]);
+
+      if (result.isCancelled) {
+        throw "User cancelled the login process";
+      }
+
+      // Once signed in, get the users AccessToken
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        throw "Something went wrong obtaining access token";
+      }
+
+      // Create a Firebase credential with the AccessToken
+      const facebookCredential = auth.FacebookAuthProvider.credential(
+        data.accessToken
+      );
+
+      // Sign-in the user with the credential
+      await auth().signInWithCredential(facebookCredential);
+      navigation.navigate("homescreen"); // Replace 'Home' with the actual name of your home screen component.
+      toggleLoginMode(true);
+    } catch (e) {
+      console.log("There was an error signing");
+    }
   }
-
-  // Create a Firebase credential with the AccessToken
-  const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-
-  // Sign-in the user with the credential
-  await auth().signInWithCredential(facebookCredential);
-  navigation.navigate('homescreen'); // Replace 'Home' with the actual name of your home screen component.
-toggleLoginMode(true);
-
-
-  
-  
-}catch(e) {
-  console.log("There was an error signing");
-}
-}
-
-
-
-
 
   return (
     <SafeAreaView
@@ -159,7 +150,11 @@ toggleLoginMode(true);
           <View style={twrnc`mb-2`}>
             <TouchableOpacity
               style={twrnc`bg-blue-600  rounded-md h-12 w-96 flex items-center justify-center flex-row`}
-              onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
+              onPress={() =>
+                onFacebookButtonPress().then(() =>
+                  console.log("Signed in with Facebook!")
+                )
+              }
             >
               <Icon_EvilIcons name="sc-facebook" color="white" size={24} />
               <Text style={twrnc`text-white text-center font-semibold ml-3`}>

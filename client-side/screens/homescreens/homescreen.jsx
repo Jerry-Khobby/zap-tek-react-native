@@ -7,7 +7,6 @@ import {
   Pressable,
   Image,
   FlatList,
-  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import twrnc from "tailwind-react-native-classnames";
@@ -27,16 +26,11 @@ import {
   removeFromWishList,
   addToMovableItems,
 } from "../../state/reducers";
-import Nike from "./nike";
 
 const Homescreen = ({ navigation }) => {
   // a function that will open the drawer and close it
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
-  };
-
-  const handleCartScreenNavigation = () => {
-    navigation.navigate("screen12");
   };
 
   const { isDarkMode } = useDarkMode();
@@ -177,7 +171,9 @@ const Homescreen = ({ navigation }) => {
                 ? twrnc`h-11 w-11 bg-gray-100 items-center justify-center  rounded-full`
                 : twrnc`bg-gray-700  rounded-full h-11 w-11 items-center justify-center`
             }
-            onPress={handleCartScreenNavigation}
+            onPress={() => {
+              navigation.navigate("Order");
+            }}
           >
             {/** this is the view for the icon  */}
             <Icon_SimpleLineIcons

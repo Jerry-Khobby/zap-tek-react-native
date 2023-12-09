@@ -6,7 +6,7 @@ const initialState = {
   movableItems: [], // New state for movable items
   cartItems: [], // manage the state of the cart items that have added
   quantity: 0, //The initial value for the quantity must be zero
-  orderedItems: [], // New state for ordered items
+  orderItems: [],
 };
 
 // I will be needing a local storage here so that the user wont open the open the app alway and see that there are not items there
@@ -134,6 +134,29 @@ const wishListSlice = createSlice({
         (item) => item.id !== itemIdToRemove
       );
     },
+    addToOrderItems: (state, action) => {
+      const { id, brandName, quantity, price, imageSource, product } =
+        action.payload;
+      // Check if the item already exists in cartItems
+      const existingItemIndex = state.orderItems.findIndex(
+        (item) => item.id === id
+      );
+
+      if (existingItemIndex !== -1) {
+        state.orderItems[existingItemIndex].quantity += 1;
+        // If the item exists, update its quantity
+      } else {
+        // If the item doesn't exist, add it to cartItems with a quantity of 1
+        state.orderItems.push({
+          id,
+          imageSource,
+          brandName,
+          product,
+          price,
+          quantity,
+        });
+      }
+    },
   },
 });
 
@@ -145,26 +168,23 @@ export const {
   addItemsToCartScreen,
   decreaseQuantity,
   increaseQuantity,
+  addToOrderItems,
 } = wishListSlice.actions;
 export default wishListSlice.reducer;
 
-// The SubTotal
 export const selectedSubTotal = (state) =>
   state.wishlist.cartItems.reduce(
     (acc, cartItems) => acc + cartItems.price * cartItems.quantity,
     0
   );
 
-// The number of items in the cart
 export const numOfSelectedItems = (state) => state.wishlist.cartItems.length;
 
-// The price of the delivery fee
 export const selectedDeliveryFee = createSelector(
   selectedSubTotal,
   (subTotal) => (subTotal === 0 ? 0 : 20)
 );
 
-// The total price of the items in the cart
 export const selectedTotal = createSelector(
   selectedSubTotal,
   selectedDeliveryFee,

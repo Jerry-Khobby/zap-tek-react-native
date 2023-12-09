@@ -1,15 +1,13 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
-import Icon_Mat from "react-native-vector-icons/MaterialCommunityIcons";
 import Homescreen from "../../screens/homescreens/homescreen";
 import DetailScreen from "../../screens/detailed_item_screen/detailscreen";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Wishlist from "../../screens/homescreens/wishlist";
-import Order from "../../screens/homescreens/order";
 import { useDarkMode } from "../../context/darkmode";
+import OrderMain from "../../screens/homescreens/orderMain";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +51,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Order"
-        component={Order}
+        component={OrderMain}
         options={{ headerShown: false }}
       />
       <Tab.Screen
