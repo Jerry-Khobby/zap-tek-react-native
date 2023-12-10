@@ -56,6 +56,10 @@ const Wishlist = ({ navigation }) => {
 
   return (
     <View className={!isDarkMode ? "flex-1 bg-white" : "flex-1 bg-black"}>
+      <StatusBar
+        backgroundColor={!isDarkMode ? "white" : "black"}
+        barStyle={!isDarkMode ? "dark-content" : "light-content"}
+      />
       <View className="flex-1  pt-5">
         {/* Top part */}
         <View className="flex-row justify-between items-center mx-5 my-5">

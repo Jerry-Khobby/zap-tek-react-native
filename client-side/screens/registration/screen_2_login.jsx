@@ -1,4 +1,10 @@
-import { View, TouchableOpacity, Text, SafeAreaView } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  SafeAreaView,
+  StatusBar,
+} from "react-native";
 import React, { useEffect } from "react";
 import twrnc from "tailwind-react-native-classnames";
 import Icon_Ant from "react-native-vector-icons/AntDesign";
@@ -119,6 +125,10 @@ const LoginCredentials = ({ navigation }) => {
     <SafeAreaView
       style={twrnc`flex flex-1 bg-${!isDarkMode ? "white" : "black"}`}
     >
+      <StatusBar
+        backgroundColor={!isDarkMode ? "white" : "black"}
+        barStyle={!isDarkMode ? "dark-content" : "light-content"}
+      />
       <View style={twrnc`flex w-full h-full flex-col mt-11 relative `}>
         <View style={twrnc`mx-5`}>
           <TouchableOpacity

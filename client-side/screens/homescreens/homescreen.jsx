@@ -7,6 +7,7 @@ import {
   Pressable,
   Image,
   FlatList,
+  StatusBar,
 } from "react-native";
 import React, { useState } from "react";
 import twrnc from "tailwind-react-native-classnames";
@@ -19,7 +20,7 @@ import { items } from "../../data/carouseldata";
 import { brand } from "../../data/brand";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from "../../context/darkmode";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToWishList,
@@ -141,7 +142,8 @@ const Homescreen = ({ navigation }) => {
     >
       {/** the header will consist of two iccons at the top of the screen  */}
       <StatusBar
-        backgroundColor={!isDarkMode ? "white" : "white"} // Set status bar background color based on dark mode state
+        backgroundColor={!isDarkMode ? "white" : "black"}
+        barStyle={!isDarkMode ? "dark-content" : "light-content"}
       />
 
       <View style={twrnc`flex flex-row items-center justify-between`}>

@@ -1,10 +1,17 @@
 // Screen 18 => Livingstone
 
-import { Text, View, TouchableOpacity, FlatList, Image } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  Image,
+  StatusBar,
+} from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDarkMode } from "../../context/darkmode";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import twrnc from "tailwind-react-native-classnames";
 import { useSelector } from "react-redux";
 
@@ -20,7 +27,8 @@ const OrderMain = ({ navigation }) => {
     <View className={`flex-1 pt-11 bg-${!isDarkMode ? "white" : "black"}`}>
       {/* Top part */}
       <StatusBar
-        backgroundColor={!isDarkMode ? "white" : "white"} // Set status bar background color based on dark mode state
+        backgroundColor={!isDarkMode ? "white" : "black"}
+        barStyle={!isDarkMode ? "dark-content" : "light-content"}
       />
       <View className="flex-row justify-between items-center mx-5 my-5">
         {/* Navigate back */}
